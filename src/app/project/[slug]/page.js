@@ -22,11 +22,7 @@ export default function SingleProject({ params }) {
         const fetchProject = async () => {
             try {
                 const response = await projectService.getSingleProject({ slug });
-                console.log("response", response);
-
-                // Extracting the required fields including Audit Date
-
-
+                console.log("response", response)
                 setProject(response);
             } catch (error) {
                 console.error("Error fetching project data:", error);
@@ -75,12 +71,37 @@ export default function SingleProject({ params }) {
 
                         <div>
 
-                            {project.twitterLink !== " " && <Link href={project.twitterLink}><XIcon /></Link>}
+                            <div>
+                                {project?.twitterLink?.trim() && (
+                                    <Link href={project.twitterLink}>
+                                        <XIcon />
+                                    </Link>
+                                )}
 
-                            {project.telegramLink !== " " && <Link href={project.telegramLink}><TelegramIcon /></Link>}
-                            {project.websiteLink !== " " && <Link href={project.websiteLink}><LanguageIcon /></Link>}
-                            {project.mediumLink !== " " && <Link href={project.mediumLink}><ScatterPlotIcon /></Link>}
-                            {project.chartLink !== " " && <Link href={project.chartLink}><SportsEsportsIcon /></Link>}
+                                {project?.telegramLink?.trim() && (
+                                    <Link href={project.telegramLink}>
+                                        <TelegramIcon />
+                                    </Link>
+                                )}
+
+                                {project?.websiteLink?.trim() && (
+                                    <Link href={project.websiteLink}>
+                                        <LanguageIcon />
+                                    </Link>
+                                )}
+
+                                {project?.mediumLink?.trim() && (
+                                    <Link href={project.mediumLink}>
+                                        <ScatterPlotIcon />
+                                    </Link>
+                                )}
+
+                                {project?.chartLink?.trim() && (
+                                    <Link href={project.chartLink}>
+                                        <SportsEsportsIcon />
+                                    </Link>
+                                )}
+                            </div>
 
                         </div>
                         <p className="text-lg text-gray-700 leading-relaxed">{project.description}</p>

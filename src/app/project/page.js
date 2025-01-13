@@ -12,52 +12,52 @@ const recordsPerPage = 18; // Records to display per page
 
 export default function Explore() {
     const [projects, setProjects] = useState([]);
-    const [offset, setOffset] = useState(null); // Current offset for API
-    const [previousOffset, setPreviousOffset] = useState(null); // Track the previous offset
+    const [offsetStack, setOffsetStack] = useState([]); // Stack to track offsets
+    const [currentOffset, setCurrentOffset] = useState(null); // Current offset for API
     const [totalProjects, setTotalProjects] = useState(0); // Total projects count from server
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1); // Current page
     const { control, handleSubmit, formState: { errors } } = useForm();
 
     // Fetch projects dynamically with server-side pagination
-    const fetchProjects = useCallback(async (currentOffset) => {
-        console.log("currentOffset", currentOffset);
+    const fetchProjects = useCallback(async (offset) => {
+        console.log("Fetching with offset:", offset);
         setLoading(true); // Start loading
         try {
             const response = await projectService.getAllProjects({
-                offset: currentOffset || "", // Use provided offset (current or previous)
+                offset: offset || "", // Use provided offset (or initial)
                 pageSize: recordsPerPage,
                 sortBy: "kycDate",
                 sortOrder: "desc",
             });
-            console.log("res", response.records);
             setProjects(response.records); // Set fetched records
-            setPreviousOffset(offset); // Store the current offset as the previous offset
-            setOffset(response.offset); // Update current offset with the new response offset
             setTotalProjects(response.totalCount); // Update total project count from server
+            setCurrentOffset(response.offset); // Update current offset with the new response offset
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
             setLoading(false);
         }
-    }, [offset]);
+    }, []);
 
     useEffect(() => {
         // Trigger the first fetch on initial load
-        fetchProjects(""); // Initially pass `null` or `""` to handle the offset
-    }, []); // This effect runs only once when the component mounts
+        fetchProjects(null); // Initially pass `null` to handle the offset
+    }, [fetchProjects]);
 
     // Pagination page change handler
     const handlePaginationPageChange = async (event, value) => {
-        setPage(value);
-        console.log("2345", value, page);
         if (value > page) {
-            // When going to next page, use the current offset
-            fetchProjects(offset);
-        } else {
-            // When going to previous page, use the previous offset
-            fetchProjects(previousOffset);
+            // Going to the next page
+            setOffsetStack([...offsetStack, currentOffset]); // Push current offset to stack
+            fetchProjects(currentOffset);
+        } else if (value < page) {
+            // Going to the previous page
+            const prevOffset = offsetStack[offsetStack.length - 2]; // Peek last offset
+            setOffsetStack(offsetStack.slice(0, -1)); // Pop last offset
+            fetchProjects(prevOffset);
         }
+        setPage(value); // Update current page
     };
 
     // Filter handler
@@ -90,18 +90,17 @@ export default function Explore() {
 
             // Update state with API response
             setProjects(response.records);
-            setOffset(response.offset);
+            setCurrentOffset(response.offset);
             setTotalProjects(response.totalCount);
             setPage(1); // Reset to the first page of filtered results
+            setOffsetStack([]); // Clear the offset stack for filtered results
         } catch (error) {
             console.error("Error applying filters:", error);
         } finally {
             setLoading(false); // End loading
         }
     };
-
-
-
+    console.log("offsetStack", offsetStack);
     return (
         <div>
             <LayoutHeader pageTitle="Explore Over 1000 Projects" />
@@ -132,13 +131,12 @@ export default function Explore() {
                                 justifyContent="center"
                                 className="my-5"
                             >
-                                {/* Pass only sliced data for the current page */}
                                 <ProjectCards data={projects} />
                             </Grid>
                             <Grid container justifyContent="center" my={5}>
                                 <ProjectPagination
                                     count={Math.ceil(totalProjects / recordsPerPage)}
-                                    page={page} // Page number from offset
+                                    page={page}
                                     onChange={handlePaginationPageChange}
                                 />
                             </Grid>
