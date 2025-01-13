@@ -53,8 +53,9 @@ export default function Explore() {
             fetchProjects(currentOffset);
         } else if (value < page) {
             // Going to the previous page
-            const prevOffset = offsetStack[offsetStack.length - 2]; // Peek last offset
-            setOffsetStack(offsetStack.slice(0, -1)); // Pop last offset
+            const prevOffset = offsetStack[offsetStack.length - 2];
+            setOffsetStack(offsetStack.slice(0, -1));
+            console.log("offsetStack", offsetStack);
             fetchProjects(prevOffset);
         }
         setPage(value); // Update current page
@@ -63,7 +64,6 @@ export default function Explore() {
     // Filter handler
     const onSubmit = async (data) => {
         setLoading(true); // Start loading
-        console.log("Original data:", data);
 
         // Transform data
         const { projectSearch, projectbySearch, ...rest } = data; // Destructure data
@@ -72,7 +72,6 @@ export default function Explore() {
             [projectbySearch]: projectSearch, // Dynamically set the key-value pair
         };
 
-        console.log("Transformed data:", transformedData);
 
         try {
             // Make the API call with the transformed data
@@ -100,7 +99,6 @@ export default function Explore() {
             setLoading(false); // End loading
         }
     };
-    console.log("offsetStack", offsetStack);
     return (
         <div>
             <LayoutHeader pageTitle="Explore Over 1000 Projects" />

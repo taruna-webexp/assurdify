@@ -30,3 +30,7 @@ body {
   top: 0 !important;
   right: 0 !important;
 }
+.kyc-certificate-cross-icon {
+  position: absolute !important;
+  right: 30px !important;
+}

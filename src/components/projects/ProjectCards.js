@@ -9,8 +9,9 @@ export default function ProjectCards({ data }) {
         <Grid container spacing={4} maxWidth="lg" className="projectForm !px-4 md:px-8">
             {data.map((project) => (
                 <Grid item xs={12} sm={6} md={4} key={project.projectName}>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <Link href={`/project/${project.projectName.split(' ').join('-').toLowerCase()}`}>
+                    <Link href={`/project/${project.projectName.split(' ').join('-').toLowerCase()}`}>
+                        <Card sx={{ maxWidth: 345 }}>
+
                             <CardHeader
                                 avatar={
                                     <Avatar
@@ -51,19 +52,13 @@ export default function ProjectCards({ data }) {
 
                                     </>
                                 }
-
-
                             />
-
-
-                        </Link>
-                        <CardContent>
-                            <Typography variant="body2" color="text.secondary">
-                                {project.description?.substring(0, 150)}...
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Link href={`/project/${project.projectName.split(' ').join('-').toLowerCase()}`}>
+                            <CardContent>
+                                <Typography variant="body2" color="text.secondary">
+                                    {project.description?.substring(0, 150)}...
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
                                 <Typography variant="body2" color="text.secondary">
                                     {project.kycDate}
                                 </Typography>
@@ -73,12 +68,10 @@ export default function ProjectCards({ data }) {
 
 
                                         <Typography className="text-red-500" variant="body2" >Not Audited</Typography>
-
                                 }
-
-                            </Link>
-                        </CardActions>
-                    </Card>
+                            </CardActions>
+                        </Card>
+                    </Link>
                 </Grid>
             ))}
         </Grid>

@@ -1,15 +1,25 @@
+"use client";
+
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/system';
 
 export default function ProjectAccordion2({ project }) {
     console.log("project={project}", project);
+    const [copied, setCopied] = React.useState(false);
+
+    const copyHandler = async (contractAddresses) => {
+        await navigator.clipboard.writeText(contractAddresses.join(", "));
+        setCopied(true);
+
+        setTimeout(() => setCopied(false), 3000);
+    }
 
     return (
         <div>
@@ -29,7 +39,10 @@ export default function ProjectAccordion2({ project }) {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Typography variant="body2">
-                                    <strong>Contract Address: {report.contractAddress}</strong>
+                                    <strong>
+                                        Contract Address: {report.contractAddress}
+                                        {copied ? "Copied!" : <ContentCopyIcon onClick={() => copyHandler([report.contractAddress])} />}
+                                    </strong>
                                 </Typography>
                                 <Typography variant="body2">
                                     <strong>Description:</strong> {report.auditDescription}
@@ -48,23 +61,21 @@ export default function ProjectAccordion2({ project }) {
                                 </Typography>
                                 <Typography variant="body2">
                                     <strong>Initial Reports:</strong>
-                                    {report.initialAuditReport && (
-                                        report.initialAuditReport.map((audit, idx) => (<>
-                                            <div key={audit.url}>
-                                                <Button
-                                                    variant="contained"
-                                                    color="primary"
-                                                    onClick={() => window.open(audit.url, '_blank')}
-                                                >
-                                                    {idx + 1} Initial Report
-                                                </Button>
-                                            </div>
-                                        </>))
-                                    )}
+                                    {report.initialAuditReport && report.initialAuditReport.map((audit, idx) => (
+                                        <div key={audit.url}>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                onClick={() => window.open(audit.url, '_blank')}
+                                            >
+                                                {idx + 1} Initial Report
+                                            </Button>
+                                        </div>
+                                    ))}
                                 </Typography>
                             </AccordionDetails>
                             <AccordionDetails>
-                                {report.finalAuditReport && report.finalAuditReport.map((final, idx) => (<>
+                                {report.finalAuditReport && report.finalAuditReport.map((final, idx) => (
                                     <div key={final.url}>
                                         <Button
                                             variant="contained"
@@ -74,9 +85,7 @@ export default function ProjectAccordion2({ project }) {
                                             Final Report
                                         </Button>
                                     </div>
-                                </>))}
-
-
+                                ))}
                             </AccordionDetails>
                         </Accordion>
                     );

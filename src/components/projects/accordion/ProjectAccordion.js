@@ -11,55 +11,53 @@ import CertificateModal from '../modal/CertificateModal';
 import CountryTier from '../modal/CountryTier';
 
 export default function ProjectAccordion({ project }) {
-    console.log("project={project}", project);
+    console.log("project={project}", project.kycCertificate);
 
     return (
-        <div>
-            {/* Iterate through verifyMembersList if available */}
-            {project?.verifiyMembersList?.length > 0 && (project.verifiyMembersList.map((verifiy, index) => {
-                console.log("verifiyM", index);
-                return (
-                    <>
-                        <Accordion defaultExpanded={index === 0} key={verifiy.bubbleUserId}>
-                            <AccordionSummary
-
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <div className='grid'>
+        <>
+            {project?.verifiyMembersList?.length > 0 && (
+                project.verifiyMembersList.map((verifiy, index) => (
+                    <Accordion defaultExpanded={index === 0} key={index}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls={`panel${index}-content`}
+                            id={`panel${index}-header`}
+                        >
+                            <Grid container spacing={2}>
+                                <Grid item xs={6}>
                                     <Typography component="span">{verifiy.name}</Typography>
+                                </Grid>
+                                <Grid item xs={6}>
                                     <Typography component="span">{verifiy.role}</Typography>
-                                </div>
-                            </AccordionSummary>
-                            <AccordionDetails>
+                                </Grid>
+                            </Grid>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography variant="body2">
+                                <strong>Socials:</strong>{' '}
+                                <a href={`https://${verifiy.telegram}`} target="_blank" rel="noopener noreferrer">
+                                    {verifiy.telegram}
+                                </a>
+                            </Typography>
+                        </AccordionDetails>
+                        <AccordionDetails>
+                            <Typography variant="body2">
+                                <strong>Country Tier:</strong> {verifiy.countryTier} <CountryTier />
+                            </Typography>
+                        </AccordionDetails>
+                        <AccordionDetails>
+                            <Typography variant="body2">
+                                <strong>Control Over:</strong> {verifiy.controlOver.join(", ")}
+                            </Typography>
+                        </AccordionDetails>
+                        {project.kycCertificate &&
 
-                                <Typography variant="body2">
-                                    <strong>Socials:</strong> <a href={`https://${verifiy.telegram}`} target="_blank" rel="noopener noreferrer">{verifiy.telegram}</a>
-                                </Typography>
-                            </AccordionDetails>
-                            <AccordionDetails>
-                                <Typography variant="body2">
-                                    <strong>Country Tier:</strong> {verifiy.countryTier} <CountryTier />
-                                </Typography>
-                            </AccordionDetails>
-                            <AccordionDetails>
-                                <Typography variant="body2">
-                                    <strong>Control Over:</strong> {verifiy.controlOver.join(", ")}
-                                </Typography>
-                            </AccordionDetails>
                             <AccordionDetails>
                                 <CertificateModal img={project.kycCertificate} />
-                            </AccordionDetails>
-                        </Accordion>
-                    </>
-                );
-            }))
-
-            }
-
-
-
-        </div>
+                            </AccordionDetails>}
+                    </Accordion>
+                ))
+            )}
+        </>
     );
 }

@@ -4,7 +4,7 @@ import ProjectTab from "@/components/projects/tabs/ProjectTab";
 import projectService from "@/services/projectService";
 import { CircularProgress, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Assuming Next.js App Router
+import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { use } from 'react';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -17,12 +17,11 @@ export default function SingleProject({ params }) {
     const { slug } = use(params); //
     const [project, setProject] = useState(null);
     const router = useRouter();
-    console.log("slug", slug);
+
     useEffect(() => {
         const fetchProject = async () => {
             try {
                 const response = await projectService.getSingleProject({ slug });
-                console.log("response", response)
                 setProject(response);
             } catch (error) {
                 console.error("Error fetching project data:", error);
