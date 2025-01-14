@@ -6,7 +6,7 @@ import ProjectPagination from "@/components/utility/ProjectPagination";
 import projectService from "@/services/projectService"; // API service
 import { useForm } from "react-hook-form";
 import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
-import LayoutHeader from "../layoutHeader";
+import UpperSection from "@/components/projects/UpperSection";
 
 const recordsPerPage = 18; // Records to display per page
 
@@ -30,8 +30,9 @@ export default function Explore() {
                 sortBy: "kycDate",
                 sortOrder: "desc",
             });
+            console.log("res", response);
             setProjects(response.records); // Set fetched records
-            setTotalProjects(response.totalCount); // Update total project count from server
+            setTotalProjects(response.records.length); // Update total project count from server
             setCurrentOffset(response.offset); // Update current offset with the new response offset
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -39,7 +40,7 @@ export default function Explore() {
             setLoading(false);
         }
     }, []);
-
+    console.log("totl", totalProjects);
     useEffect(() => {
         // Trigger the first fetch on initial load
         fetchProjects(null); // Initially pass `null` to handle the offset
@@ -90,7 +91,7 @@ export default function Explore() {
             // Update state with API response
             setProjects(response.records);
             setCurrentOffset(response.offset);
-            setTotalProjects(response.totalCount);
+            setTotalProjects(response.records.length);
             setPage(1); // Reset to the first page of filtered results
             setOffsetStack([]); // Clear the offset stack for filtered results
         } catch (error) {
@@ -101,9 +102,13 @@ export default function Explore() {
     };
     return (
         <div>
-            <LayoutHeader pageTitle="Explore Over 1000 Projects" />
+
+            <UpperSection />
+
+
+            <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">Explore Over <b>1000</b> Projects</h3>
             {/* Form Section */}
-            <form onSubmit={handleSubmit(onSubmit)} className="my-7">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-10">
                 <ProjectFilterForm control={control} errors={errors} />
             </form>
 
@@ -133,7 +138,7 @@ export default function Explore() {
                             </Grid>
                             <Grid container justifyContent="center" my={5}>
                                 <ProjectPagination
-                                    count={Math.ceil(totalProjects / recordsPerPage)}
+                                    count={totalProjects}
                                     page={page}
                                     onChange={handlePaginationPageChange}
                                 />

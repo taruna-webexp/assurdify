@@ -1,0 +1,22 @@
+export const BlockChainImages = {
+    "SOLANA": "/assets/crypto_icons/solana.png",
+    "ETH": "/assets/crypto_icons/ethereum.png",
+    "METIS": "/assets/crypto_icons/metisdao-metis-logo.png",
+    "Shiberium": "/assets/crypto_icons/shiba-inu-shib-icon.png",
+    "Shibarium": "/assets/crypto_icons/shiba-inu-shib-icon.png",
+    "BNB": "/assets/crypto_icons/bitcoin.png",
+    "BSC": "/assets/crypto_icons/BSC.png",
+    "SOL": "/assets/crypto_icons/solana.png",
+    "Base": "/assets/crypto_icons/oinbase.png",
+    "Basechain": "/assets/crypto_icons/oinbase.png",
+    "Monad": "/assets/crypto_icons/monad.png",
+    "POLYGON": "/assets/crypto_icons/Polygon-MATIC-Icon.png",
+    "BITROCK": "/assets/crypto_icons/bitrock.webp",
+    "BLAST": "/assets/crypto_icons/Blast.webp",
+    "AirDAO": "/assets/crypto_icons/airdao.webp",
+    "ERC20": "/assets/crypto_icons/erc20.png",
+    "Linea": "/assets/crypto_icons/linea.png",
+    "Arbitrum": "/assets/crypto_icons/arbitrum.png",
+    "AVALANCHE": "/assets/crypto_icons/avalanche.png",
+    "Pulsechain": "/assets/crypto_icons/pulsechain.png"
+};

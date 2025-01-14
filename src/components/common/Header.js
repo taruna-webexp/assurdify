@@ -36,29 +36,13 @@ function Header() {
     };
 
     return (
-        <AppBar className="!mb-8" position="static">
-            <Container maxWidth="xl">
+        <AppBar className="!bg-transparent py-5 !shadow-none" position="static">
+            <Container className="container-fluid">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        LOGO
-                    </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                    <Link href="#"><img src="/assets/logo-a.webp" className="max-w-40" /></Link>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -97,27 +81,9 @@ function Header() {
                         </Menu>
                     </Box>
 
-                    <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        LOGO
-                    </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} justifyContent="end" className="main-navigation items-center">
                         {menus.map((page) => (
                             <React.Fragment key={page.Title}>
                                 {/* Render "Services" as a dropdown menu */}
@@ -150,7 +116,9 @@ function Header() {
                                                     </Link>
                                                 </MenuItem>
                                             ))}
+
                                         </Menu>
+
                                     </>
                                 ) : (
                                     <Link href={page.path} passHref>
@@ -161,9 +129,12 @@ function Header() {
                                             {page.Title}
                                         </Button>
                                     </Link>
+
                                 )}
+
                             </React.Fragment>
                         ))}
+                        <Button variant="contained" className="kyc-button !rounded-md !text-base !text-white !font-medium !leading-4">GET KYC VERIFIED</Button>
                     </Box>
                 </Toolbar>
             </Container>

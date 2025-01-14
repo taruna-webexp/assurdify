@@ -7,6 +7,8 @@ import ProjectAccordion from '../accordion/ProjectAccordion';
 import ProjectAccordion2 from '../accordion/ProjectAccordion2';
 import Link from 'next/link';
 import { Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -47,9 +49,24 @@ export default function ProjectTab({ project }) {
         setValue(newValue);
     };
 
-    // Determine tab names based on kycStatus
-    const kycTabName = project?.kycStatus === 'Approved' ? 'Team KYC' : <><Link href="https://www.assuredefi.com/#get-kyc">No KYC</Link> </>;
-    const auditedTabName = project?.auditStatus === "Completed" ? ' Audited' : 'Not Audited';
+    const kycTabName = project?.kycStatus === 'Approved'
+        ? 'Team KYC'
+        : (
+            <>
+                <Link className="text-red-600 flex items-center gap-2" href="https://www.assuredefi.com/#get-kyc">
+                    <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
+                </Link>
+            </>
+        );
+
+    const auditedTabName = project?.auditStatus === "Completed"
+        ? 'Audit'
+        : (
+            <div className="text-red-600 flex items-center gap-2">
+                <FontAwesomeIcon icon={faTriangleExclamation} />
+                Not Audited
+            </div>
+        );
 
     return (
         <Box sx={{ width: '100%' }}>

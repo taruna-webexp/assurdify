@@ -95,8 +95,8 @@ export default function SingleProject({ params }) {
                                     </Link>
                                 )}
 
-                                {project?.chartLink?.trim() && (
-                                    <Link href={project.chartLink}>
+                                {project?.discordLink?.trim() && (
+                                    <Link href={project.discordLink}>
                                         <SportsEsportsIcon />
                                     </Link>
                                 )}

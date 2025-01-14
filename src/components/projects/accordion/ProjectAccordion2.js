@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/system';
+import { BlockChainImages } from '../BlockChainImages';
+
 
 export default function ProjectAccordion2({ project }) {
     console.log("project={project}", project);
@@ -40,12 +42,30 @@ export default function ProjectAccordion2({ project }) {
                             <AccordionDetails>
                                 <Typography variant="body2">
                                     <strong>
-                                        Contract Address: {report.contractAddress}
-                                        {copied ? "Copied!" : <ContentCopyIcon onClick={() => copyHandler([report.contractAddress])} />}
+                                        Contract Address: {report.contractAddress !== "N/A" ? report.contractAddress : "Contract address N/A at time of verification"}
+                                        {copied ? "Copied!" : <ContentCopyIcon onClick={() => copyHandler([report.contractAddress !== "N/A" ? report.contractAddress : "Contract address N/A at time of verification"])} />}
                                     </strong>
                                 </Typography>
                                 <Typography variant="body2">
-                                    <strong>Description:</strong> {report.auditDescription}
+                                    <strong>Ecosystem:</strong>
+                                    {/* Dynamically display blockchain image based on ecosystem */}
+                                    {project?.blockchain?.length > 0 && BlockChainImages[project.blockchain[0]] && (
+                                        <>
+                                            <img
+                                                src={BlockChainImages[project.blockchain[0]]}
+                                                alt={project.blockchain[0]}
+                                                width="4%"
+                                            />
+                                            {project.blockchain[0]}
+                                        </>
+                                    )}
+
+
+
+
+                                </Typography>
+                                <Typography variant="body2">
+                                    <strong>Description:</strong> {report.auditDescription ? report.auditDescription : "-------"}
                                 </Typography>
                             </AccordionDetails>
                             <AccordionDetails>
