@@ -7,6 +7,7 @@ import projectService from "@/services/projectService"; // API service
 import { useForm } from "react-hook-form";
 import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
 import UpperSection from "@/components/projects/UpperSection";
+import { errorMsg } from "@/components/toaster/msg/toaster";
 
 const recordsPerPage = 18; // Records to display per page
 
@@ -35,12 +36,12 @@ export default function Explore() {
             setTotalProjects(response.records.length); // Update total project count from server
             setCurrentOffset(response.offset); // Update current offset with the new response offset
         } catch (error) {
+            errorMsg(error)
             console.error("Error fetching data:", error);
         } finally {
             setLoading(false);
         }
     }, []);
-    console.log("totl", totalProjects);
     useEffect(() => {
         // Trigger the first fetch on initial load
         fetchProjects(null); // Initially pass `null` to handle the offset
@@ -86,6 +87,7 @@ export default function Explore() {
                 offset: "",
                 sortBy: "kycDate",
                 sortOrder: "desc",
+
             });
 
             // Update state with API response
@@ -108,7 +110,7 @@ export default function Explore() {
 
             <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">Explore Over <b>1000</b> Projects</h3>
             {/* Form Section */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-14">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-10">
                 <ProjectFilterForm control={control} errors={errors} />
             </form>
 
@@ -132,11 +134,11 @@ export default function Explore() {
                                 container
                                 spacing={3}
                                 justifyContent="center"
-                                className="!m-0 !w-full"
+                                className="my-5"
                             >
                                 <ProjectCards data={projects} />
                             </Grid>
-                            <Grid container justifyContent="center" my={5} className="max-w-screen-lg container mx-auto !justify-end projects-pagination">
+                            <Grid container justifyContent="center" my={5}>
                                 <ProjectPagination
                                     count={totalProjects}
                                     page={page}

@@ -4,6 +4,7 @@ import { Avatar, Card, CardActions, CardContent, CardHeader, Grid, Typography } 
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import { formatProjectName } from '../utility/FormatUrl'
 
 export default function UpperSection() {
     const [featureData, setFeatureData] = useState([])
@@ -36,7 +37,7 @@ export default function UpperSection() {
                     <Grid container maxWidth="lg" className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap">
                         {featureData.length > 0 && featureData.map((project) => (
                             <Grid item xs={12} sm={6} md={6} key={project.projectName}>
-                                <Link href={`/project/${project.projectName.split(' ').join('-').toLowerCase()}`}>
+                                <Link href={`/project/${formatProjectName(project.projectName)}`}>
                                     <Card className='theme-border gradient-bg-sharp'>
 
 
