@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
+
 import Link from 'next/link';
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -51,7 +52,7 @@ export default function ProjectTab({ project }) {
     };
 
     const kycTabName = project?.kycStatus === 'Approved'
-        ? 'Team KYC'
+        ? <div>Team KYC</div>
         : (
             <>
                 <Link className="text-red-600 flex items-center gap-2" href="https://www.assuredefi.com/#get-kyc">
@@ -70,14 +71,14 @@ export default function ProjectTab({ project }) {
         );
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%' }} className="!mt-3">
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label={kycTabName} {...a11yProps(0)} />
-                    <Tab label={auditedTabName} {...a11yProps(1)} />
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='dark-purple-bg card-tabs p-2 !border grey-border border-solid rounded-md'>
+                    <Tab label={kycTabName} {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case' />
+                    <Tab label={auditedTabName} {...a11yProps(1)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case' />
                 </Tabs>
             </Box>
-            <CustomTabPanel value={value} index={0}>
+            <CustomTabPanel className="border card-verified-member mt-3 rounded-md grey-border dark-purple-bg" value={value} index={0}>
                 <KycAccordion project={project} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>

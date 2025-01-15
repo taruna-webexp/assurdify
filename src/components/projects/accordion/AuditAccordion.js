@@ -2,24 +2,20 @@
 
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Button from '@mui/material/Button';
-import { Grid } from '@mui/system';
 import { BlockChainImages, blockchainNames } from '../BlockChainImages';
 
 
 export default function AuditAccordion({ project }) {
-    console.log("project={project}", project);
     const [copied, setCopied] = React.useState(false);
 
     const copyHandler = async (contractAddresses) => {
         await navigator.clipboard.writeText(contractAddresses.join(", "));
         setCopied(true);
-
         setTimeout(() => setCopied(false), 3000);
     }
 
@@ -59,10 +55,6 @@ export default function AuditAccordion({ project }) {
                                             {blockchainNames[project.blockchain[0]] || project.blockchain[0]}
                                         </>
                                     )}
-
-
-
-
                                 </Typography>
                                 <Typography variant="body2">
                                     <strong>Description:</strong> {report.auditDescription ? report.auditDescription : "-------"}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState, useCallback } from "react";
 import { Grid, CircularProgress, Typography } from "@mui/material";
 import ProjectCards from "@/components/projects/ProjectCards";
@@ -8,21 +8,25 @@ import { useForm } from "react-hook-form";
 import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
 import UpperSection from "@/components/projects/UpperSection";
 import { errorMsg } from "@/components/toaster/msg/toaster";
+import CircularLoader from "@/components/loader/CircularLoader";
 
-const recordsPerPage = 18; // Records to display per page
+const recordsPerPage = 18;
 
 export default function Explore() {
     const [projects, setProjects] = useState([]);
     const [offsetStack, setOffsetStack] = useState([]); // Stack to track offsets
-    const [currentOffset, setCurrentOffset] = useState(null); // Current offset for API
-    const [totalProjects, setTotalProjects] = useState(0); // Total projects count from server
+    const [currentOffset, setCurrentOffset] = useState(null);
+    const [totalProjects, setTotalProjects] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1); // Current page
-    const { control, handleSubmit, formState: { errors } } = useForm();
+    const [page, setPage] = useState(1);
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    // Fetch projects dynamically with server-side pagination
+    // Fetch all projects
     const fetchProjects = useCallback(async (offset) => {
-        console.log("Fetching with offset:", offset);
         setLoading(true);
         try {
             const response = await projectService.getAllProjects({
@@ -35,7 +39,7 @@ export default function Explore() {
             setTotalProjects(response.records.length);
             setCurrentOffset(response.offset); // Update current offset with the new response offset
         } catch (error) {
-            errorMsg(error)
+            errorMsg(error);
             console.error("Error fetching data:", error);
         } finally {
             setLoading(false);
@@ -63,8 +67,7 @@ export default function Explore() {
 
     // Filter handler
     const onSubmit = async (data) => {
-        setLoading(true); // Start loading
-
+        setLoading(true);
         // Transform data  dynamically set the keyvalue pair
         const { projectSearch, projectbySearch, ...rest } = data;
         const transformedData = {
@@ -72,12 +75,17 @@ export default function Explore() {
             [projectbySearch]: projectSearch,
         };
 
-
         try {
             // API call with the transformed data
             const response = await projectService.getFilteredProjects({
-                auditStatus: data.projectAditStatus === "allAudit" ? "" : transformedData.projectAditStatus,
-                kycStatus: transformedData.projectKeyStatus === "allKYC" ? "" : transformedData.projectKeyStatus,
+                auditStatus:
+                    data.projectAditStatus === "allAudit"
+                        ? ""
+                        : transformedData.projectAditStatus,
+                kycStatus:
+                    transformedData.projectKeyStatus === "allKYC"
+                        ? ""
+                        : transformedData.projectKeyStatus,
                 projectName: transformedData.projectName || "",
                 contractAddress: transformedData.contractAddress || "",
                 tickerName: transformedData.tickerName || "",
@@ -85,7 +93,6 @@ export default function Explore() {
                 offset: "",
                 sortBy: "kycDate",
                 sortOrder: "desc",
-
             });
             setProjects(response.records);
             setCurrentOffset(response.offset);
@@ -102,7 +109,9 @@ export default function Explore() {
         <div>
             {/* Upper Section */}
             <UpperSection />
-            <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">Explore Over <b>1000</b> Projects</h3>
+            <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">
+                Explore Over <b>1000</b> Projects
+            </h3>
             {/* Form Section */}
             <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-10">
                 <ProjectFilterForm control={control} errors={errors} />
@@ -110,7 +119,7 @@ export default function Explore() {
             {/* Loading or Projects */}
             {loading ? (
                 <Grid container justifyContent="center" className="my-5">
-                    <CircularProgress />
+                    <CircularLoader />
                 </Grid>
             ) : (
                 <>
@@ -118,7 +127,7 @@ export default function Explore() {
                     {projects.length === 0 ? (
                         <Grid container justifyContent="center" className="my-5">
                             <Typography variant="h6" color="text-white">
-                                No projects found. Please adjust your filters.
+                                No projects found.
                             </Typography>
                         </Grid>
                     ) : (

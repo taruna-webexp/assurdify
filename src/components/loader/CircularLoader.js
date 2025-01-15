@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 export default function CircularLoader() {
   return (
 
-    <CircularProgress />
+    <CircularProgress style={{ width: "70px ", color: "#d1b933" }} />
 
   );
 }

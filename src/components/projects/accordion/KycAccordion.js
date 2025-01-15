@@ -18,31 +18,33 @@ export default function KycAccordion({ project }) {
 
     return (
         <>
+            <Grid item xs={12} className="verified-text">
+                {project?.verifiyMembersList?.length > 0 ?
+                    <Typography component="span" className='text-white'>{project.verifiyMembersList.length} Team Members Verified</Typography> :
+                    <Typography component="span" className='text-white'>{project.verifiyMembersList} Team Member Verified</Typography>
+
+                }   </Grid>
             {project?.verifiyMembersList?.length > 0 && (
                 project.verifiyMembersList.map((verifiy, index) => (
-                    <Accordion defaultExpanded={index === 0} key={index}>
-                        <AccordionSummary
+
+                    <Accordion defaultExpanded={index === 0} key={index} className='theme-bg grey-border border !rounded-md'>
+                        <AccordionSummary className='grey-border !border-b !border-solid'
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls={`panel${index}-content`}
-                            id={`panel${index}-header`}
+                        //id={`panel${index}-header`}
                         >
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    {project?.verifiyMembersList?.length > 0 ?
-                                        <Typography component="span">{project.verifiyMembersList.length} Team Members Verified</Typography> :
-                                        <Typography component="span">{project.verifiyMembersList} Team Member Verified</Typography>
+                            <Grid container spacing={2} >
 
-                                    }   </Grid>
                                 <Grid item xs={6}>
-                                    <Typography component="span">{verifiy.name}</Typography>
+                                    <Typography component="span" className='text-white'>{verifiy.name}</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography component="span">{verifiy.role}</Typography>
+                                    <Typography component="span" className='text-white'>{verifiy.role}</Typography>
                                 </Grid>
                             </Grid>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography variant="body2">
+                            <Typography variant="body2" className='text-white'>
                                 <strong>Socials:</strong>{' '}
                                 {(() => {
                                     const socials = [];
@@ -112,9 +114,9 @@ export default function KycAccordion({ project }) {
                             </Typography>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Typography variant="body2">
-                                <strong>Country Tier:</strong> <CountryTier />
-
+                            <Typography variant="body2" className='text-white'>
+                                <strong>Country Tier:</strong>
+                                <CountryTier />
                                 <LocationOnIcon />
                                 {verifiy.countryTier ? verifiy.countryTier : "N/A"
                                 }
@@ -123,7 +125,7 @@ export default function KycAccordion({ project }) {
                             </Typography>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Typography variant="body2">
+                            <Typography variant="body2" className='text-white'>
                                 <strong>Control Over:</strong> {verifiy.controlOver.join(", ")}
                             </Typography>
                         </AccordionDetails>

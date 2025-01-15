@@ -11,7 +11,6 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
 import { menus } from "@/components/common/HeaderMenus";
 
@@ -81,8 +80,6 @@ function Header() {
                         </Menu>
                     </Box>
 
-
-
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} justifyContent="end" className="main-navigation items-center">
                         {menus.map((page) => (
                             <React.Fragment key={page.Title}>
@@ -134,7 +131,7 @@ function Header() {
 
                             </React.Fragment>
                         ))}
-                        <Button variant="contained" className="kyc-button !rounded-md !text-base !text-white !font-medium !leading-4">GET KYC VERIFIED</Button>
+                        <Link href="https://www.assuredefi.com/#get-kyc"> <Button variant="contained" className="kyc-button !rounded-md !text-base !text-white !font-medium !leading-4">GET KYC VERIFIED</Button></Link>
                     </Box>
                 </Toolbar>
             </Container>

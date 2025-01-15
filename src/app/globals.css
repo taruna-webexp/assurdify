@@ -35,24 +35,40 @@ li {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.gradient-bg-sharp{
-  background: linear-gradient(10deg, rgba(11, 10, 28, 1) 70%, rgb(221 204 66 / 16%) 100%) !important;
+.gradient-bg-sharp {
+  background: linear-gradient(
+    10deg,
+    rgba(11, 10, 28, 1) 70%,
+    rgb(221 204 66 / 16%) 100%
+  ) !important;
 }
-.light-purple{
-  background-color: #17162B !important;
+
+.light-purple {
+  background-color: #17162b !important;
 }
-.theme-color{
-  color: #DDCC42 !important;
+.theme-color {
+  color: #ddcc42 !important;
 }
-.light-yellow-border{
-  border: 1px solid #2A2A2A !important;
+.light-yellow-border {
+  border: 1px solid #2a2a2a !important;
 }
-.theme-bg{
-  background: #07061A !important;
+.theme-bg {
+  background: #07061a !important;
 }
-.grey-color{
-  color:#727272 !important;
+.grey-color {
+  color: #727272 !important;
 }
+.grey-border {
+  border-color: #2a2a2a !important;
+}
+.dark-purple-bg {
+  background: #080711 !important;
+}
+
+.card-verified-member .MuiBox-root {
+  padding: 12px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -100,10 +116,10 @@ li {
   line-height: 17px;
   background-color: #040311;
 }
-.project-search-form input{
+.project-search-form input {
   padding: 9px 10px;
 }
-.project-search-form .MuiInputBase-formControl:hover fieldset{
+.project-search-form .MuiInputBase-formControl:hover fieldset {
   border: 1px solid #3b3b3b;
 }
 .featured-project {
@@ -146,7 +162,37 @@ li {
   padding: 5px 20px;
 }
 .projects-pagination button:hover {
-  border-color:#e2d243;
+  border-color: #e2d243;
   color: #e2d243;
   background: transparent;
+}
+
+.single-card {
+  background-image: url("/assets/card-bg-image.png");
+  max-width: 523px;
+}
+.social-icons svg {
+  font-size: 19px;
+}
+
+.card-tabs .Mui-selected {
+  border: 1px solid #2a2857;
+  background: rgb(10, 9, 35);
+  background: linear-gradient(
+    45deg,
+    rgba(10, 9, 35, 1) 0%,
+    rgb(76 71 164 / 67%) 100%
+  );
+  color: #fff !important;
+}
+.card-tabs .MuiTabs-flexContainer {
+  gap: 10px;
+  justify-content: space-between;
+}
+.card-tabs button {
+  flex: auto;
+}
+.verified-text span {
+  font-size: 14px;
+  line-height: 17px;
 }
