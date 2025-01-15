@@ -91,7 +91,11 @@ export default function ProjectCards({ data }) {
                             /> */}
                             <CardContent className='!px-3 !pb-3 !pt-0'>
                                 <Typography variant="body2" className="text-white min-h-20 max-h-20 overflow-hidden">
-                                    {project.description?.substring(0, 150)}...
+                                    {project.description && (
+                                        <>
+                                            {project.description.substring(0, 150)}...
+                                        </>
+                                    )}
                                 </Typography>
                             </CardContent>
                             <CardActions className='!p-3 light-purple flex justify-between'>

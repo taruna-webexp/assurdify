@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import ProjectAccordion from '../accordion/ProjectAccordion';
-import ProjectAccordion2 from '../accordion/ProjectAccordion2';
+
 import Link from 'next/link';
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import KycAccordion from '../accordion/KycAccordion';
+import AuditAccordion from '../accordion/AuditAccordion';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -77,11 +78,11 @@ export default function ProjectTab({ project }) {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <ProjectAccordion project={project} />
+                <KycAccordion project={project} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 {project?.auditStatus === "Completed" ?
-                    <ProjectAccordion2 project={project} />
+                    <AuditAccordion project={project} />
                     : <div>
                         <p>No Assure Defi Code Audit Detected</p>
                         <Link href="https://www.assuredefi.com/code-audit"> <Button variant='contained'>Get One Here</Button></Link>

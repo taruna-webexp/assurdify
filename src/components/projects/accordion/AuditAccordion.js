@@ -9,10 +9,10 @@ import Typography from '@mui/material/Typography';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/system';
-import { BlockChainImages } from '../BlockChainImages';
+import { BlockChainImages, blockchainNames } from '../BlockChainImages';
 
 
-export default function ProjectAccordion2({ project }) {
+export default function AuditAccordion({ project }) {
     console.log("project={project}", project);
     const [copied, setCopied] = React.useState(false);
 
@@ -56,7 +56,7 @@ export default function ProjectAccordion2({ project }) {
                                                 alt={project.blockchain[0]}
                                                 width="4%"
                                             />
-                                            {project.blockchain[0]}
+                                            {blockchainNames[project.blockchain[0]] || project.blockchain[0]}
                                         </>
                                     )}
 

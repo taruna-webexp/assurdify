@@ -13,7 +13,7 @@ import Link from 'next/link';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TelegramIcon from '@mui/icons-material/Telegram';
 
-export default function ProjectAccordion({ project }) {
+export default function KycAccordion({ project }) {
     console.log("project={project}", project?.kycCertificate);
 
     return (
@@ -113,8 +113,8 @@ export default function ProjectAccordion({ project }) {
                         </AccordionDetails>
                         <AccordionDetails>
                             <Typography variant="body2">
-                                <strong>Country Tier:</strong>
-                                <CountryTier />
+                                <strong>Country Tier:</strong> <CountryTier />
+
                                 <LocationOnIcon />
                                 {verifiy.countryTier ? verifiy.countryTier : "N/A"
                                 }

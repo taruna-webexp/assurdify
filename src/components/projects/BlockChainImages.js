@@ -7,8 +7,8 @@ export const BlockChainImages = {
     "BNB": "/assets/crypto_icons/bitcoin.png",
     "BSC": "/assets/crypto_icons/BSC.png",
     "SOL": "/assets/crypto_icons/solana.png",
-    "Base": "/assets/crypto_icons/oinbase.png",
-    "Basechain": "/assets/crypto_icons/oinbase.png",
+    "Base": "/assets/crypto_icons/coinbase.png",
+    "Basechain": "/assets/crypto_icons/coinbase.png",
     "Monad": "/assets/crypto_icons/monad.png",
     "POLYGON": "/assets/crypto_icons/Polygon-MATIC-Icon.png",
     "BITROCK": "/assets/crypto_icons/bitrock.webp",
@@ -19,4 +19,26 @@ export const BlockChainImages = {
     "Arbitrum": "/assets/crypto_icons/arbitrum.png",
     "AVALANCHE": "/assets/crypto_icons/avalanche.png",
     "Pulsechain": "/assets/crypto_icons/pulsechain.png"
+};
+export const blockchainNames = {
+    "SOLANA": "Solana",
+    "ETH": "Ethereum",
+    "METIS": "Metis",
+    "Shiberium": "Shiberium",
+    "Shibarium": "Shibarium",
+    "BNB": "Binance Coin",
+    "BSC": "Binance Smart Chain",
+    "SOL": "Solana",
+    "Base": "Coinbase",
+    "Basechain": "Coinbase",
+    "Monad": "Monad",
+    "POLYGON": "Polygon",
+    "BITROCK": "Bitrock",
+    "BLAST": "Blast",
+    "AirDAO": "AirDAO",
+    "ERC20": "ERC20",
+    "Linea": "Linea",
+    "Arbitrum": "Arbitrum",
+    "AVALANCHE": "Avalanche",
+    "Pulsechain": "Pulsechain"
 };

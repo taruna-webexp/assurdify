@@ -14,7 +14,7 @@ import XIcon from '@mui/icons-material/X';
 import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 export default function SingleProject({ params }) {
-    const { slug } = use(params); //
+    const { slug } = use(params);
     const [project, setProject] = useState(null);
     const router = useRouter();
 
@@ -57,44 +57,33 @@ export default function SingleProject({ params }) {
                             <img src={project.images[0].url} width="10%" />
                             <div className="px-4">
                                 <p className="text-4xl font-semibold text-indigo-700">{project.projectName}</p>
-
-
                                 <span>{project.lowerCaseTickerName ? project.lowerCaseTickerName.toUpperCase() : ""}</span></div>
-                            {
-                                project.kycStatus === "Approved" &&
-
-
-
-                                <img src="/assets/Profile_badge.png" width="10%" />}
+                            {project.kycStatus === "Approved" &&
+                                <img src="/assets/Profile_badge.png" width="10%" />
+                            }
                         </div>
-
                         <div>
-
                             <div>
                                 {project?.twitterLink?.trim() && (
                                     <Link href={project.twitterLink}>
                                         <XIcon />
                                     </Link>
                                 )}
-
                                 {project?.telegramLink?.trim() && (
                                     <Link href={project.telegramLink}>
                                         <TelegramIcon />
                                     </Link>
                                 )}
-
                                 {project?.websiteLink?.trim() && (
                                     <Link href={project.websiteLink}>
                                         <LanguageIcon />
                                     </Link>
                                 )}
-
                                 {project?.mediumLink?.trim() && (
                                     <Link href={project.mediumLink}>
                                         <ScatterPlotIcon />
                                     </Link>
                                 )}
-
                                 {project?.discordLink?.trim() && (
                                     <Link href={project.discordLink}>
                                         <SportsEsportsIcon />
@@ -105,9 +94,6 @@ export default function SingleProject({ params }) {
                         </div>
                         <p className="text-lg text-gray-700 leading-relaxed">{project.description}</p>
                         <div className="mt-4 text-sm text-gray-600">
-                            <p>
-
-                            </p>
                             {project.kycStatus !== "NotDetected" &&
                                 <p>
                                     <span className="font-semibold">KYC date:</span> {format(new Date(project.kycDate), "MMMM do yyyy")}
