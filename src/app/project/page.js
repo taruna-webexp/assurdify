@@ -108,7 +108,7 @@ export default function Explore() {
 
             <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">Explore Over <b>1000</b> Projects</h3>
             {/* Form Section */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-14">
                 <ProjectFilterForm control={control} errors={errors} />
             </form>
 
@@ -132,11 +132,11 @@ export default function Explore() {
                                 container
                                 spacing={3}
                                 justifyContent="center"
-                                className="my-5"
+                                className="!m-0 !w-full"
                             >
                                 <ProjectCards data={projects} />
                             </Grid>
-                            <Grid container justifyContent="center" my={5}>
+                            <Grid container justifyContent="center" my={5} className="max-w-screen-lg container mx-auto !justify-end projects-pagination">
                                 <ProjectPagination
                                     count={totalProjects}
                                     page={page}

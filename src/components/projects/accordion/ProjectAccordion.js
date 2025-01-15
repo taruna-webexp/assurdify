@@ -113,8 +113,13 @@ export default function ProjectAccordion({ project }) {
                         </AccordionDetails>
                         <AccordionDetails>
                             <Typography variant="body2">
-                                <strong>Country Tier:</strong> {verifiy.countryTier} <CountryTier />
-                                <LocationOnIcon /> N/A
+                                <strong>Country Tier:</strong>
+                                <CountryTier />
+                                <LocationOnIcon />
+                                {verifiy.countryTier ? verifiy.countryTier : "N/A"
+                                }
+
+
                             </Typography>
                         </AccordionDetails>
                         <AccordionDetails>

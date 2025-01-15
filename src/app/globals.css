@@ -25,7 +25,7 @@ li {
   font-family: "Inter", serif !important;
 }
 .gradient-bg {
-  background: linear-gradient(to right, #5e5521, #d1b933);
+  background: linear-gradient(to right, #5e5521, #d1b933) !important;
 }
 .theme-border {
   border: 1px solid #d1b933 !important;
@@ -34,6 +34,24 @@ li {
   background: -webkit-linear-gradient(10deg, #d5c540, #fff495);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.gradient-bg-sharp{
+  background: linear-gradient(10deg, rgba(11, 10, 28, 1) 70%, rgb(221 204 66 / 16%) 100%) !important;
+}
+.light-purple{
+  background-color: #17162B !important;
+}
+.theme-color{
+  color: #DDCC42 !important;
+}
+.light-yellow-border{
+  border: 1px solid #2A2A2A !important;
+}
+.theme-bg{
+  background: #07061A !important;
+}
+.grey-color{
+  color:#727272 !important;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -75,12 +93,18 @@ li {
 .project-search-form input,
 .project-search-form .MuiSelect-select {
   border: 1px solid #3b3b3b;
-  padding: 9px 10px;
+  padding: 11px 10px 7px;
   border-radius: 6px;
   color: #fff;
   font-size: 14px;
   line-height: 17px;
   background-color: #040311;
+}
+.project-search-form input{
+  padding: 9px 10px;
+}
+.project-search-form .MuiInputBase-formControl:hover fieldset{
+  border: 1px solid #3b3b3b;
 }
 .featured-project {
   background: linear-gradient(
@@ -105,4 +129,24 @@ li {
 .kyc-certificate-cross-icon {
   position: absolute !important;
   right: 30px !important;
+}
+.projects-list-cont {
+  gap: 24px;
+}
+.projects-list-cont .collunm {
+  width: calc(33.33333% - 16px) !important;
+  max-width: calc(33.33333% - 16px) !important;
+  flex-basis: calc(33.33333% - 16px) !important;
+}
+.projects-pagination button {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  color: #e2d243;
+  background: transparent;
+  padding: 5px 20px;
+}
+.projects-pagination button:hover {
+  border-color:#e2d243;
+  color: #e2d243;
+  background: transparent;
 }
