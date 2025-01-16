@@ -1,6 +1,5 @@
 import { Pagination } from '@mui/material';
 import React from 'react';
-
 export default function ProjectPagination({ count, page, onChange }) {
     console.log("count", count);
     return (
@@ -9,7 +8,6 @@ export default function ProjectPagination({ count, page, onChange }) {
             page={page}
             onChange={onChange}
             color="primary"
-
             renderItem={(item) => {
                 if (count > 17) {
                     if (item.type === "previous" && page > 1) {

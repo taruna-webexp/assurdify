@@ -5,15 +5,19 @@ import projectService from "@/services/projectService";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { use } from 'react';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import LanguageIcon from '@mui/icons-material/Language';
+import { use } from "react";
 import Link from "next/link";
-import XIcon from '@mui/icons-material/X';
-import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports'; import CircularLoader from "@/components/loader/CircularLoader";
+import CircularLoader from "@/components/loader/CircularLoader";
 import { Grid } from "@mui/material";
-CircularLoader
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faDiscord,
+    faMedium,
+    faTelegram,
+    faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+CircularLoader;
 export default function SingleProject({ params }) {
     const { slug } = use(params); //
     const [project, setProject] = useState(null);
@@ -44,82 +48,122 @@ export default function SingleProject({ params }) {
             </Grid>
         );
     }
-
     return (
         <>
-            <LayoutHeader pageTitle="Verification Details" />
+            <h2 className="text-gradient text-5xl text-center mb-4">
+                Verification Details
+            </h2>
             <div className="text-center">
-                <button onClick={() => router.push("/")}>Back to projects</button>
+                <button
+                    onClick={() => router.push("/")}
+                    className="w-full flex justify-center text-sm text-white items-center gap-1.5"
+                >
+                    {" "}
+                    <img src="/assets/typcn_arrow-back.png" alt="arrow-back" /> Back to
+                    projects
+                </button>
             </div>
-            <div className="flex items-center justify-center bg-gray-100 py-10 bg-transparent">
-                <div className="p-6 single-card bg-cover relative">
-                    <div className="space-y-6">
-                        <div className="flex">
-                            <img src={project.images[0].url} width="10%" class="border-4 w-14 h-14 rounded-full" />
-                            <div className="pl-3">
-                                <h2 className="font-extrabold text-3xl text-white">{project.projectName}</h2>
-
-
-                                <span className="text-lg leading-5 grey-color">{project.lowerCaseTickerName ? project.lowerCaseTickerName.toUpperCase() : ""}</span></div>
-                            {
-                                project.kycStatus === "Approved" &&
-
-
-
-                                <span class="absolute badge top-0 right-6"><img src="/assets/Profile_badge.png" width="10%" class="w-24" /></span>}
-                        </div>
-
-                        <p className="text-sm text-white mt-5 leading-relaxed">{project.description}</p>
-
-                        <div className="flex !mt-3 justify-between items-center">
-
-                            <div className="social-icons flex gap-4">
-                                {project?.twitterLink?.trim() && (
-                                    <Link href={project.twitterLink} className="theme-color">
-                                        <XIcon />
-                                    </Link>
+            <div className="flex items-center justify-center bg-gray-100 py-6 bg-transparent">
+                <div className="card-container relative m-auto w-full">
+                    <div className="p-6 single-card bg-cover relative theme-border-light z-10">
+                        <div className="space-y-6">
+                            <div className="flex">
+                                {project?.images ? (
+                                    <img
+                                        src={project?.images[0]?.url}
+                                        width="10%"
+                                        className="border-4 w-14 h-14 rounded-full"
+                                    />
+                                ) : (
+                                    <img
+                                        src="/assets/no-image-available.png"
+                                        width="10%"
+                                        className="border-4 w-14 h-14 rounded-full"
+                                    />
                                 )}
+                                <div className="pl-3">
+                                    <h2 className="font-extrabold text-3xl text-white">
+                                        {project.projectName}
+                                    </h2>
 
-                                {project?.telegramLink?.trim() && (
-                                    <Link href={project.telegramLink} className="theme-color">
-                                        <TelegramIcon />
-                                    </Link>
-                                )}
-
-                                {project?.websiteLink?.trim() && (
-                                    <Link href={project.websiteLink} className="theme-color">
-                                        <LanguageIcon />
-                                    </Link>
-                                )}
-
-                                {project?.mediumLink?.trim() && (
-                                    <Link href={project.mediumLink} className="theme-color">
-                                        <ScatterPlotIcon />
-                                    </Link>
-                                )}
-
-                                {project?.discordLink?.trim() && (
-                                    <Link href={project.discordLink} className="theme-color">
-                                        <SportsEsportsIcon />
-                                    </Link>
+                                    <span className="text-lg leading-5 grey-color">
+                                        {project.lowerCaseTickerName
+                                            ? project.lowerCaseTickerName.toUpperCase()
+                                            : ""}
+                                    </span>
+                                </div>
+                                {project.kycStatus === "Approved" && (
+                                    <span className="absolute badge top-0 right-6">
+                                        <img
+                                            src="/assets/Profile_badge.png"
+                                            width="10%"
+                                            className="w-24"
+                                        />
+                                    </span>
                                 )}
                             </div>
 
-                            <div className="text-sm text-gray-600">
+                            <p className="text-sm text-white mt-5 leading-relaxed">
+                                {project.description}
+                            </p>
 
-                                {project.kycStatus !== "NotDetected" &&
-                                    <p>
-                                        <span className="font-medium text-white">KYC date:</span> <span className="theme-color font-medium">{format(new Date(project.kycDate), "MMMM do yyyy")}</span>
-                                    </p>}
+                            <div className="flex !mt-3 justify-between items-center">
+                                <div className="social-icons flex gap-2">
+                                    {project?.websiteLink?.trim() && (
+                                        <Link href={project.websiteLink} className="theme-color">
+                                            <FontAwesomeIcon icon={faGlobe} />
+                                        </Link>
+                                    )}
+                                    {project?.twitterLink?.trim() && (
+                                        <Link href={project.twitterLink} className="theme-color">
+                                            <FontAwesomeIcon icon={faXTwitter} />
+                                        </Link>
+                                    )}
+
+                                    {project?.telegramLink?.trim() && (
+                                        <Link href={project.telegramLink} className="theme-color">
+                                            <FontAwesomeIcon icon={faTelegram} />
+                                        </Link>
+                                    )}
+                                    {project?.mediumLink?.trim() && (
+                                        <Link href={project.mediumLink} className="theme-color">
+                                            <FontAwesomeIcon icon={faMedium} />
+                                        </Link>
+                                    )}
+
+                                    {project?.discordLink?.trim() && (
+                                        <Link href={project.discordLink} className="theme-color">
+                                            <FontAwesomeIcon icon={faDiscord} />
+                                        </Link>
+                                    )}
+                                </div>
+
+                                <div className="text-sm text-gray-600">
+                                    {project.kycStatus && project.kycStatus === "Approved" ? (
+                                        <p>
+                                            <span className="font-medium text-white">KYC date:</span>{" "}
+                                            <span className="theme-color font-medium">
+                                                {format(new Date(project.kycDate), "MMMM do yyyy")}
+                                            </span>
+                                        </p>
+                                    ) : project.auditDate && project.kycStatus === "Rejected" ? (
+                                        <p>
+                                            <span className="font-medium text-white">Audit date:</span>{" "}
+                                            <span className="theme-color font-medium">
+                                                {format(new Date(project.auditDate), "MMMM do yyyy")}
+                                            </span>
+                                        </p>
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
                             </div>
 
+                            <ProjectTab project={project} />
                         </div>
-
-
-                        <ProjectTab project={project} />
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

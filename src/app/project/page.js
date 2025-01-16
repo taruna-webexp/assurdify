@@ -109,11 +109,11 @@ export default function Explore() {
         <div>
             {/* Upper Section */}
             <UpperSection />
-            <h3 className="text-4xl !mt-3 font-normal text-3xl projects-heading text-center !leading-10">
+            <h3 className="text-4xl !mt-14 font-normal text-3xl projects-heading text-center !leading-10">
                 Explore Over <b>1000</b> Projects
             </h3>
             {/* Form Section */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-8">
                 <ProjectFilterForm control={control} errors={errors} />
             </form>
             {/* Loading or Projects */}
@@ -127,7 +127,7 @@ export default function Explore() {
                     {projects.length === 0 ? (
                         <Grid container justifyContent="center" className="my-5">
                             <Typography variant="h6" color="text-white">
-                                No projects found.
+                                NO DATA FOUND.
                             </Typography>
                         </Grid>
                     ) : (
@@ -137,12 +137,12 @@ export default function Explore() {
                                 container
                                 spacing={3}
                                 justifyContent="center"
-                                className="my-5"
+                                className="!m-0 !w-full"
                             >
                                 <ProjectCards data={projects} />
                             </Grid>
                             {/* pagination section */}
-                            <Grid container justifyContent="center" my={5}>
+                            <Grid container justifyContent="center" my={5} className="max-w-screen-lg container mx-auto !justify-end projects-pagination">
                                 <ProjectPagination
                                     count={totalProjects}
                                     page={page}

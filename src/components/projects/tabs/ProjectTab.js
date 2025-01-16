@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import KycAccordion from '../accordion/KycAccordion';
 import AuditAccordion from '../accordion/AuditAccordion';
+import CertificateModal from '../modal/CertificateModal';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -73,20 +74,38 @@ export default function ProjectTab({ project }) {
     return (
         <Box sx={{ width: '100%' }} className="!mt-3">
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='dark-purple-bg card-tabs p-2 !border grey-border border-solid rounded-md'>
-                    <Tab label={kycTabName} {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case' />
-                    <Tab label={auditedTabName} {...a11yProps(1)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case' />
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='dark-purple-bg card-tabs p-2 mb-3 !border grey-border border-solid rounded-md'>
+                    <Tab label={kycTabName} {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white' />
+                    <Tab label={auditedTabName} {...a11yProps(1)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case grey-color' />
                 </Tabs>
             </Box>
-            <CustomTabPanel className="border card-verified-member mt-3 rounded-md grey-border dark-purple-bg" value={value} index={0}>
+            <CustomTabPanel className="border card-verified-member mt-3 mb-3 rounded-md grey-border dark-purple-bg" value={value} index={0}>
                 <KycAccordion project={project} />
+
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
+            <div className='flex justify-between items-center card-buttons gap-3'>
+                {value === 0 && (
+                    <>
+                        {project?.kycCertificate && (
+                            <CertificateModal img={project.kycCertificate} />
+                        )}
+                        {project?.nftUrl && (
+                            <Link href={project.nftUrl} passHref>
+                                <Button variant="contained">NFT</Button>
+                            </Link>
+                        )}
+                    </>
+                )}
+
+            </div>
+
+
+            <CustomTabPanel value={value} index={1} className="card-audit-tab">
                 {project?.auditStatus === "Completed" ?
                     <AuditAccordion project={project} />
-                    : <div>
-                        <p>No Assure Defi Code Audit Detected</p>
-                        <Link href="https://www.assuredefi.com/code-audit"> <Button variant='contained'>Get One Here</Button></Link>
+                    : <div className='text-center min-h-60 pt-16'>
+                        <p className='mb-7 text-red text-lg'>No Assure Defi Code Audit Detected</p>
+                        <Link href="https://www.assuredefi.com/code-audit" className='theme-yellow-bg text-black py-4 px-5 uppercase rounded-2xl font-medium tracking-wide'> Get One Here</Link>
 
                     </div>
                 }

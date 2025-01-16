@@ -1,4 +1,5 @@
 export function formatProjectName(name) {
+
     const words = name.trim().split(/[\s.]+/);
     console.log("words", words);
     if (words.length === 1) {

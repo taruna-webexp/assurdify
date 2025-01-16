@@ -29,15 +29,15 @@ export default function UpperSection() {
                 <div className='text-center pt-14 mb-16'>
                     <h2 className='text-5xl leading-tight text-gradient mb-5'>Assure DeFi<br /> Verified Projects</h2>
                     <p className='text-lg leading-6 font-light mb-8'>Our network of verified projects boasts some of<br /> the Web3 industry’s top talent with a combined<br /> market cap of $1.6 Billion</p>
-                    <Link href="#" className='gradient-bg py-5 px-28 theme-border rounded-md inline-block font-semibold'>GET YOUR PROJECT LISTED</Link>
+                    <Link href="https://www.assuredefi.com/#get-kyc" className='gradient-bg py-5 px-28 theme-border rounded-md inline-block font-semibold'>GET YOUR PROJECT LISTED</Link>
                 </div>
                 <div className='theme-border rounded-xl featured-project px-6 pb-6 pt-4 mb-6'>
-                    <h3 className='text-center text-gradient text-3xl leading-10 mb-5'>Featured</h3>
+                    <h3 className='text-center text-gradient text-3xl leading-10 mb-5'>Featured Projects</h3>
 
                     <Grid container maxWidth="lg" className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap">
                         {featureData.length > 0 && featureData.map((project) => (
                             <Grid item xs={12} sm={6} md={6} key={project.projectName}>
-                                <Link href={`/project/${formatProjectName(project.projectName)}`}>
+                                <Link href={`/project/${project.seoSlug}`}>
                                     <Card className='theme-border gradient-bg-sharp'>
 
 
