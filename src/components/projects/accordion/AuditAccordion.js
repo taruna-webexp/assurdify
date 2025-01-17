@@ -8,17 +8,20 @@ import { BlockChainImages, blockchainNames } from '../BlockChainImages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faDownload, faCopy } from '@fortawesome/free-solid-svg-icons';
 export default function AuditAccordion({ project }) {
+    const [copiedIndex, setCopiedIndex] = React.useState(null);
     const [copied, setCopied] = React.useState(false);
     //COPY CONTRACTADRESS
-    const copyHandler = async (contractAddresses) => {
+    const copyHandler = async (contractAddresses, index) => {
+        console.log("idx", index);
         await navigator.clipboard.writeText(contractAddresses.join(", "));
+        setCopiedIndex(index);
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
     }
 
     return (
         <div className='max-h-96 overflow-auto custom-scroll flex flex-col gap-2.5'>
-            {project.auditReportList?.length > 0 &&
+            {project.auditReportList?.length > 0 ?
                 project.auditReportList.map((report, index) => {
                     return (<>
                         <div className='border px-3 pt-3 rounded-md grey-border dark-purple-bg'>
@@ -35,14 +38,17 @@ export default function AuditAccordion({ project }) {
                                                 {project.contractAddress || report.contractAddress}
                                             </span>
 
-                                            {copied ? (
-                                                <span className='text-white'>Copied!</span>
+                                            {copiedIndex === index ? (
+                                                <span className="text-white">Copied!</span>
                                             ) : (
-                                                <img src='/assets/solar_copy-bold.png' alt='copy-bold.png'
+                                                <img
+                                                    src="/assets/solar_copy-bold.png"
+                                                    alt="copy-bold.png"
                                                     onClick={() =>
-                                                        copyHandler([
-                                                            project.contractAddress || report.contractAddress,
-                                                        ])
+                                                        copyHandler(
+                                                            [project.contractAddress || report.contractAddress],
+                                                            index
+                                                        )
                                                     }
                                                 />
                                             )}
@@ -117,7 +123,7 @@ export default function AuditAccordion({ project }) {
                             </div>
                         </div>
                     </>)
-                })}
+                }) : <Typography className=' py-12 text-center text-red-600'>No Audit record found</Typography>}
 
 
 

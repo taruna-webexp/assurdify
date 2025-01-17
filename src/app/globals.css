@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
@@ -10,6 +9,7 @@ body {
   color: var(--foreground);
   background: #0a0923;
   font-family: "Inter", serif;
+  overflow-x: hidden;
 }
 button,
 a,
@@ -33,6 +33,9 @@ li {
 .theme-border-light {
   border: 1px solid #dbcb4163 !important;
 }
+.text-32 {
+  font-size: 32px;
+}
 .text-gradient {
   background: -webkit-linear-gradient(10deg, #d5c540, #fff495);
   -webkit-background-clip: text;
@@ -45,7 +48,9 @@ li {
     rgb(221 204 66 / 16%) 100%
   ) !important;
 }
-
+::-webkit-scrollbar {
+  /* display:none; */
+}
 .light-purple {
   background-color: #17162b !important;
 }
@@ -73,7 +78,6 @@ li {
 .text-red {
   color: #ff0000 !important;
 }
-
 .card-verified-member .MuiBox-root {
   padding: 12px 12px 3px;
 }
@@ -83,7 +87,6 @@ li {
     --foreground: #ededed;
   }
 }
-
 .projectForm {
   display: flex;
   margin: 0 auto !important;
@@ -125,8 +128,8 @@ li {
 .project-search-form input,
 .project-search-form .MuiSelect-select {
   border: 1px solid #3b3b3b;
-  padding: 11px 10px 7px;
-  border-radius: 6px;
+  padding: 12px 10px 8px;
+  border-radius: 4px;
   color: #fff;
   font-size: 14px;
   line-height: 17px;
@@ -153,7 +156,6 @@ li {
   background-color: #0a0724;
   color: white;
 }
-
 .kyc-certificate-cross-icon {
   position: absolute !important;
   right: 30px !important;
@@ -189,7 +191,6 @@ li {
 .social-icons svg {
   font-size: 19px;
 }
-
 .card-tabs .Mui-selected {
   border: 1px solid #2a2857;
   background: rgb(10, 9, 35);
@@ -214,11 +215,9 @@ li {
 .accordian-header .MuiAccordionSummary-content {
   margin: 0 !important;
 }
-
 .accordian-header span.MuiAccordionSummary-expandIconWrapper {
   color: #fff;
 }
-
 .country-tier svg {
   font-size: 20px;
   opacity: 50%;
@@ -247,7 +246,6 @@ li {
 .copy-icon svg {
   font-size: 17px;
 }
-
 .report-buttons button {
   color: #fff;
   font-size: 14px;
@@ -276,29 +274,24 @@ li {
 .report-buttons div {
   width: 32%;
 }
-
 .card-audit-tab .MuiBox-root {
   padding: 0;
 }
-
 .custom-scroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #f5f5f5;
 }
-
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
   background-color: #f5f5f5;
   border-radius: 10px;
 }
-
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
 }
-
 .contry-tier-close-btn {
   position: absolute !important;
   right: -6px !important;
@@ -311,7 +304,6 @@ li {
   font-size: 14px;
   color: #000;
 }
-
 .contact-detail {
   max-width: 30% !important;
   flex-basis: 30% !important;
@@ -327,7 +319,6 @@ li {
 .disclaimer p {
   line-height: 17px;
 }
-
 .card-container:before {
   content: "";
   height: 100%;
@@ -354,14 +345,12 @@ li {
 .footer h6 {
   letter-spacing: 5px;
 }
-
 .header-logo {
   max-width: 164px;
 }
 .header-container {
   padding: 0 20px !important;
 }
-
 .dropdown-menu .MuiPaper-root {
   background: none;
   border: 1px solid #686120;
@@ -379,7 +368,261 @@ li {
   font-size: 14px;
   line-height: 17px;
 }
-
 .dropdown-menu ul li {
   padding: 11px 18px;
+}
+.card-main-heading {
+  line-height: 58px;
+}
+.verified-project-container:before {
+  content: "";
+  height: 770px;
+  width: calc(100% + 400px);
+  position: absolute;
+  background-image: url(/assets/dots-bg.png);
+  background-size: cover;
+  background-position: center center !important;
+  left: -200px;
+}
+.project-search-form svg.MuiSvgIcon-root {
+  color: #fff;
+}
+.project-search-form .form-select {
+  max-width: 143px;
+}
+.verified-project-section:before {
+  content: "";
+  background: #d4c440;
+  position: absolute;
+  top: 260px;
+  width: 737px;
+  height: 517px;
+  opacity: 0.4;
+  filter: blur(150px);
+  left: -730px;
+}
+.verified-project-section:after {
+  content: "";
+  background: #d4c440;
+  position: absolute;
+  top: 260px;
+  width: 737px;
+  height: 517px;
+  opacity: 0.4;
+  filter: blur(150px);
+  right: -730px;
+}
+.project-search-form .form-input {
+  max-width: 262px;
+}
+.form-button button {
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 11px 36px;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+.featured-project p {
+  line-height: 17px;
+  letter-spacing: 0;
+}
+.projects-list-cont .project-text {
+  letter-spacing: 0;
+  line-height: 17px;
+  min-height: 72px;
+  max-height: 72px;
+}
+.verified-project-section {
+  overflow: hidden;
+}
+.project-search-form {
+  max-width: 100% !important;
+}
+.form-button {
+  max-width: inherit;
+}
+.certificate-modal .MuiPaper-root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.certificate-modal .MuiDialogContent-root {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+}
+.certificate-modal img {
+  height: auto !important;
+}
+@media (max-width: 1250px) {
+  .main-navigation button {
+    margin: 8px 0 0 24px !important;
+  }
+}
+@media (max-width: 1199px) {
+  .main-navigation button {
+    margin: 8px 0 0 18px !important;
+  }
+}
+@media (max-width: 1050px) {
+  .main-navigation .kyc-button {
+    padding: 14px 8px;
+    letter-spacing: 1px;
+    width: 194.58px;
+  }
+  .main-navigation button {
+    margin: 8px 0 0 14px !important;
+    font-size: 14px;
+  }
+  .verified-project-section {
+    padding: 0 20px;
+  }
+  .explore-project-container {
+    padding: 0 20px;
+  }
+  .projects-list-cont {
+    padding: 0 20px !important;
+  }
+  .projects-pagination {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 900px) {
+  .header-container .MuiBox-root {
+    justify-content: end;
+  }
+  .header-container .MuiBox-root button {
+    padding: 0;
+  }
+  .header-container .MuiBox-root button svg {
+    font-size: 40px;
+    fill: #e4d444;
+  }
+  .responsive-nav .MuiPaper-root {
+    width: 100%;
+    left: 0 !important;
+    max-width: 100%;
+    background: #090822;
+  }
+  .responsive-nav ul li {
+    justify-content: center;
+    padding: 20px;
+    display: flex;
+  }
+  .responsive-nav ul li button {
+    margin: 0;
+    text-transform: capitalize;
+    color: #d5c540;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: normal;
+  }
+  .responsive-nav ul li a {
+    color: #d5c540;
+  }
+  .form-button {
+    text-align: center;
+  }
+  .explore-project-container .projects-heading {
+    margin-top: 30px !important;
+  }
+  .projects-list-cont .collunm {
+    width: calc(50% - 12px) !important;
+    max-width: calc(50% - 12px) !important;
+    flex-basis: calc(50% - 12px) !important;
+  }
+  .reponsive-verified-button button {
+    color: white !important;
+    border: 1px solid #d1b933;
+    cursor: pointer;
+    outline: none;
+    border-radius: 6px;
+    font-family: Inter, sans-serif !important;
+    font-size: 16px;
+    font-weight: 500 !important;
+    line-height: 20px;
+    transition: all 0.2s;
+    padding: 12px 18px !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    -webkit-text-fill-color: unset;
+    text-fill-color: unset;
+  }
+}
+@media (max-width: 768px) {
+  .project-search-form .form-input {
+    max-width: 100%;
+    width: 100%;
+  }
+  .project-search-form .form-select {
+    max-width: calc(50% - 6px);
+    width: calc(50% - 6px);
+  }
+  .verified-project-container h2 {
+    font-size: 36px;
+  }
+  .verified-project-container .site-button {
+    padding: 14px 40px;
+  }
+  .verified-project-container .sub-text {
+    margin: 0 0 15px;
+  }
+  .upper-section {
+    padding: 40px 0 0;
+    margin: 0 0 20px;
+  }
+  .featured-project h3 {
+    font-size: 27px;
+    margin: 0 0 10px;
+  }
+  .explore-project-container .projects-heading {
+    margin-top: 15px !important;
+    font-size: 27px;
+  }
+  .explore-project-container form {
+    margin-top: 15px;
+  }
+  .project-search-form {
+    gap: 12px;
+    padding: 0 !important;
+  }
+}
+@media (max-width: 575px) {
+  .verified-project-container h2 {
+    font-size: 27px;
+    margin: 0 0 10px;
+  }
+  .verified-project-container .sub-text {
+    margin: 0 0 15px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .verified-project-container .sub-text br {
+    display: none;
+  }
+  .verified-project-container .site-button {
+    padding: 10px 18px;
+  }
+  .featured-project .featured-row {
+    flex-wrap: wrap !important;
+    gap: 12px;
+  }
+  .featured-project {
+    padding: 12px;
+  }
+  .projects-list-cont .collunm {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .projects-pagination {
+    margin: 22px 0 !important;
+  }
+  .featured-project h3 {
+    font-size: 25px;
+  }
 }

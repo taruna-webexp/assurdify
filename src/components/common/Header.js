@@ -43,7 +43,7 @@ function Header() {
 
                     <Link href="#"><img src="/assets/logo-a.webp" className="header-logo" /></Link>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
+                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -55,6 +55,7 @@ function Header() {
                             <MenuIcon />
                         </IconButton>
                         <Menu
+                            className="responsive-nav"
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
@@ -71,16 +72,63 @@ function Header() {
                             sx={{ display: { xs: "block", md: "none" } }}
                         >
                             {menus.map((page) => (
-                                <MenuItem key={page.Title} onClick={handleCloseNavMenu}>
-                                    <Link href={page.path} passHref>
-                                        <Typography sx={{ textAlign: "center" }}>
-                                            {page.Title}
-                                        </Typography>
-                                    </Link>
-                                </MenuItem>
+                                <React.Fragment key={page.Title}>
+                                    {page.children ? (
+                                        <>
+                                            <li>
+                                                <Button
+                                                    className="dropdown-buttton"
+                                                    onClick={handleOpenServicesMenu}
+                                                    sx={{ my: 2, color: "white", display: "block" }}
+                                                >
+                                                    Services <FontAwesomeIcon icon={faChevronDown} />
+                                                </Button>
+                                            </li>
+                                            <Menu
+                                                className="dropdown-menu"
+                                                anchorEl={anchorElServices}
+                                                anchorOrigin={{
+                                                    vertical: "bottom",
+                                                    horizontal: "left",
+                                                }}
+                                                open={Boolean(anchorElServices)}
+                                                onClose={handleCloseServicesMenu}
+                                            >
+                                                {page.children.map((subpage) => (
+                                                    <MenuItem key={subpage.Title} onClick={handleCloseServicesMenu}>
+                                                        <Link href={subpage.path} passHref>
+                                                            <Typography sx={{ textAlign: "center" }}>
+                                                                {subpage.Title}
+                                                            </Typography>
+                                                        </Link>
+                                                    </MenuItem>
+                                                ))}
+                                            </Menu>
+                                        </>
+                                    ) : (
+                                        <MenuItem key={page.Title} onClick={handleCloseNavMenu}>
+                                            <Link href={page.path} passHref>
+                                                <Typography sx={{ textAlign: "center" }}>
+                                                    {page.Title}
+                                                </Typography>
+                                            </Link>
+                                        </MenuItem>
+                                    )}
+                                </React.Fragment>
                             ))}
+                            <li>
+                                <Link href="https://www.assuredefi.com/#get-kyc" passHref className="reponsive-verified-button">
+                                    <Button
+                                        variant="contained"
+                                        className="kyc-button !rounded-md !text-base !text-white !font-medium !leading-4 gradient-bg"
+                                    >
+                                        GET KYC VERIFIED
+                                    </Button>
+                                </Link>
+                            </li>
                         </Menu>
                     </Box>
+
 
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} justifyContent="end" className="main-navigation items-center pt-px">
                         {menus.map((page) => (
@@ -89,10 +137,9 @@ function Header() {
                                 {page.children ? (
                                     <>
                                         <Button
-                                            className="dropdown-buttton"
-                                            onMouseEnter={handleOpenServicesMenu} // Trigger menu on hover
-                                            // onMouseLeave={handleCloseServicesMenu} // Close menu when hover ends
-                                            sx={{ my: 2, color: "white", display: "block" }}
+                                            className="dropdown-button"
+                                            onMouseEnter={handleOpenServicesMenu} // Open menu on hover
+                                            sx={{ my: 2, color: 'white', display: 'block' }}
                                         >
                                             Services <FontAwesomeIcon icon={faChevronDown} />
                                         </Button>
@@ -100,28 +147,23 @@ function Header() {
                                             className="dropdown-menu"
                                             anchorEl={anchorElServices}
                                             anchorOrigin={{
-                                                vertical: "bottom",
-                                                horizontal: "left",
+                                                vertical: 'bottom',
+                                                horizontal: 'left',
                                             }}
                                             open={Boolean(anchorElServices)}
                                             onClose={handleCloseServicesMenu}
+                                            MenuListProps={{
+                                                onMouseLeave: handleCloseServicesMenu, // Close menu when hover ends
+                                            }}
                                         >
                                             {page.children.map((subpage) => (
-                                                <MenuItem
-
-                                                    key={subpage.Title}
-                                                    onClick={handleCloseServicesMenu}
-                                                >
+                                                <MenuItem key={subpage.Title} onClick={handleCloseServicesMenu}>
                                                     <Link href={subpage.path} passHref>
-                                                        <Typography sx={{ textAlign: "center" }}>
-                                                            {subpage.Title}
-                                                        </Typography>
+                                                        <Typography sx={{ textAlign: 'center' }}>{subpage.Title}</Typography>
                                                     </Link>
                                                 </MenuItem>
                                             ))}
-
                                         </Menu>
-
                                     </>
                                 ) : (
                                     <Link href={page.path} passHref>

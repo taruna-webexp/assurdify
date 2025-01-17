@@ -109,13 +109,15 @@ export default function Explore() {
         <div>
             {/* Upper Section */}
             <UpperSection />
-            <h3 className="text-4xl !mt-14 font-normal text-3xl projects-heading text-center !leading-10">
-                Explore Over <b>1000</b> Projects
-            </h3>
-            {/* Form Section */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-8">
-                <ProjectFilterForm control={control} errors={errors} />
-            </form>
+            <div className="explore-project-container">
+                <h3 className="text-4xl !mt-14 font-normal text-3xl projects-heading text-center !leading-10">
+                    Explore Over <b>1000</b> Projects
+                </h3>
+                {/* Form Section */}
+                <form onSubmit={handleSubmit(onSubmit)} className="mt-6 mb-8">
+                    <ProjectFilterForm control={control} errors={errors} />
+                </form>
+            </div>
             {/* Loading or Projects */}
             {loading ? (
                 <Grid container justifyContent="center" className="my-5">

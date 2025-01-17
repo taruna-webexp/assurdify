@@ -56,7 +56,7 @@ export default function SingleProject({ params }) {
     };
     return (
         <>
-            <h2 className="text-gradient text-5xl text-center mb-4">
+            <h2 className="text-gradient text-5xl text-center mb-4 mt-10 card-main-heading">
                 Verification Details
             </h2>
             <div className="text-center">
@@ -118,26 +118,32 @@ export default function SingleProject({ params }) {
                             <div className="flex !mt-3 justify-between items-center">
                                 <div className="social-icons flex gap-2">
                                     {project?.websiteLink && project.websiteLink !== "N/A" && (
-                                        <Link href={project.websiteLink} className="theme-color">
+                                        <Link href={project.websiteLink} className="theme-color" target="_blank">
                                             <FontAwesomeIcon icon={faGlobe} />
                                         </Link>
                                     )}
                                     {project?.twitterLink && project.twitterLink !== "N/A" && (
-                                        <Link href={project.twitterLink} className="theme-color">
+                                        <Link href={project.twitterLink} className="theme-color" target="_blank">
                                             <FontAwesomeIcon icon={faXTwitter} />
                                         </Link>
                                     )}
                                     {project?.telegramLink && project.telegramLink !== "N/A" && (
-                                        <Link href={project.telegramLink} className="theme-color">
+                                        <Link href={project.telegramLink} className="theme-color" target="_blank">
                                             <FontAwesomeIcon icon={faTelegram} />
                                         </Link>
                                     )}
                                     {project?.mediumLink && project.mediumLink !== "N/A" && (
-                                        <Link href={project.mediumLink} className="theme-color">
+                                        <Link href={project.mediumLink} className="theme-color" target="_blank">
                                             <FontAwesomeIcon icon={faMedium} />
                                         </Link>
                                     )}
+                                    {project?.discordLink && project.discordLink !== "N/A" && (
+                                        <Link href={project.discordLink} className="theme-color" target="_blank">
+                                            <FontAwesomeIcon icon={faDiscord} />
+                                        </Link>
+                                    )}
                                 </div>
+
 
 
                                 <div className="text-sm text-gray-600">

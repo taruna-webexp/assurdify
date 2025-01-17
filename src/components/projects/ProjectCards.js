@@ -105,7 +105,7 @@ export default function ProjectCards({ data }) {
                             <CardContent className="!px-3 !pb-3 !pt-0">
                                 <Typography
                                     variant="body2"
-                                    className="text-white min-h-20 max-h-20 overflow-hidden"
+                                    className="text-white overflow-hidden project-text"
                                 >
                                     {project.description && (
                                         <>{project.description.substring(0, 150)}...</>

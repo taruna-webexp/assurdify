@@ -46,6 +46,7 @@ export default function CertificateModal({
                 open={open}
                 fullWidth
                 maxWidth="xl"
+                className='certificate-modal'
             >
                 <IconButton
                     aria-label="close"

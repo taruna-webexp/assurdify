@@ -96,7 +96,7 @@ export default function ProjectTab({ project }) {
                             <Button onClick={handleCertificateModalOpen} >Certificate</Button>
                         )}
                         {project?.nftUrl && (
-                            <Link href={project.nftUrl} passHref>
+                            <Link href={project.nftUrl} target='_blank'>
                                 <Button variant="contained">NFT</Button>
                             </Link>
                         )}
