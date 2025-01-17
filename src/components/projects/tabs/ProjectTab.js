@@ -16,6 +16,7 @@ import CertificateModal from '../modal/CertificateModal';
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
 
+
     return (
         <div
             role="tabpanel"
@@ -47,6 +48,7 @@ export default function ProjectTab({ project }) {
     // Set the initial active tab based on data.kycStatus
     const initialTab = project?.kycStatus === 'Approved' ? 0 : 1;
     const [value, setValue] = React.useState(initialTab);
+    const [modalOpen, setModalOpen] = React.useState(false);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -70,6 +72,9 @@ export default function ProjectTab({ project }) {
                 Not Audited
             </div>
         );
+    const handleCertificateModalOpen = () => {
+        setModalOpen(true);
+    };
 
     return (
         <Box sx={{ width: '100%' }} className="!mt-3">
@@ -87,7 +92,8 @@ export default function ProjectTab({ project }) {
                 {value === 0 && (
                     <>
                         {project?.kycCertificate && (
-                            <CertificateModal img={project.kycCertificate} />
+
+                            <Button onClick={handleCertificateModalOpen} >Certificate</Button>
                         )}
                         {project?.nftUrl && (
                             <Link href={project.nftUrl} passHref>
@@ -111,6 +117,16 @@ export default function ProjectTab({ project }) {
                 }
 
             </CustomTabPanel>
+            {modalOpen && (
+                <CertificateModal
+                    img={project.kycCertificate}
+                    buttonText=""
+                    open={modalOpen}
+                    setOpen={setModalOpen}
+
+                />
+            )
+            }
         </Box>
     );
 }

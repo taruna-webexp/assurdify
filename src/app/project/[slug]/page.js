@@ -17,10 +17,13 @@ import {
     faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import CertificateModal from "@/components/projects/modal/CertificateModal";
 CircularLoader;
 export default function SingleProject({ params }) {
     const { slug } = use(params); //
     const [project, setProject] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
+
     const router = useRouter();
 
     useEffect(() => {
@@ -48,6 +51,9 @@ export default function SingleProject({ params }) {
             </Grid>
         );
     }
+    const handleCertificateModalOpen = () => {
+        setModalOpen(true);
+    };
     return (
         <>
             <h2 className="text-gradient text-5xl text-center mb-4">
@@ -93,11 +99,13 @@ export default function SingleProject({ params }) {
                                     </span>
                                 </div>
                                 {project.kycStatus === "Approved" && (
-                                    <span className="absolute badge top-0 right-6">
+                                    <span className="absolute badge top-0 right-6" >
                                         <img
+                                            onClick={handleCertificateModalOpen}
                                             src="/assets/Profile_badge.png"
                                             width="10%"
-                                            className="w-24"
+                                            className="w-24 cursor-pointer"
+
                                         />
                                     </span>
                                 )}
@@ -109,34 +117,28 @@ export default function SingleProject({ params }) {
 
                             <div className="flex !mt-3 justify-between items-center">
                                 <div className="social-icons flex gap-2">
-                                    {project?.websiteLink?.trim() && (
+                                    {project?.websiteLink && project.websiteLink !== "N/A" && (
                                         <Link href={project.websiteLink} className="theme-color">
                                             <FontAwesomeIcon icon={faGlobe} />
                                         </Link>
                                     )}
-                                    {project?.twitterLink?.trim() && (
+                                    {project?.twitterLink && project.twitterLink !== "N/A" && (
                                         <Link href={project.twitterLink} className="theme-color">
                                             <FontAwesomeIcon icon={faXTwitter} />
                                         </Link>
                                     )}
-
-                                    {project?.telegramLink?.trim() && (
+                                    {project?.telegramLink && project.telegramLink !== "N/A" && (
                                         <Link href={project.telegramLink} className="theme-color">
                                             <FontAwesomeIcon icon={faTelegram} />
                                         </Link>
                                     )}
-                                    {project?.mediumLink?.trim() && (
+                                    {project?.mediumLink && project.mediumLink !== "N/A" && (
                                         <Link href={project.mediumLink} className="theme-color">
                                             <FontAwesomeIcon icon={faMedium} />
                                         </Link>
                                     )}
-
-                                    {project?.discordLink?.trim() && (
-                                        <Link href={project.discordLink} className="theme-color">
-                                            <FontAwesomeIcon icon={faDiscord} />
-                                        </Link>
-                                    )}
                                 </div>
+
 
                                 <div className="text-sm text-gray-600">
                                     {project.kycStatus && project.kycStatus === "Approved" ? (
@@ -164,6 +166,16 @@ export default function SingleProject({ params }) {
                     </div>
                 </div>
             </div >
+            {modalOpen && (
+                <CertificateModal
+                    img={project.kycCertificate}
+                    buttonText=""
+                    open={modalOpen}
+                    setOpen={setModalOpen}
+
+                />
+            )
+            }
         </>
     );
 }

@@ -19,7 +19,9 @@ const Footer = () => {
                         <hr />
                     </div>
                     <div className="min-w-32 text-center">
+
                         <img src="/assets/Assure-brand-mark-gold.webp" className="m-auto" />
+
                     </div>
                     <div className="w-full">
                         <hr />
@@ -28,12 +30,13 @@ const Footer = () => {
                 {/* First Grid Section */}
                 <Grid item xs={12} md={4} className="space-y-2 !p-0 contact-detail">
                     <Typography variant="h6" className="font-bold text-[#e2d243]">
-                        <img src="/assets/logo-a.webp" />
+                        <Link href="https://www.assuredefi.com/">
+                            <img src="/assets/logo-a.webp" /> </Link>
                     </Typography>
                     <div className="flex gap-8 !my-8">
-                        <Link href="#" className="!text-2xl theme-color"><FontAwesomeIcon icon={faXTwitter} /></Link>
-                        <Link href="#" className="!text-2xl theme-color"><FontAwesomeIcon icon={faLinkedin} /></Link>
-                        <Link href="#" className="!text-2xl theme-color"><FontAwesomeIcon icon={faYoutube} /></Link>
+                        <Link href="https://x.com/AssureDefi" className="!text-2xl theme-color"><FontAwesomeIcon icon={faXTwitter} /></Link>
+                        <Link href="https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F72357850" className="!text-2xl theme-color"><FontAwesomeIcon icon={faLinkedin} /></Link>
+                        <Link href="https://www.youtube.com/@assuredefi748" className="!text-2xl theme-color"><FontAwesomeIcon icon={faYoutube} /></Link>
                     </div>
                     <Typography className="!text-sm">Assure DeFi<br />
                         c/o Perkinson Legal<br />
@@ -46,17 +49,17 @@ const Footer = () => {
                     <Typography variant="h6" className="font-bold text-[#e2d243] !text-2xl uppercase !font-normal !mb-3">
                         Site Links
                     </Typography>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Careers</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Downloads</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Verified Projects</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">FAQs</Link>
+                    <Link href="https://www.assuredefi.com/career" className="!text-sm !mt-0 !mb-1 block">Careers</Link>
+                    <Link href="https://www.assuredefi.com/download" className="!text-sm !mt-0 !mb-1 block">Downloads</Link>
+                    <Link href="/" className="!text-sm !mt-0 !mb-1 block">Verified Projects</Link>
+                    <Link href="https://www.assuredefi.com/faq" className="!text-sm !mt-0 !mb-1 block">FAQs</Link>
                     <Typography variant="h6" className="font-bold text-[#e2d243] !text-2xl uppercase !font-normal !mt-5 !mb-3">
                         LEGALS
                     </Typography>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Terms & Conditions</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Privacy Policy</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Cookies Policy</Link>
-                    <Link href="#" className="!text-sm !mt-0 !mb-1 block">Data Handling Storage Policy</Link>
+                    <Link href="https://www.assuredefi.com/term-conditions" className="!text-sm !mt-0 !mb-1 block">Terms & Conditions</Link>
+                    <Link href="https://www.assuredefi.com/privacy-policy" className="!text-sm !mt-0 !mb-1 block">Privacy Policy</Link>
+                    <Link href="https://www.assuredefi.com/cookies-policy" className="!text-sm !mt-0 !mb-1 block">Cookies Policy</Link>
+                    <Link href="https://www.assuredefi.com/data-handling-storage-policy" className="!text-sm !mt-0 !mb-1 block">Data Handling Storage Policy</Link>
                 </Grid>
 
                 {/* Third Grid Section */}

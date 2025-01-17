@@ -37,11 +37,11 @@ function Header() {
     };
 
     return (
-        <AppBar className="!bg-transparent py-5 !shadow-none" position="static">
-            <Container className="container-fluid">
+        <AppBar className="!bg-transparent pt-2.5 !shadow-none" position="static">
+            <Container className="container-fluid header-container">
                 <Toolbar disableGutters>
 
-                    <Link href="#"><img src="/assets/logo-a.webp" className="max-w-40" /></Link>
+                    <Link href="#"><img src="/assets/logo-a.webp" className="header-logo" /></Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
                         <IconButton
@@ -82,14 +82,14 @@ function Header() {
                         </Menu>
                     </Box>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} justifyContent="end" className="main-navigation items-center">
+                    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} justifyContent="end" className="main-navigation items-center pt-px">
                         {menus.map((page) => (
                             <React.Fragment key={page.Title}>
                                 {/* Render "Services" as a dropdown menu */}
                                 {page.children ? (
                                     <>
                                         <Button
-
+                                            className="dropdown-buttton"
                                             onMouseEnter={handleOpenServicesMenu} // Trigger menu on hover
                                             // onMouseLeave={handleCloseServicesMenu} // Close menu when hover ends
                                             sx={{ my: 2, color: "white", display: "block" }}
@@ -97,6 +97,7 @@ function Header() {
                                             Services <FontAwesomeIcon icon={faChevronDown} />
                                         </Button>
                                         <Menu
+                                            className="dropdown-menu"
                                             anchorEl={anchorElServices}
                                             anchorOrigin={{
                                                 vertical: "bottom",
@@ -107,6 +108,7 @@ function Header() {
                                         >
                                             {page.children.map((subpage) => (
                                                 <MenuItem
+
                                                     key={subpage.Title}
                                                     onClick={handleCloseServicesMenu}
                                                 >

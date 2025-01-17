@@ -5,7 +5,7 @@ export const menus = [
         Title: "Services",
         path: ``,
         children: [
-            { Title: "Code Audit", path: `https://www.assuredefi.com/code-audit` },
+            { Title: "Code Audits", path: `https://www.assuredefi.com/code-audit` },
             { Title: "Growth Packages", path: `https://www.assuredefi.com/growth-packages` },
         ],
     },

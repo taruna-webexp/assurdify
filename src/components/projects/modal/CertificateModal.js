@@ -15,17 +15,18 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function CertificateModal({ img }) {
-    const [open, setOpen] = React.useState(false);
+export default function CertificateModal({
+    img,
+    open,
+    setOpen,
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+}) {
+
+
     const handleClose = () => {
         setOpen(false);
     };
 
-    // Function to process the KYC URL
     const processKycUrl = (url) => {
         let processedUrl = url;
         if (url?.includes('github.com')) {
@@ -38,20 +39,16 @@ export default function CertificateModal({ img }) {
 
     return (
         <React.Fragment>
-            <Button variant="contained" onClick={handleClickOpen}>
-                Certificate
-            </Button>
+
             <BootstrapDialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={open}
-                fullWidth // Makes the dialog take the full width of the container
-                maxWidth="xl" // Sets the maximum width of the dialog to extra-large
+                fullWidth
+                maxWidth="xl"
             >
                 <IconButton
                     aria-label="close"
-                    className='kyc-certificate-cross-icon'
-
                     onClick={handleClose}
                     sx={(theme) => ({
                         position: 'absolute',
@@ -63,7 +60,7 @@ export default function CertificateModal({ img }) {
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                    <img src={kycUrl} style={{ width: '100%', height: "100%" }} alt="KYC Certificate" />
+                    <img src={kycUrl} style={{ width: '100%', height: '100%' }} alt="KYC Certificate" />
                 </DialogContent>
             </BootstrapDialog>
         </React.Fragment>
