@@ -78,7 +78,7 @@ export default function KycAccordion({ project }) {
 
                         <AccordionDetails className='!p-3'>
                             <Typography variant="body2" className='text-white flex justify-between items-center'>
-                                <strong className='font-normal'>socials:</strong>{' '}
+                                <strong className='font-normal'>Socials:</strong>{' '}
                                 {(() => {
                                     const socials = [];
 

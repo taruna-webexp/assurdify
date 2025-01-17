@@ -1,3 +1,5 @@
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from '@mui/material';
 import React from 'react';
 export default function ProjectPagination({ count, page, onChange }) {
@@ -15,12 +17,12 @@ export default function ProjectPagination({ count, page, onChange }) {
                             <button
                                 variant="contained"
                                 onClick={() => item.onClick()}
-                                className={`px-4 py-2 mx-2 rounded-lg text-white ${item.disabled
+                                className={`flex items-center gap-2 px-4 py-2 mx-2 rounded-lg text-white ${item.disabled
                                     ? "bg-gray-300 cursor-not-allowed"
                                     : "bg-blue-500 hover:bg-blue-600"
                                     }`}
                             >
-                                Previous
+                                <FontAwesomeIcon icon={faChevronLeft} />Previous
                             </button>
                         );
                     }
@@ -29,12 +31,12 @@ export default function ProjectPagination({ count, page, onChange }) {
                             <button
                                 variant="contained"
                                 onClick={() => item.onClick()}
-                                className={`px-4 py-2 mx-2 rounded-lg text-white ${item.disabled
+                                className={`flex items-center gap-2  px-4 py-2 mx-2 rounded-lg text-white ${item.disabled
                                     ? "bg-gray-300 cursor-not-allowed"
                                     : "bg-blue-500 hover:bg-blue-600"
                                     }`}
                             >
-                                Next
+                                Next <FontAwesomeIcon icon={faChevronRight} />
                             </button>
                         );
                     }

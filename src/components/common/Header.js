@@ -13,6 +13,8 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import { menus } from "@/components/common/HeaderMenus";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -87,10 +89,12 @@ function Header() {
                                 {page.children ? (
                                     <>
                                         <Button
-                                            onClick={handleOpenServicesMenu}
+
+                                            onMouseEnter={handleOpenServicesMenu} // Trigger menu on hover
+                                            // onMouseLeave={handleCloseServicesMenu} // Close menu when hover ends
                                             sx={{ my: 2, color: "white", display: "block" }}
                                         >
-                                            Services
+                                            Services <FontAwesomeIcon icon={faChevronDown} />
                                         </Button>
                                         <Menu
                                             anchorEl={anchorElServices}
