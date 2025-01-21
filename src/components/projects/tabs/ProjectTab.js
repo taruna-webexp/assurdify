@@ -66,7 +66,7 @@ export default function ProjectTab({ project }) {
                     {project?.kycStatus === 'Approved' ? (
                         <Tab label="Team KYC" {...a11yProps(0)} className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white" />
                     ) : (
-                        <Link className="w-1/2 items-center gap-2" href="https://www.assuredefi.com/#get-kyc">
+                        <Link className="w-1/2 items-center flex gap-2" href="https://www.assuredefi.com/#get-kyc">
                             <Tab label={kycTabName} {...a11yProps(0)} className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white" />
                         </Link>
                     )}

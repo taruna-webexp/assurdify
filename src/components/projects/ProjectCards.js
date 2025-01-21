@@ -85,7 +85,7 @@ export default function ProjectCards({ data }) {
                                         project.kycStatus === "Rejected" ? (
                                         <img
                                             src="/assets/rejected-image.png"
-                                            className="max-w-14"
+                                            className="max-w-20"
                                             alt="Rejected Badge"
                                         />
                                     ) : project.auditStatus === "Completed" &&

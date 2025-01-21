@@ -517,6 +517,10 @@ li {
   background: #0f5ed9;
 }
 
+.contry-tier-modal .MuiModal-backdrop {
+  display: none;
+}
+
 @media (max-width: 1250px) {
   .main-navigation button {
     margin: 8px 0 0 24px !important;

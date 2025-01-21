@@ -55,7 +55,7 @@ export default function KycAccordion({ project }) {
                         <Grid container spacing={2} className="!gap-2 items-center">
                             <img src="/assets/verified-beg.png" className="w-8" alt="verified" />
                             <Grid>
-                                <Typography className="theme-color !text-lg !leading-6 block">
+                                <Typography className="theme-color !text-lg !leading-6 block flex gap-1 items-center">
                                     {verifiy.name || "N/A"}
                                     {project?.kycStatus === "Approved" && <FontAwesomeIcon className="text-lime-500" icon={faCircleCheck} />}
                                 </Typography>
@@ -68,7 +68,7 @@ export default function KycAccordion({ project }) {
 
                     <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                         <Typography className="text-white flex justify-between !text-sm !leading-4 items-center">
-                            <strong>Control Over:</strong>
+                            <span>Control Over:</span>
                             <div className="gap-2 flex control-over-span">{renderControlOver(verifiy.controlOver)}</div>
                         </Typography>
                     </AccordionDetails>
@@ -76,7 +76,7 @@ export default function KycAccordion({ project }) {
                     <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                         <Typography className="text-white flex justify-between !text-sm !leading-4">
                             <div className="flex items-center gap-1 country-tier">
-                                <strong>Country Tier:</strong>
+                                <span>Country Tier:</span>
                                 <CountryTier />
                             </div>
                             <div className="font-bold flex items-center">
@@ -88,7 +88,7 @@ export default function KycAccordion({ project }) {
 
                     <AccordionDetails className="!pl-3 !py-2 !pr-2 accordian-list">
                         <Typography className="text-white flex justify-between items-center">
-                            <strong>Socials:</strong>
+                            Socials:
                             <SocialLinks verifiy={verifiy} />
                         </Typography>
                     </AccordionDetails>
