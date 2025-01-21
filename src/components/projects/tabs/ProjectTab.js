@@ -25,7 +25,6 @@ CustomTabPanel.propTypes = {
     index: PropTypes.number.isRequired, // Tab panel index
     value: PropTypes.number.isRequired, // Current tab value
 };
-
 function a11yProps(index) {
     return { id: `simple-tab-${index}`, 'aria-controls': `simple-tabpanel-${index}` };
 }
@@ -103,7 +102,7 @@ export default function ProjectTab({ project }) {
                 ) : (
                     <div className="text-center min-h-60 pt-16">
                         <p className="mb-7 text-red text-lg">No Assure Defi Code Audit Detected</p>
-                        <Link href="https://www.assuredefi.com/code-audit" className="theme-yellow-bg text-black py-4 px-5 uppercase rounded-2xl font-medium tracking-wide">
+                        <Link href="https://www.assuredefi.com/code-audit" target="_blank" className="theme-yellow-bg text-black py-4 px-5 uppercase rounded-2xl font-medium tracking-wide">
                             Get One Here
                         </Link>
                     </div>
