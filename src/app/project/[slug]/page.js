@@ -36,7 +36,7 @@ export default function SingleProject({ params }) {
         };
         fetchProject();
     }, [slug]);
-
+    console.log("projectsingle", project)
     if (isLoading) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -76,28 +76,29 @@ export default function SingleProject({ params }) {
                 )
         );
     };
-    //kyc infor
+    //kyc info
     const renderKYCInfo = () => {
-        if (project.kycStatus === "Approved") {
+        if (project.auditDate) {
             return (
                 <p>
-                    <span className="font-medium text-white">KYC date:</span>{" "}
-                    <span className="theme-color font-medium">
-                        {format(new Date(project.kycDate), "MMMM do yyyy")}
-                    </span>
-                </p>
-            );
-        }
-        if (project.auditDate && project.kycStatus === "Rejected") {
-            return (
-                <p>
-                    <span className="font-medium text-white">Audit date:</span>{" "}
+                    <span className="font-medium text-white">Audit date:</span>&nbsp;
                     <span className="theme-color font-medium">
                         {format(new Date(project.auditDate), "MMMM do yyyy")}
                     </span>
                 </p>
             );
         }
+        else if (project.kycStatus === "Approved") {
+            return (
+                <p>
+                    <span className="font-medium text-white">KYC date:</span> &nbsp;
+                    <span className="theme-color font-medium">
+                        {format(new Date(project.kycDate), "MMMM do yyyy")}
+                    </span>
+                </p>
+            );
+        }
+
         return null;
     };
 
