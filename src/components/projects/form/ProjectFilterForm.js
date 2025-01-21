@@ -3,8 +3,6 @@ import { Grid, Button } from "@mui/material";
 import FormInputSelect from "@/components/share/form/SelectInput";
 import { selectOptions } from "@/components/utility/slectOptionService";
 import FormInput from "@/components/share/form/InputText";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProjectFilterForm({ control, errors }) {
     return (

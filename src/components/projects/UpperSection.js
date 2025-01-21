@@ -1,29 +1,28 @@
 "use client";
 import projectService from "@/services/projectService";
-import {
-    Avatar,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    Grid,
-    Typography,
-} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import { formatProjectName } from "../utility/FormatUrl";
+import CircularLoader from "../loader/CircularLoader";
+import FeatureProjectCard from "./FeatureProjectCard";
 
 export default function UpperSection() {
     const [featureData, setFeatureData] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const fetchFeatureData = async () => {
+        setLoading(true);
         try {
             const response = await projectService.getFeatureProject({
                 pageSize: 18,
                 featured: "Yes",
             });
             setFeatureData(response.records);
-        } catch (error) { }
+        } catch (error) {
+            console.log("error", error);
+        } finally {
+            setLoading(false);
+        }
     };
     useEffect(() => {
         fetchFeatureData();
@@ -58,136 +57,21 @@ export default function UpperSection() {
                         maxWidth="lg"
                         className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap featured-row"
                     >
-                        {featureData.length > 0 &&
-                            featureData.map((project) => (
-                                <Grid
-                                    item
-                                    xs={12}
-                                    sm={6}
-                                    md={6}
-                                    key={project.projectName}
-                                    className="featured-collunm"
-                                >
-                                    <Link href={`/project/${project.seoSlug}`}>
-                                        <Card className="theme-border-light gradient-bg-sharp !rounded-lg">
-                                            <div className="flex justify-between p-3">
-                                                <div className="flex items-center gap-1.5">
-                                                    <img
-                                                        src={project.images?.[0]?.url}
-                                                        className="w-10 rounded-full "
-                                                    ></img>
-                                                    <div>
-                                                        <h6 className="text-white font-extrabold ">
-                                                            {project.projectName}{" "}
-                                                        </h6>{" "}
-                                                        <span className="grey-color text-xs block">{`${project.lowerCaseTickerName
-                                                                ? project.lowerCaseTickerName.toUpperCase()
-                                                                : ""
-                                                            } `}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="flex items-center gap-1.5">
-                                                    {project.kycStatus === "Approved" ? (
-                                                        <img
-                                                            src="/assets/verified-beg.png"
-                                                            alt="Verified Badge"
-                                                        />
-                                                    ) : project.auditStatus === "NotDetected" &&
-                                                        project.kycStatus === "Rejected" ? (
-                                                        <img
-                                                            src="/assets/rejected-image.png"
-                                                            width="40%"
-                                                            alt="Verified Badge"
-                                                        />
-                                                    ) : (
-                                                        ""
-                                                    )}
-                                                    <span className="font-bold text-white">
-                                                        {project?.verifiedMembers?.length > 0
-                                                            ? project?.verifiedMembers?.length
-                                                            : ""}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            {/* <CardHeader className='text-white'
-                                            avatar={
-                                                <Avatar
-
-                                                    src={project.images?.[0]?.url}
-                                                    aria-label="project"
-                                                >
-                                                    {project.projectName[0]}
-                                                </Avatar>
-                                            }
-                                            title={
-                                                <>
-                                                    <span>{`${project.projectName}  `}</span>
-
-                                                    <span>{project?.verifiedMembers?.length > 0 ? project?.verifiedMembers?.length : ""
-                                                        }
-                                                    {project.kycStatus === "Approved" ?
-                                                        <img src="/assets/verified-beg.png" alt="Verified Badge" />
-                                                        : (
-                                                            project.auditStatus === "NotDetected" && project.kycStatus === "Rejected" ? <img src="/assets/rejected-image.png" width="40%" alt="Verified Badge" /> : ""
-                                                        )
-                                                    }
-                                                    </span>
-                                                </>
-                                            }
-
-                                            subheader={
-                                                <>
-                                                    {`${project.lowerCaseTickerName ? project.lowerCaseTickerName.toUpperCase() : ""} `}
-                                                    {project.kycStatus === "Approved" ? (
-                                                        "KYC"
-                                                    ) : project.auditStatus === "NotDetected" && project.kycStatus === "Rejected" ? (
-                                                        ""
-                                                    ) : (
-                                                        <>
-                                                            <WarningAmberIcon className="text-red-500" />
-                                                            <span className="text-red-500">No KYC</span>
-                                                        </>
-                                                    )}
-
-                                                </>
-                                            }
-                                        /> */}
-                                            <CardContent className="!px-3 !pb-3 !pt-0">
-                                                <Typography variant="body2" className="text-white">
-                                                    {project.description?.substring(0, 260)}...
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions className="!p-3 light-purple flex justify-between">
-                                                <Typography
-                                                    variant="body2"
-                                                    className="text-white !font-medium"
-                                                >
-                                                    {project.kycDate}
-                                                </Typography>
-                                                {project.auditStatus === "Completed" ? (
-                                                    <Typography
-                                                        className="text-green-500 !font-semibold"
-                                                        variant="body2"
-                                                    >
-                                                        Audited
-                                                    </Typography>
-                                                ) : project.auditStatus === "NotDetected" &&
-                                                    project.kycStatus === "Rejected" ? (
-                                                    ""
-                                                ) : (
-                                                    <Typography
-                                                        className="text-red-500 !font-semibold"
-                                                        variant="body2"
-                                                    >
-                                                        Not Audited
-                                                    </Typography>
-                                                )}
-                                            </CardActions>
-                                        </Card>
-                                    </Link>
-                                </Grid>
-                            ))}
+                        {loading ? (
+                            <Grid container justifyContent="center" className="my-5">
+                                <CircularLoader />
+                            </Grid>
+                        ) : featureData.length > 0 ? (
+                            featureData.map((project, index) => (
+                                <FeatureProjectCard key={index} project={project} />
+                            ))
+                        ) : (
+                            <Grid container justifyContent="center" className="my-5">
+                                <Typography variant="h6" color="text-white">
+                                    No Featured Projects Available
+                                </Typography>
+                            </Grid>
+                        )}
                     </Grid>
                 </div>
             </div>

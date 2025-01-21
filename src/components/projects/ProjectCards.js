@@ -2,11 +2,8 @@ import React from "react";
 import {
     Grid,
     Card,
-    CardHeader,
     CardContent,
     Typography,
-    Avatar,
-    Button,
     CardActions,
 } from "@mui/material";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
@@ -42,13 +39,13 @@ export default function ProjectCards({ data }) {
                                     {project.images ? (
                                         <img
                                             src={project.images?.[0]?.url}
-                                            className="w-10 rounded-full h-10 object-cover"
+                                            className="w-10 rounded-full h-10 object-cover border-2"
                                         />
                                     ) : (
                                         <img
                                             src="/assets/no-image-available.png"
                                             alt="no-image-available"
-                                            className="w-10 rounded-full h-10 object-cover"
+                                            className="w-10 rounded-full h-10 object-cover  border-2"
                                         ></img>
                                     )}
 
@@ -72,8 +69,8 @@ export default function ProjectCards({ data }) {
                                                     ""
                                                 ) : (
                                                     <>
-                                                        <WarningAmberIcon className=" !text-sm text-red-500" />
-                                                        <span className="text-red-500">No KYC</span>
+                                                        <WarningAmberIcon className=" !text-sm text-red" />
+                                                        <span className="text-red">No KYC</span>
                                                     </>
                                                 )}
                                             </span>
@@ -84,13 +81,15 @@ export default function ProjectCards({ data }) {
                                 <div className="flex items-center justify-end gap-1.5">
                                     {project.kycStatus === "Approved" ? (
                                         <img src="/assets/verified-beg.png" alt="Verified Badge" />
-                                    ) : project.auditStatus === "NotDetected" && project.kycStatus === "Rejected" ? (
+                                    ) : project.auditStatus === "NotDetected" &&
+                                        project.kycStatus === "Rejected" ? (
                                         <img
                                             src="/assets/rejected-image.png"
                                             className="max-w-14"
                                             alt="Rejected Badge"
                                         />
-                                    ) : project.auditStatus === "Completed" && project.kycStatus === "Rejected" ? (
+                                    ) : project.auditStatus === "Completed" &&
+                                        project.kycStatus === "Rejected" ? (
                                         <img src="/assets/verified-beg.png" alt="Verified Badge" />
                                     ) : (
                                         ""
@@ -108,7 +107,11 @@ export default function ProjectCards({ data }) {
                                     className="text-white overflow-hidden project-text"
                                 >
                                     {project.description && (
-                                        <>{project.description.substring(0, 150)}...</>
+                                        <>
+                                            {project.description.length > 150
+                                                ? `${project.description.substring(0, 150)}...`
+                                                : project.description}
+                                        </>
                                     )}
                                 </Typography>
                             </CardContent>
@@ -129,7 +132,7 @@ export default function ProjectCards({ data }) {
                                 ) : project.auditStatus === "NotDetected" &&
                                     project.kycStatus === "Approved" ? (
                                     <Typography
-                                        className="text-red-500 !font-semibold"
+                                        className="text-red !font-semibold"
                                         variant="body2"
                                     >
                                         Not Audited

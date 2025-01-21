@@ -495,6 +495,26 @@ li {
   margin-left: 2px;
 }
 
+#menu-projectAditStatus .MuiPaper-root, #menu-projectbySearch .MuiPaper-root, 
+#menu-projectKeyStatus .MuiPaper-root{
+  background: #040311;
+  border: 1px solid #b0b0b0;
+  border-radius: 0;
+}
+
+#menu-projectAditStatus .MuiPaper-root ul.MuiList-root li, 
+#menu-projectbySearch .MuiPaper-root ul.MuiList-root li, 
+#menu-projectKeyStatus .MuiPaper-root ul.MuiList-root li{
+  padding: 2px 11px;
+  color: #fff;
+  font-size: 14px;
+}
+#menu-projectAditStatus .MuiPaper-root ul.MuiList-root li.Mui-selected, 
+#menu-projectbySearch .MuiPaper-root ul.MuiList-root li.Mui-selected, 
+#menu-projectKeyStatus .MuiPaper-root ul.MuiList-root li.Mui-selected {
+  background: #0f5ed9;
+}
+
 @media (max-width: 1250px) {
   .main-navigation button {
     margin: 8px 0 0 24px !important;

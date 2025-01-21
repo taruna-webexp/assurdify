@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from '@mui/material';
 import React from 'react';
 export default function ProjectPagination({ count, page, onChange }) {
-    console.log("count", count);
     return (
         <Pagination
             count={count}
@@ -41,7 +40,7 @@ export default function ProjectPagination({ count, page, onChange }) {
                         );
                     }
                 }
-                return null; // Hide other pagination items 
+                return null;
             }}
         />
     );
