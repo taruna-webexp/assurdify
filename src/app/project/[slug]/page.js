@@ -19,7 +19,6 @@ export default function SingleProject({ params }) {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
-
     const router = useRouter();
 
     useEffect(() => {
@@ -36,7 +35,7 @@ export default function SingleProject({ params }) {
         };
         fetchProject();
     }, [slug]);
-    console.log("projectsingle", project)
+
     if (isLoading) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -44,7 +43,6 @@ export default function SingleProject({ params }) {
             </div>
         );
     }
-
     if (error) {
         return (
             <Grid container justifyContent="center" className="my-5">
@@ -66,16 +64,17 @@ export default function SingleProject({ params }) {
             { link: project?.mediumLink, icon: faMedium },
             { link: project?.discordLink, icon: faDiscord },
         ];
+
         return socialLinks.map(
             ({ link, icon }, idx) =>
-                link &&
-                link !== "N/A" && (
+                link && link !== "N/A" && link.trim() !== "" && (  // Added check for empty string
                     <Link key={idx} href={link} className="theme-color" target="_blank">
                         <FontAwesomeIcon icon={icon} />
                     </Link>
                 )
         );
     };
+
     //kyc info
     const renderKYCInfo = () => {
         if (project.auditDate) {
