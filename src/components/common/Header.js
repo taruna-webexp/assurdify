@@ -41,7 +41,7 @@ function Header() {
             <Container className="container-fluid header-container">
                 <Toolbar disableGutters>
 
-                    <Link href="#"><img src="/assets/logo-a.webp" className="header-logo" /></Link>
+                    <Link href="https://www.assuredefi.com/"><img src="/assets/logo-a.webp" className="header-logo" /></Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton

@@ -14,16 +14,15 @@ const Footer = () => {
                 spacing={4}
                 className="!max-w-full mx-auto !w-full !m-0"
             >
-                <Grid md={12} className="flex justify-between items-center gap-8 !mb-12">
-                    <div className="w-full">
+                <Grid md={12} className="flex justify-between items-center gap-8 !mb-12 footer-small-logo">
+                    <div className="w-full hr-line">
                         <hr />
                     </div>
-                    <div className="min-w-32 text-center">
+                    <div className="min-w-32 text-center small-logo">
 
                         <img src="/assets/Assure-brand-mark-gold.webp" className="m-auto" />
-
                     </div>
-                    <div className="w-full">
+                    <div className="w-full hr-line">
                         <hr />
                     </div>
                 </Grid>
@@ -31,9 +30,9 @@ const Footer = () => {
                 <Grid item xs={12} md={4} className="space-y-2 !p-0 contact-detail">
                     <Typography variant="h6" className="font-bold text-[#e2d243]">
                         <Link href="https://www.assuredefi.com/">
-                            <img src="/assets/logo-a.webp" /> </Link>
+                            <img src="/assets/logo-a.webp" /></Link>
                     </Typography>
-                    <div className="flex gap-8 !my-8">
+                    <div className="flex gap-8 !my-8 footer-social">
                         <Link href="https://x.com/AssureDefi" className="!text-2xl theme-color"><FontAwesomeIcon icon={faXTwitter} /></Link>
                         <Link href="https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F72357850" className="!text-2xl theme-color"><FontAwesomeIcon icon={faLinkedin} /></Link>
                         <Link href="https://www.youtube.com/@assuredefi748" className="!text-2xl theme-color"><FontAwesomeIcon icon={faYoutube} /></Link>
@@ -85,7 +84,7 @@ const Footer = () => {
 
                 </Grid>
 
-                <Grid md={12} className="mt-12 mb-4">
+                <Grid md={12} className="mt-12 mb-4 copy-right">
                     <Typography className="text-center !text-sm">© 2025 Projects Assure DeFi® | All Rights Reserved.</Typography>
                 </Grid>
             </Grid>
@@ -95,7 +94,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
 
 
 

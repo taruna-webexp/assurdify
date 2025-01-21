@@ -56,24 +56,24 @@ export default function SingleProject({ params }) {
     };
     return (
         <>
-            <h2 className="text-gradient text-5xl text-center mb-4 mt-10 card-main-heading">
+            <h2 className="text-gradient text-5xl text-center mb-4 mt-11 card-main-heading">
                 Verification Details
             </h2>
             <div className="text-center">
                 <button
                     onClick={() => router.push("/")}
-                    className="w-full flex justify-center text-sm text-white items-center gap-1.5"
+                    className="w-full flex justify-center text-base text-white items-center gap-1.5"
                 >
                     {" "}
                     <img src="/assets/typcn_arrow-back.png" alt="arrow-back" /> Back to
                     projects
                 </button>
             </div>
-            <div className="flex items-center justify-center bg-gray-100 py-6 bg-transparent">
+            <div className="flex items-center justify-center bg-gray-100 py-6 bg-transparent card-section">
                 <div className="card-container relative m-auto w-full">
                     <div className="p-6 single-card bg-cover relative theme-border-light z-10">
                         <div className="space-y-6">
-                            <div className="flex">
+                            <div className="flex items-center cart-title">
                                 {project?.images ? (
                                     <img
                                         src={project?.images[0]?.url}
@@ -88,11 +88,11 @@ export default function SingleProject({ params }) {
                                     />
                                 )}
                                 <div className="pl-3">
-                                    <h2 className="font-extrabold text-3xl text-white">
+                                    <h2 className="font-extrabold text-3xl text-white card-heading">
                                         {project.projectName}
                                     </h2>
 
-                                    <span className="text-lg leading-5 grey-color">
+                                    <span className="text-lg leading-5 grey-colorr">
                                         {project.lowerCaseTickerName
                                             ? project.lowerCaseTickerName.toUpperCase()
                                             : ""}
@@ -111,11 +111,11 @@ export default function SingleProject({ params }) {
                                 )}
                             </div>
 
-                            <p className="text-sm text-white mt-5 leading-relaxed">
+                            <p className="text-sm text-white mt-5 leading-relaxed tracking-normal sub-text">
                                 {project.description}
                             </p>
 
-                            <div className="flex !mt-3 justify-between items-center">
+                            <div className="flex !mt-3 justify-between items-center social-date">
                                 <div className="social-icons flex gap-2">
                                     {project?.websiteLink && project.websiteLink !== "N/A" && (
                                         <Link href={project.websiteLink} className="theme-color" target="_blank">
@@ -146,7 +146,7 @@ export default function SingleProject({ params }) {
 
 
 
-                                <div className="text-sm text-gray-600">
+                                <div className="text-sm text-gray-600 date">
                                     {project.kycStatus && project.kycStatus === "Approved" ? (
                                         <p>
                                             <span className="font-medium text-white">KYC date:</span>{" "}

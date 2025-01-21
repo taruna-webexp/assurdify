@@ -32,7 +32,7 @@ export default function CountryTier() {
                 aria-describedby="modal-modal-description"
 
             >
-                <Box sx={style} className='dark-purple-bg grey-border !border shadow-none !p-3 !rounded-md !outline-none'>
+                <Box sx={style} className='dark-purple-bg grey-border !border shadow-none !p-3 !rounded-md !outline-none tier-modal'>
                     <Button className='contry-tier-close-btn !bg-white h-5 w-5 text-center !rounded-full' onClick={handleClose}>
                         < CloseIcon />
                     </Button>

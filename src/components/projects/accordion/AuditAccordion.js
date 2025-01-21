@@ -29,7 +29,7 @@ export default function AuditAccordion({ project }) {
                                 <span>Audit Score: <strong className='text-lime-500'>{report.auditScore}/100</strong></span>
 
                             </div>
-                            <div className='grey-border border p-3 rounded-lg mb-2'>
+                            <div className='grey-border border p-3 rounded-md mb-2'>
                                 <Typography variant="body2">
                                     <strong className='text-sm font-normal'>
                                         Contract Address:
@@ -57,7 +57,7 @@ export default function AuditAccordion({ project }) {
                                     </strong>
                                 </Typography>
                             </div>
-                            <div className='grey-border border p-3 rounded-lg mb-2'>
+                            <div className='grey-border border p-3 rounded-md mb-2'>
                                 <Typography variant="body2" className='flex justify-between items-center'>
                                     <strong className='text-sm font-normal'>Ecosystem:</strong>
                                     {/* Dynamically display blockchain image based on ecosystem */}

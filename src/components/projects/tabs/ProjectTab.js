@@ -54,18 +54,11 @@ export default function ProjectTab({ project }) {
         setValue(newValue);
     };
 
-    const kycTabName = project?.kycStatus === 'Approved'
-        ? <div>Team KYC</div>
-        : (
-            <>
-                <Link className="text-red-600 flex items-center gap-2" href="https://www.assuredefi.com/#get-kyc">
-                    <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
-                </Link>
-            </>
-        );
+    const kycTabName = project?.kycStatus !== 'Approved' &&
+        <div className="text-red-600 flex items-center gap-2"><FontAwesomeIcon icon={faTriangleExclamation} /> No KYC</div>
 
     const auditedTabName = project?.auditStatus === "Completed"
-        ? 'Audit'
+        ? <div className=" flex items-center gap-2">Audit</div>
         : (
             <div className="text-red-600 flex items-center gap-2">
                 <FontAwesomeIcon icon={faTriangleExclamation} />
@@ -80,7 +73,14 @@ export default function ProjectTab({ project }) {
         <Box sx={{ width: '100%' }} className="!mt-3">
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='dark-purple-bg card-tabs p-2 mb-3 !border grey-border border-solid rounded-md'>
-                    <Tab label={kycTabName} {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white' />
+                    {project?.kycStatus === 'Approved' ?
+                        <Tab label="Team KYC" {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white' />
+                        : (<>
+                            <Link className=" w-1/2 items-center gap-2" href="https://www.assuredefi.com/#get-kyc">
+                                <Tab label={kycTabName} {...a11yProps(0)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white' />
+                            </Link>
+                        </>)}
+
                     <Tab label={auditedTabName} {...a11yProps(1)} className='!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case grey-color' />
                 </Tabs>
             </Box>

@@ -70,7 +70,7 @@ export default function KycAccordion({ project }) {
                                     <Grid item xs={6} className="w-full">
                                         <Typography
                                             component="span"
-                                            className="text-white !text-sm !leading-4 !block"
+                                            className="text-white !text-sm !leading-4 !block designation"
                                         >
                                             {verifiy.role ? verifiy.role : "N/A"}
                                         </Typography>
@@ -79,17 +79,17 @@ export default function KycAccordion({ project }) {
                             </Grid>
                         </AccordionSummary>
 
-                        <AccordionDetails className="grey-border !border-b !border-solid !p-3">
+                        <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                             <Typography
                                 variant="body2"
                                 className="text-white flex justify-between !text-sm !leading-4 items-center"
                             >
-                                <strong className="font-normal">Control Over:</strong>
-                                <div className="gap-2 flex">
+                                <strong className="font-normal tracking-normal whitespace-nowrap">Control Over:</strong>
+                                <div className="gap-2 flex control-over-span">
                                     {verifiy?.controlOver ? verifiy?.controlOver?.map((item, index) => (
                                         <span
                                             key={index}
-                                            className="px-2 py-1 text-white rounded light-purple text-sm"
+                                            className="px-2 py-1 text-white rounded light-purple text-sm tracking-normal"
                                         >
                                             {item}
                                         </span>
@@ -98,13 +98,13 @@ export default function KycAccordion({ project }) {
                             </Typography>
                         </AccordionDetails>
 
-                        <AccordionDetails className="grey-border !border-b !border-solid !p-3 ">
+                        <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                             <Typography
                                 variant="body2"
                                 className="text-white flex justify-between !text-sm !leading-4"
                             >
                                 <div className="flex items-center gap-1 country-tier">
-                                    <strong className="font-normal">Country Tier:</strong>
+                                    <strong className="font-normal tracking-normal whitespace-nowrap">Country Tier:</strong>
                                     <CountryTier />
                                 </div>
                                 <div className="font-bold flex items-center">
@@ -119,12 +119,12 @@ export default function KycAccordion({ project }) {
                             </Typography>
                         </AccordionDetails>
 
-                        <AccordionDetails className="!p-3">
+                        <AccordionDetails className="!pl-3 !py-2 !pr-2 accordian-list">
                             <Typography
                                 variant="body2"
                                 className="text-white flex justify-between items-center"
                             >
-                                <strong className="font-normal">Socials:</strong>{" "}
+                                <strong className="font-normal tracking-normal whitespace-nowrap">Socials:</strong>{" "}
                                 {(() => {
                                     const socials = [];
 

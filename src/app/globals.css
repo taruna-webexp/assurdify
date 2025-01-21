@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
@@ -51,6 +52,7 @@ li {
 ::-webkit-scrollbar {
   /* display:none; */
 }
+
 .light-purple {
   background-color: #17162b !important;
 }
@@ -78,6 +80,7 @@ li {
 .text-red {
   color: #ff0000 !important;
 }
+
 .card-verified-member .MuiBox-root {
   padding: 12px 12px 3px;
 }
@@ -87,6 +90,7 @@ li {
     --foreground: #ededed;
   }
 }
+
 .projectForm {
   display: flex;
   margin: 0 auto !important;
@@ -156,6 +160,7 @@ li {
   background-color: #0a0724;
   color: white;
 }
+
 .kyc-certificate-cross-icon {
   position: absolute !important;
   right: 30px !important;
@@ -191,6 +196,7 @@ li {
 .social-icons svg {
   font-size: 19px;
 }
+
 .card-tabs .Mui-selected {
   border: 1px solid #2a2857;
   background: rgb(10, 9, 35);
@@ -215,9 +221,11 @@ li {
 .accordian-header .MuiAccordionSummary-content {
   margin: 0 !important;
 }
+
 .accordian-header span.MuiAccordionSummary-expandIconWrapper {
   color: #fff;
 }
+
 .country-tier svg {
   font-size: 20px;
   opacity: 50%;
@@ -246,6 +254,7 @@ li {
 .copy-icon svg {
   font-size: 17px;
 }
+
 .report-buttons button {
   color: #fff;
   font-size: 14px;
@@ -274,24 +283,29 @@ li {
 .report-buttons div {
   width: 32%;
 }
+
 .card-audit-tab .MuiBox-root {
   padding: 0;
 }
+
 .custom-scroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #f5f5f5;
 }
+
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
   background-color: #f5f5f5;
   border-radius: 10px;
 }
+
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
 }
+
 .contry-tier-close-btn {
   position: absolute !important;
   right: -6px !important;
@@ -304,6 +318,7 @@ li {
   font-size: 14px;
   color: #000;
 }
+
 .contact-detail {
   max-width: 30% !important;
   flex-basis: 30% !important;
@@ -319,6 +334,7 @@ li {
 .disclaimer p {
   line-height: 17px;
 }
+
 .card-container:before {
   content: "";
   height: 100%;
@@ -345,12 +361,14 @@ li {
 .footer h6 {
   letter-spacing: 5px;
 }
+
 .header-logo {
   max-width: 164px;
 }
 .header-container {
   padding: 0 20px !important;
 }
+
 .dropdown-menu .MuiPaper-root {
   background: none;
   border: 1px solid #686120;
@@ -368,6 +386,7 @@ li {
   font-size: 14px;
   line-height: 17px;
 }
+
 .dropdown-menu ul li {
   padding: 11px 18px;
 }
@@ -390,6 +409,7 @@ li {
 .project-search-form .form-select {
   max-width: 143px;
 }
+
 .verified-project-section:before {
   content: "";
   background: #d4c440;
@@ -412,9 +432,11 @@ li {
   filter: blur(150px);
   right: -730px;
 }
+
 .project-search-form .form-input {
   max-width: 262px;
 }
+
 .form-button button {
   text-transform: capitalize;
   color: #fff;
@@ -443,6 +465,7 @@ li {
 .form-button {
   max-width: inherit;
 }
+
 .certificate-modal .MuiPaper-root {
   margin: 0;
   width: 100%;
@@ -458,11 +481,26 @@ li {
 .certificate-modal img {
   height: auto !important;
 }
+.single-card .sub-text {
+  line-height: 17px;
+}
+.cart-title .sub-text {
+  line-height: 17px;
+}
+.card-section {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.accordian-header span.MuiTypography-root svg {
+  margin-left: 2px;
+}
+
 @media (max-width: 1250px) {
   .main-navigation button {
     margin: 8px 0 0 24px !important;
   }
 }
+
 @media (max-width: 1199px) {
   .main-navigation button {
     margin: 8px 0 0 18px !important;
@@ -491,6 +529,7 @@ li {
     padding: 0 20px;
   }
 }
+
 @media (max-width: 900px) {
   .header-container .MuiBox-root {
     justify-content: end;
@@ -552,6 +591,15 @@ li {
     -webkit-text-fill-color: unset;
     text-fill-color: unset;
   }
+  .footer-small-logo {
+    width: 100%;
+  }
+  .site-links {
+    padding-left: 20px !important;
+  }
+  .disclaimer {
+    padding-left: 20px !important;
+  }
 }
 @media (max-width: 768px) {
   .project-search-form .form-input {
@@ -579,6 +627,7 @@ li {
     font-size: 27px;
     margin: 0 0 10px;
   }
+
   .explore-project-container .projects-heading {
     margin-top: 15px !important;
     font-size: 27px;
@@ -590,7 +639,41 @@ li {
     gap: 12px;
     padding: 0 !important;
   }
+  .card-main-heading {
+    line-height: 38px;
+    font-size: 32px;
+    margin: 30px 0 7px;
+  }
+  .contact-detail {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+    text-align: center;
+  }
+  .site-links {
+    text-align: center;
+    padding-left: 0 !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+    padding-top: 30px !important;
+  }
+  .disclaimer {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+    text-align: center;
+    padding-top: 20px !important;
+  }
+  .disclaimer p {
+    text-align: center;
+    letter-spacing: 0;
+  }
+  .contact-detail h6 img {
+    margin: 0 auto;
+  }
+  .footer-social {
+    justify-content: center;
+  }
 }
+
 @media (max-width: 575px) {
   .verified-project-container h2 {
     font-size: 27px;
@@ -624,5 +707,84 @@ li {
   }
   .featured-project h3 {
     font-size: 25px;
+  }
+  .single-card {
+    padding: 14px;
+  }
+  .card-heading {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .cart-title span {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .cart-title .title-box {
+    padding-left: 6px;
+  }
+  .badge img {
+    width: 66px;
+  }
+  .badge {
+    right: 15px;
+  }
+  .control-over-span span {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 4px 6px !important;
+  }
+  .control-over-span {
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 3px;
+  }
+  .accordian-list {
+    padding-left: 10px !important;
+  }
+  .accordian-header {
+    padding: 8px 8px 8px 10px !important;
+  }
+  .accordian-header .verified-icon {
+    width: auto;
+  }
+  .accordian-header span.MuiTypography-root {
+    font-size: 14px !important;
+    line-height: 18px !important;
+  }
+  .accordian-header span.designation {
+    font-size: 12px !important;
+    line-height: 15px !important;
+  }
+  .card-tabs button {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .social-date {
+    flex-wrap: wrap;
+  }
+  .social-date .date {
+    width: 100%;
+    margin: 6px 0 3px;
+  }
+  .cart-title .sub-text {
+    margin-top: 18px !important;
+  }
+  .report-buttons div {
+    width: calc(50% - 5px);
+  }
+  .report-buttons button {
+    padding: 10px 3px;
+  }
+  .tier-modal {
+    max-width: 320px;
+  }
+  .tier-modal p {
+    letter-spacing: 0;
+  }
+  .footer-small-logo .small-logo {
+    min-width: 60px;
+  }
+  .footer {
+    padding: 20px 30px 0;
   }
 }
