@@ -46,24 +46,39 @@ export default function KycAccordion({ project }) {
                     key={index}
                     expanded={expanded === index}
                     onChange={handleAccordionChange(index)}
-                    className="theme-bg grey-border border !rounded-md !my-2"
+                    className="theme-bg grey-border border !rounded-md !my-2 "
                 >
                     <AccordionSummary
-                        className="grey-border !border-b !border-solid !min-h-px accordian-header !p-3"
+                        className="grey-border gap-1 !border-b !border-solid !min-h-px accordian-header !p-3"
                         expandIcon={<FontAwesomeIcon icon={faCaretDown} />}
                     >
-                        <Grid container spacing={2} className="!gap-2 items-center">
-                            <img src="/assets/verified-beg.png" className="w-8" alt="verified" />
-                            <Grid>
-                                <Typography className="theme-color !text-lg !leading-6 block flex gap-1 items-center">
+                        <div
+                            container
+                            spacing={2}
+                            className="!gap-2 items-center  kyc-accordin-data "
+                        >
+                            {/* Verified Icon */}
+                            <div className="flex justify-center sm:justify-start">
+                                <img src="/assets/verified-beg.png" className="w-8" alt="verified" />
+                            </div>
+
+                            {/* Text Section */}
+                            <div
+
+                                className="flex flex-col gap-1 text-center sm:text-left"
+                            >
+                                <Typography className="theme-color !text-lg !leading-6 flex items-center gap-1">
                                     {verifiy.name || "N/A"}
-                                    {project?.kycStatus === "Approved" && <FontAwesomeIcon className="text-lime-500" icon={faCircleCheck} />}
+                                    {project?.kycStatus === "Approved" && (
+                                        <FontAwesomeIcon className="text-lime-500" icon={faCircleCheck} />
+                                    )}
                                 </Typography>
                                 <Typography className="text-white !text-sm !leading-4 block designation">
                                     {verifiy.role || "N/A"}
                                 </Typography>
-                            </Grid>
-                        </Grid>
+                            </div>
+                        </div>
+
                     </AccordionSummary>
 
                     <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">

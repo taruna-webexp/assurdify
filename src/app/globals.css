@@ -111,6 +111,10 @@ li {
 .button-under-kyc {
   background-color: #040311 !important;
 }
+.kyc-accordin-data {
+  display: grid !important;
+  grid-template-columns: auto auto !important;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

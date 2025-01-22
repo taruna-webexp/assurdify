@@ -40,7 +40,7 @@ export default function ProjectTab({ project }) {
 
     //  KYC tab label  based on project KYC status
     const kycTabName = project?.kycStatus !== 'Approved' && (
-        <div className="text-red-600 flex items-center gap-2">
+        <div className="text-red flex items-center gap-2">
             <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
         </div>
     );
@@ -49,7 +49,7 @@ export default function ProjectTab({ project }) {
     const auditedTabName = project?.auditStatus === "Completed" ? (
         <div className="flex items-center gap-2">Audit</div>
     ) : (
-        <div className="text-red-600 flex items-center gap-2">
+        <div className="text-red flex items-center gap-2">
             <FontAwesomeIcon icon={faTriangleExclamation} /> Not Audited
         </div>
     );
