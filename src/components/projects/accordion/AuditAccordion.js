@@ -2,23 +2,14 @@
 
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Button from "@mui/material/Button";
 import { BlockChainImages, blockchainNames } from "../BlockChainImages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faDownload, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faDownload, } from "@fortawesome/free-solid-svg-icons";
+import { copyContractAddressesHandler } from "../varificationdetail/AuditDetailData";
 
 export default function AuditAccordion({ project }) {
-    const [copiedIndex, setCopiedIndex] = React.useState(null);
-
-    // COPY CONTRACT ADDRESS HANDLER
-    const copyHandler = async (contractAddresses, index) => {
-        console.log("idx", index);
-        await navigator.clipboard.writeText(contractAddresses.join(", "));
-        setCopiedIndex(index); // Set the index for the "Copied!" message
-        setTimeout(() => setCopiedIndex(null), 2000); // Clear after 3 seconds
-    };
-
+    const [copiedIndex, setCopiedIndex] = React.useState(null)
     return (
         <div className="max-h-96 overflow-auto custom-scroll flex flex-col gap-2.5">
             {project.auditReportList?.length > 0 ? (
@@ -47,9 +38,9 @@ export default function AuditAccordion({ project }) {
                                                     alt="copy-bold.png"
                                                     className="cursor-pointer"
                                                     onClick={() =>
-                                                        copyHandler(
+                                                        copyContractAddressesHandler(
                                                             [project.contractAddress || report.contractAddress],
-                                                            index
+                                                            index, setCopiedIndex
                                                         )
                                                     }
                                                 />
