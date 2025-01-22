@@ -2,104 +2,54 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { format } from "date-fns";
 import { Grid, Typography } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CircularLoader from "@/components/loader/CircularLoader";
 import ProjectTab from "@/components/projects/tabs/ProjectTab";
 import CertificateModal from "@/components/projects/modal/CertificateModal";
 import projectService from "@/services/projectService";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { faDiscord, faMedium, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import {
+    renderKYCInfo,
+    renderSocialLinks,
+} from "@/components/projects/varificationdetail/VerificationDetailData";
+import { useProjects } from "@/hooks/useProjects";
 
 export default function SingleProject({ params }) {
     const { slug } = use(params);
-    const [project, setProject] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
+    const {
+        project,
+        singleProjecterror,
+        isSingleProjectLoading,
+        fetchSingleProject,
+    } = useProjects();
+    const [certificateModalOpen, setCertificateModalOpen] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
-        const fetchProject = async () => {
-            try {
-                const response = await projectService.getSingleProject({ slug });
-                response ? setProject(response) : setError("NO RECORD FOUND");
-            } catch (err) {
-                console.error("Error fetching project data:", err);
-                setError("NO RECORD FOUND");
-            } finally {
-                setIsLoading(false);
-            }
+        const fetchDeatailsData = () => {
+            fetchSingleProject(slug);
         };
-        fetchProject();
+        fetchDeatailsData();
     }, [slug]);
 
-    if (isLoading) {
+    if (isSingleProjectLoading) {
         return (
             <div className="flex items-center justify-center h-screen">
                 <CircularLoader />
             </div>
         );
     }
-    if (error) {
+    if (singleProjecterror) {
         return (
             <Grid container justifyContent="center" className="my-5">
                 <Typography variant="h6" color="text-white" className="data-not-found">
-                    {error}
+                    {singleProjecterror}
                 </Typography>
             </Grid>
         );
     }
 
-    const handleCertificateModalOpen = () => setModalOpen(true);
-
-    // social links
-    const renderSocialLinks = () => {
-        const socialLinks = [
-            { link: project?.websiteLink, icon: faGlobe },
-            { link: project?.twitterLink, icon: faXTwitter },
-            { link: project?.telegramLink, icon: faTelegram },
-            { link: project?.mediumLink, icon: faMedium },
-            { link: project?.discordLink, icon: faDiscord },
-        ];
-
-        return socialLinks.map(
-            ({ link, icon }, idx) =>
-                link && link !== "N/A" && link.trim() !== "" && (  // Added check for empty string
-                    <Link key={idx} href={link} className="theme-color" target="_blank">
-                        <FontAwesomeIcon icon={icon} />
-                    </Link>
-                )
-        );
-    };
-
-    //kyc info
-    const renderKYCInfo = () => {
-        if (project.auditDate) {
-            return (
-                <p>
-                    <span className="font-medium text-white">Audit date:</span>&nbsp;
-                    <span className="theme-color font-medium">
-                        {format(new Date(project.auditDate), "MMMM do yyyy")}
-                    </span>
-                </p>
-            );
-        }
-        else if (project.kycStatus === "Approved") {
-            return (
-                <p>
-                    <span className="font-medium text-white">KYC date:</span> &nbsp;
-                    <span className="theme-color ">
-                        {format(new Date(project.kycDate), "MMMM do yyyy")}
-                    </span>
-                </p>
-            );
-        }
-
-        return null;
-    };
+    //certificate model open handler
+    const handleCertificateModalOpen = () => setCertificateModalOpen(true);
 
     return (
         <>
@@ -154,10 +104,10 @@ export default function SingleProject({ params }) {
 
                             <div className="flex justify-between items-center social-date mt-3">
                                 <div className="social-icons flex gap-2">
-                                    {renderSocialLinks()}
+                                    {renderSocialLinks(project)}
                                 </div>
                                 <div className="text-sm text-gray-600 date">
-                                    {renderKYCInfo()}
+                                    {renderKYCInfo(project)}
                                 </div>
                             </div>
 
@@ -166,12 +116,12 @@ export default function SingleProject({ params }) {
                     </div>
                 </div>
             </div>
-            {modalOpen && (
+            {certificateModalOpen && (
                 <CertificateModal
                     img={project.kycCertificate}
                     buttonText=""
-                    open={modalOpen}
-                    setOpen={setModalOpen}
+                    open={certificateModalOpen}
+                    setOpen={setCertificateModalOpen}
                 />
             )}
         </>

@@ -19,11 +19,12 @@ const ApiClient = () => {
 
     instance.interceptors.response.use(
         (response) => {
-
+            console.log(response)
             return response.data.data;
         },
         (error) => {
-            return Promise.reject(error.message);
+            console.log("er", error.response.data.message)
+            return Promise.reject(error.response.data.message);
         }
     );
 

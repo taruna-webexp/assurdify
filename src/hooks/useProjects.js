@@ -10,6 +10,10 @@ export function useProjects() {
     const [currentOffset, setCurrentOffset] = useState(null);
     const [totalProjects, setTotalProjects] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [featureData, setFeatureData] = useState([]);
+    const [project, setSingleProject] = useState(null);
+    const [singleProjecterror, setSingleProjectError] = useState(null);
+    const [isSingleProjectLoading, setIsSingleProjectLoading] = useState(true);
 
     //Fetch all projects
     const fetchProjects = useCallback(async (offset = "") => {
@@ -26,7 +30,7 @@ export function useProjects() {
             setCurrentOffset(response.offset);
         } catch (error) {
             errorMsg(error);
-            console.error("Error fetching projects:", error);
+
         } finally {
             setLoading(false);
         }
@@ -48,18 +52,54 @@ export function useProjects() {
             setTotalProjects(response.records.length);
             setOffsetStack([]); // Reset offset stack on new filters
         } catch (error) {
-            console.error("Error fetching filtered projects:", error);
+            errorMsg(error);
         } finally {
             setLoading(false);
         }
     }, []);
 
+
+    // Featured Projects data fetch
+    const fetchFeatureData = async () => {
+        setLoading(true);
+        try {
+            const response = await projectService.getFeatureProject({
+                pageSize: 18,
+                featured: "Yes",
+            });
+            setFeatureData(response?.records);
+        } catch (error) {
+            errorMsg(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    //Signle Project detail data fetch
+
+    const fetchSingleProject = async (slug) => {
+        try {
+            const response = await projectService.getSingleProject({ slug });
+            response ? setSingleProject(response) : setSingleProjectError("NO RECORD FOUND");
+        } catch (error) {
+            errorMsg(error);
+            setSingleProjectError("NO RECORD FOUND");
+        } finally {
+            setIsSingleProjectLoading(false);
+        }
+    };
     return {
         projects,
         totalProjects,
         loading,
         currentOffset,
         offsetStack,
+        featureData,
+        project,
+        singleProjecterror,
+        isSingleProjectLoading,
+        fetchSingleProject,
+        fetchFeatureData,
         setOffsetStack,
         fetchProjects,
         fetchFilteredProjects,

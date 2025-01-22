@@ -8,38 +8,21 @@ import CountryTier from "../modal/CountryTier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "@/components/Sociallinks/SocialLinks";
+import { renderControlOver, renderVerifiedText } from "../varificationdetail/KycDetailData";
 
 export default function KycAccordion({ project }) {
     const [expanded, setExpanded] = useState(0);
-    // Accordin handle change
+
+    // kyc audit Accordin handle change
     const handleAccordionChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-    //verified text handler
-    const renderVerifiedText = () => {
-        const count = project?.verifiyMembersList?.length || 0;
-        const text = count === 1 ? "Team Member Verified" : "Team Members Verified";
-        return (
-            <Typography component="span" className="text-white">
-                <strong className="theme-color text-sm font-extrabold">{count}</strong> {text}
-            </Typography>
-        );
-    };
 
-    //handle render controlover
-    const renderControlOver = (controlOver) =>
-        controlOver?.length > 0
-            ? controlOver.map((item, idx) => (
-                <span key={idx} className="px-2 py-1 text-white rounded light-purple text-sm">
-                    {item}
-                </span>
-            ))
-            : <span className="px-2 py-1 text-white rounded light-purple text-sm">No Access</span>;
 
     return (
         <>
             <Grid item xs={12} className="verified-text">
-                {renderVerifiedText()}
+                {renderVerifiedText(project)}
             </Grid>
             {project?.verifiyMembersList?.map((verifiy, index) => (
                 <Accordion
@@ -59,18 +42,22 @@ export default function KycAccordion({ project }) {
                         >
                             {/* Verified Icon */}
                             <div className="flex justify-center sm:justify-start">
-                                <img src="/assets/verified-beg.png" className="w-8" alt="verified" />
+                                <img
+                                    src="/assets/verified-beg.png"
+                                    className="w-8"
+                                    alt="verified"
+                                />
                             </div>
 
                             {/* Text Section */}
-                            <div
-
-                                className="flex flex-col gap-1 text-center sm:text-left"
-                            >
+                            <div className="flex flex-col gap-1 text-center sm:text-left">
                                 <Typography className="theme-color !text-lg !leading-6 flex items-center gap-1">
                                     {verifiy.name || "N/A"}
                                     {project?.kycStatus === "Approved" && (
-                                        <FontAwesomeIcon className="text-lime-500" icon={faCircleCheck} />
+                                        <FontAwesomeIcon
+                                            className="text-lime-500"
+                                            icon={faCircleCheck}
+                                        />
                                     )}
                                 </Typography>
                                 <Typography className="text-white !text-sm !leading-4 block designation">
@@ -78,13 +65,14 @@ export default function KycAccordion({ project }) {
                                 </Typography>
                             </div>
                         </div>
-
                     </AccordionSummary>
 
                     <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                         <Typography className="text-white flex justify-between !text-sm !leading-4 items-center">
                             <span>Control Over:</span>
-                            <div className="gap-2 flex control-over-span">{renderControlOver(verifiy.controlOver)}</div>
+                            <div className="gap-2 flex control-over-span">
+                                {renderControlOver(verifiy.controlOver)}
+                            </div>
                         </Typography>
                     </AccordionDetails>
 
@@ -95,7 +83,11 @@ export default function KycAccordion({ project }) {
                                 <CountryTier />
                             </div>
                             <div className="font-bold flex items-center">
-                                <img src="/assets/Country_tier_icon.png" alt="country tier" width="24px" />
+                                <img
+                                    src="/assets/Country_tier_icon.png"
+                                    alt="country tier"
+                                    width="24px"
+                                />
                                 {verifiy.countryTier || "N/A"}
                             </div>
                         </Typography>

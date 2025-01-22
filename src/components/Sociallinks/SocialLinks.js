@@ -46,7 +46,7 @@ const SocialLinks = ({ verifiy }) => {
                         {idx < socials.length - 1 && " | "}
                     </span>
                 ))
-                : "No socials available"}
+                : <p className="text-sm">No socials available</p>}
         </>
     );
 };

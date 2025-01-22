@@ -5,25 +5,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import CircularLoader from "../loader/CircularLoader";
 import FeatureProjectCard from "./FeatureProjectCard";
+import { useProjects } from "@/hooks/useProjects";
 
-export default function UpperSection() {
-    const [featureData, setFeatureData] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    const fetchFeatureData = async () => {
-        setLoading(true);
-        try {
-            const response = await projectService.getFeatureProject({
-                pageSize: 18,
-                featured: "Yes",
-            });
-            setFeatureData(response.records);
-        } catch (error) {
-            console.log("error", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+export default function FeatureProject() {
+    const { loading, fetchFeatureData, featureData } = useProjects();
     useEffect(() => {
         fetchFeatureData();
     }, []);
@@ -61,8 +46,8 @@ export default function UpperSection() {
                             <Grid container justifyContent="center" className="my-5">
                                 <CircularLoader />
                             </Grid>
-                        ) : featureData.length > 0 ? (
-                            featureData.map((project, index) => (
+                        ) : featureData?.length > 0 ? (
+                            featureData?.map((project, index) => (
                                 <FeatureProjectCard key={index} project={project} />
                             ))
                         ) : (

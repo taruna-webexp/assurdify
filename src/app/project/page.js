@@ -5,9 +5,9 @@ import ProjectCards from "@/components/projects/ProjectCards";
 import ProjectPagination from "@/components/utility/ProjectPagination";
 import { useForm } from "react-hook-form";
 import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
-import UpperSection from "@/components/projects/UpperSection";
 import CircularLoader from "@/components/loader/CircularLoader";
 import { useProjects } from "@/hooks/useProjects";
+import FeatureProject from "@/components/projects/FeatureProject";
 
 export default function Explore() {
     const {
@@ -62,8 +62,8 @@ export default function Explore() {
 
     return (
         <div>
-            {/* Upper Section */}
-            <UpperSection />
+            {/* Feature Project Section */}
+            <FeatureProject />
             <div className="explore-project-container">
                 <h3 className="text-4xl !mt-8 font-normal text-3xl projects-heading text-center !leading-10">
                     Explore Over <b>1000</b> Projects
