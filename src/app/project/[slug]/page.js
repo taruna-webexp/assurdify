@@ -46,7 +46,7 @@ export default function SingleProject({ params }) {
     if (error) {
         return (
             <Grid container justifyContent="center" className="my-5">
-                <Typography variant="h6" color="text-white">
+                <Typography variant="h6" color="text-white" className="data-not-found">
                     {error}
                 </Typography>
             </Grid>

@@ -83,7 +83,7 @@ export default function Explore() {
                     {/* Default Response if No Projects Found */}
                     {projects.length === 0 ? (
                         <Grid container justifyContent="center" className="my-5">
-                            <Typography variant="h6" color="text-white">
+                            <Typography variant="h6" color="text-white" className="data-not-found">
                                 NO DATA FOUND
                             </Typography>
                         </Grid>

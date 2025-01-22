@@ -49,15 +49,21 @@ li {
     rgb(221 204 66 / 16%) 100%
   ) !important;
 }
+
 ::-webkit-scrollbar {
   /* display:none; */
 }
-
+.gradient-bg-sharp-feature {
+  background: #0a0724 !important;
+}
 .light-purple {
   background-color: #17162b !important;
 }
 .theme-color {
   color: #ddcc42 !important;
+}
+.projectName:hover {
+  color: #e7d33d !important;
 }
 .theme-yellow-bg {
   background: #ddcc42 !important;
@@ -71,6 +77,19 @@ li {
 .grey-color {
   color: #727272 !important;
 }
+.no-audit-button {
+  letter-spacing: 3px;
+  padding: 15px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 20px;
+  color: #1f1f3b;
+  text-transform: uppercase;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
 .grey-border {
   border-color: #2a2a2a !important;
 }
@@ -80,7 +99,9 @@ li {
 .text-red {
   color: #ff0000 !important;
 }
-
+.text-green {
+  color: #7ddc44 !important;
+}
 .card-verified-member .MuiBox-root {
   padding: 12px 12px 3px;
 }
@@ -195,6 +216,9 @@ li {
 }
 .social-icons svg {
   font-size: 19px;
+}
+.data-not-found {
+  letter-spacing: 4px !important;
 }
 
 .card-tabs .Mui-selected {

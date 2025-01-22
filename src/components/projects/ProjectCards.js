@@ -50,7 +50,7 @@ export default function ProjectCards({ data }) {
                                     )}
 
                                     <div>
-                                        <h6 className="text-white font-extrabold ">
+                                        <h6 className=" projectName text-white font-extrabold  ">
                                             {project.projectName}{" "}
                                         </h6>
                                         <div className="flex gap-2">
@@ -60,7 +60,7 @@ export default function ProjectCards({ data }) {
                                                     : ""
                                                     } `}
                                             </span>
-                                            <span className="text-slate-300 text-xs block flex gap-1">
+                                            <span className="text-slate-300 text-xs block flex gap-1 font-bold">
                                                 {project.kycStatus === "Approved" ? (
                                                     "KYC"
                                                 ) : project.auditStatus === "NotDetected" ||
@@ -69,8 +69,8 @@ export default function ProjectCards({ data }) {
                                                     ""
                                                 ) : (
                                                     <>
-                                                        <WarningAmberIcon className=" !text-sm text-red" />
-                                                        <span className="text-red">No KYC</span>
+                                                        <WarningAmberIcon className=" !text-sm text-red-600 font-bold" />
+                                                        <span className="text-red-600 font-bold">No KYC</span>
                                                     </>
                                                 )}
                                             </span>
@@ -124,7 +124,7 @@ export default function ProjectCards({ data }) {
                                     ""
                                 ) : project.auditStatus === "Completed" ? (
                                     <Typography
-                                        className="text-green-500 !font-semibold"
+                                        className="text-green !font-semibold"
                                         variant="body2"
                                     >
                                         Audited

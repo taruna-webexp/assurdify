@@ -7,14 +7,14 @@ const FeatureProjectCard = ({ project }) => {
     const descriptionText = description?.length > 260 ? `${description.substring(0, 260)}...` : description;
 
     return (
-        <Grid item xs={12} sm={6} md={6} className="featured-collunm">
+        <Grid item xs={12} sm={6} md={6} className="featured-collunm ">
             <Link href={`/project/${seoSlug}`}>
-                <Card className="theme-border-light gradient-bg-sharp !rounded-lg">
-                    <div className="flex justify-between p-3">
+                <Card className="theme-border-light gradient-bg-sharp-feature  !rounded-lg ">
+                    <div className="flex justify-between p-3 ">
                         <div className="flex items-center gap-1.5">
                             <img src={images?.[0]?.url} className="w-10 rounded-full  border-2" />
                             <div>
-                                <h6 className="text-white font-extrabold">{projectName}</h6>
+                                <h6 className="text-white font-extrabold projectName">{projectName}</h6>
                                 <span className="grey-color text-xs block">{lowerCaseTickerName?.toUpperCase()}</span>
                             </div>
                         </div>
@@ -36,7 +36,7 @@ const FeatureProjectCard = ({ project }) => {
                         <Typography variant="body2" className="text-white !font-medium">
                             {kycDate}
                         </Typography>
-                        <Typography variant="body2" className={`!font-semibold ${auditStatus === "Completed" ? 'text-green-500' : 'text-red-500'}`}>
+                        <Typography variant="body2" className={`!font-semibold ${auditStatus === "Completed" ? 'text-green' : 'text-red-600'}`}>
                             {auditStatus === "Completed" ? "Audited" : "Not Audited"}
                         </Typography>
                     </CardActions>

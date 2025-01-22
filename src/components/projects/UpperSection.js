@@ -55,7 +55,7 @@ export default function UpperSection() {
                     <Grid
                         container
                         maxWidth="lg"
-                        className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap featured-row"
+                        className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap featured-row "
                     >
                         {loading ? (
                             <Grid container justifyContent="center" className="my-5">

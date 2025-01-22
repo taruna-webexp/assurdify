@@ -11,6 +11,7 @@ export function useProjects() {
     const [totalProjects, setTotalProjects] = useState(0);
     const [loading, setLoading] = useState(false);
 
+    //Fetch all projects
     const fetchProjects = useCallback(async (offset = "") => {
         setLoading(true);
         try {
@@ -31,6 +32,7 @@ export function useProjects() {
         }
     }, []);
 
+    //Projects data desplay according to filter
     const fetchFilteredProjects = useCallback(async (filters) => {
         setLoading(true);
         try {

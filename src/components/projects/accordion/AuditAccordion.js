@@ -89,7 +89,7 @@ export default function AuditAccordion({ project }) {
                                         color="primary"
                                         onClick={() => window.open(report.githubReportLink, "_blank")}
                                     >
-                                        <FontAwesomeIcon icon={faLink} /> GitHub
+                                        <FontAwesomeIcon className="!text-sm" icon={faLink} /> GitHub
                                     </Button>
                                 </div>
                                 {report.initialAuditReport &&
@@ -100,7 +100,7 @@ export default function AuditAccordion({ project }) {
                                                 color="primary"
                                                 onClick={() => window.open(audit.url, "_blank")}
                                             >
-                                                <FontAwesomeIcon icon={faDownload} />
+                                                <FontAwesomeIcon className="!text-sm" icon={faDownload} />
                                                 {idx + 1}Initial Report
                                             </Button>
                                         </div>
@@ -113,7 +113,7 @@ export default function AuditAccordion({ project }) {
                                                 color="primary"
                                                 onClick={() => window.open(final.url, "_blank")}
                                             >
-                                                <FontAwesomeIcon icon={faDownload} />
+                                                <FontAwesomeIcon className="!text-sm" icon={faDownload} />
                                                 Final Report
                                             </Button>
                                         </div>
