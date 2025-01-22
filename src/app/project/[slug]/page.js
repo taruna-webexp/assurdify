@@ -91,7 +91,7 @@ export default function SingleProject({ params }) {
             return (
                 <p>
                     <span className="font-medium text-white">KYC date:</span> &nbsp;
-                    <span className="theme-color font-medium">
+                    <span className="theme-color ">
                         {format(new Date(project.kycDate), "MMMM do yyyy")}
                     </span>
                 </p>
@@ -115,7 +115,7 @@ export default function SingleProject({ params }) {
                     projects
                 </button>
             </div>
-            <div className="flex items-center justify-center py-6 bg-transparent card-section">
+            <div className="flex items-center justify-center pb-6 pt-1 bg-transparent card-section">
                 <div className="card-container relative m-auto w-full">
                     <div className="p-5 single-card bg-cover relative theme-border-light z-10">
                         <div className="space-y-6">

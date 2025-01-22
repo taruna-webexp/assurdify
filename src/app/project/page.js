@@ -65,7 +65,7 @@ export default function Explore() {
             {/* Upper Section */}
             <UpperSection />
             <div className="explore-project-container">
-                <h3 className="text-4xl !mt-14 font-normal text-3xl projects-heading text-center !leading-10">
+                <h3 className="text-4xl !mt-8 font-normal text-3xl projects-heading text-center !leading-10">
                     Explore Over <b>1000</b> Projects
                 </h3>
                 {/* Form Section */}

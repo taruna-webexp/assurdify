@@ -16,7 +16,7 @@ const SocialLinks = ({ verifiy }) => {
         }
         socials.push(
             <Link href={telegramLink} key="telegram" target="_blank" rel="noopener noreferrer" className="theme-color">
-                <FontAwesomeIcon className="!text-sm" icon={faTelegram} />
+                <FontAwesomeIcon className="!text-xl" icon={faTelegram} />
             </Link>
         );
     }

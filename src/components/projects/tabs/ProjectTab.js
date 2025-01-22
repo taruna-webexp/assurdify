@@ -81,15 +81,15 @@ export default function ProjectTab({ project }) {
             </CustomTabPanel>
 
             {/* Buttons under KYC tab */}
-            <div className="flex justify-between items-center card-buttons gap-3">
+            <div className="flex justify-between items-center card-buttons gap-3 x">
                 {value === 0 && (
                     <>
                         {/* Certificate Button */}
-                        {project?.kycCertificate && <Button onClick={handleCertificateModalOpen}>Certificate</Button>}
+                        {project?.kycCertificate && <Button className='button-under-kyc' onClick={handleCertificateModalOpen}>Certificate</Button>}
                         {/* NFT Button */}
                         {project?.nftUrl && (
                             <Link href={project.nftUrl} target="_blank">
-                                <Button variant="contained">NFT</Button>
+                                <Button className='button-under-kyc ' variant="contained">NFT</Button>
                             </Link>
                         )}
                     </>
