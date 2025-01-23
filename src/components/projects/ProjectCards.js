@@ -33,6 +33,8 @@ export default function ProjectCards({ data }) {
                                 ? "#"
                                 : `/project/${project.seoSlug}`
                         }
+
+                        title={project.seoSlug}
                     >
                         <Card className="light-yellow-border theme-bg">
                             <div className="flex justify-between p-3">
@@ -57,8 +59,8 @@ export default function ProjectCards({ data }) {
                                         <div className="flex gap-2">
                                             <span className="grey-color text-xs block">
                                                 {`${project.lowerCaseTickerName
-                                                        ? project.lowerCaseTickerName.toUpperCase()
-                                                        : ""
+                                                    ? project.lowerCaseTickerName.toUpperCase()
+                                                    : ""
                                                     } `}
                                             </span>
                                             <span className="text-slate-300 text-xs block flex gap-1 font-bold">

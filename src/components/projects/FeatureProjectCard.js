@@ -8,7 +8,7 @@ const FeatureProjectCard = ({ project }) => {
 
     return (
         <Grid item xs={12} sm={6} md={6} className="featured-collunm ">
-            <Link href={`/project/${seoSlug}`}>
+            <Link href={`/project/${seoSlug}`} title={seoSlug}>
                 <Card className="theme-border-light gradient-bg-sharp-feature  !rounded-lg ">
                     <div className="flex justify-between p-3 ">
                         <div className="flex items-center gap-1.5">

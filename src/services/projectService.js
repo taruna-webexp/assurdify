@@ -1,33 +1,11 @@
 import ApiClient from "./apiClient";
 
 const projectService = {
-    getAllProjects: ({ offset, pageSize, sortBy, sortOrder, version }) => {
+
+
+    getAllProjects: ({ ...data }) => {
         return ApiClient.get("/projects/list", {
-            params: {
-                offset,
-                pageSize,
-                sortBy,
-                sortOrder,
-                version,
-            },
-        });
-    },
-
-
-    getFilteredProjects: ({ offset, auditStatus, projectName, contractAddress, tickerName, pageSize, sortBy, sortOrder, kycStatus, }) => {
-        return ApiClient.get("/projects/list", {
-            params: {
-                kycStatus,
-                auditStatus,
-                projectName,
-                contractAddress,
-                tickerName,
-                offset,
-                pageSize,
-                sortBy,
-                sortOrder,
-
-            },
+            params: { ...data },
         });
     },
     getFeatureProject: ({ pageSize, featured }) => {

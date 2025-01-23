@@ -16,41 +16,19 @@ export function useProjects() {
     const [singleProjecterror, setSingleProjectError] = useState(null);
     const [isSingleProjectLoading, setIsSingleProjectLoading] = useState(true);
 
-    //Fetch all projects
-    const fetchProjects = useCallback(async (offset = "") => {
-        const now = dayjs();
-        const time = now.format('HH:mm:ss');
 
+    //Projects data desplay according to filter &Fetch all projects
+    const fetchProjects = useCallback(async (filters, offset = "") => {
+        const time = dayjs().format('HH:mm:ss');
         setLoading(true);
         try {
             const response = await projectService.getAllProjects({
-                offset,
+                ...filters,
                 pageSize: recordsPerPage,
+                offset,
                 sortBy: "kycDate",
                 sortOrder: "desc",
                 version: time,
-            });
-            setProjects(response.records);
-            setTotalProjects(response.records.length);
-            setCurrentOffset(response.offset);
-        } catch (error) {
-            errorMsg(error);
-
-        } finally {
-            setLoading(false);
-        }
-    }, []);
-
-    //Projects data desplay according to filter
-    const fetchFilteredProjects = useCallback(async (filters) => {
-        setLoading(true);
-        try {
-            const response = await projectService.getFilteredProjects({
-                ...filters,
-                pageSize: recordsPerPage,
-                offset: "",
-                sortBy: "kycDate",
-                sortOrder: "desc",
             });
             setProjects(response.records);
             setCurrentOffset(response.offset);
@@ -107,6 +85,5 @@ export function useProjects() {
         fetchFeatureData,
         setOffsetStack,
         fetchProjects,
-        fetchFilteredProjects,
     };
 }

@@ -19,7 +19,6 @@ export default function Explore() {
         offsetStack,
         setOffsetStack,
         fetchProjects,
-        fetchFilteredProjects,
     } = useProjects();
     const [page, setPage] = useState(1);
     const {
@@ -31,17 +30,18 @@ export default function Explore() {
     // Initial fetch
     useEffect(() => {
         fetchProjects();
+
     }, [fetchProjects]);
 
     // Pagination handler
     const handlePaginationPageChange = (event, value) => {
         if (value > page) {
             setOffsetStack([...offsetStack, currentOffset]);
-            fetchProjects(currentOffset);
+            fetchProjects("", currentOffset);
         } else if (value < page) {
             const prevOffset = offsetStack[offsetStack.length - 2];
             setOffsetStack(offsetStack.slice(0, -1));
-            fetchProjects(prevOffset);
+            fetchProjects("", prevOffset);
         }
         setPage(value);
     };
@@ -57,7 +57,7 @@ export default function Explore() {
             kycStatus:
                 data.projectKeyStatus === "allKYC" ? "" : data.projectKeyStatus,
         };
-        fetchFilteredProjects(filters);
+        fetchProjects(filters);
         setPage(1);
     };
 
@@ -65,7 +65,7 @@ export default function Explore() {
         <div>
             {/* Feature Project Section */}
             <FeatureProject />
-            <div className="explore-project-container">
+            <div id="target-section" className="explore-project-container ">
                 <h3 className="text-4xl !mt-8 font-normal text-3xl projects-heading text-center !leading-10">
                     Explore Over <b>1000</b> Projects
                 </h3>
