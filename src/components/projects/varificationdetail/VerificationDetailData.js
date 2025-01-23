@@ -31,7 +31,7 @@ export const renderSocialLinks = (project) => {
 
 //kyc info
 export const renderKYCInfo = (project) => {
-    if (project.auditDate) {
+    if (project?.auditDate) {
         return (
             <p>
                 <span className="font-medium text-white">Audit date:</span>&nbsp;
@@ -40,7 +40,7 @@ export const renderKYCInfo = (project) => {
                 </span>
             </p>
         );
-    } else if (project.kycStatus === "Approved") {
+    } else if (project?.kycStatus === "Approved") {
         return (
             <p>
                 <span className="font-medium text-white">KYC date:</span> &nbsp;

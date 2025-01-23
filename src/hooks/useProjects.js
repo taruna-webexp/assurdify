@@ -2,6 +2,7 @@
 import { useState, useCallback } from "react";
 import projectService from "@/services/projectService";
 import { errorMsg } from "@/components/toaster/msg/toaster";
+import dayjs from 'dayjs';
 const recordsPerPage = 18;
 
 export function useProjects() {
@@ -17,6 +18,9 @@ export function useProjects() {
 
     //Fetch all projects
     const fetchProjects = useCallback(async (offset = "") => {
+        const now = dayjs();
+        const time = now.format('HH:mm:ss');
+
         setLoading(true);
         try {
             const response = await projectService.getAllProjects({
@@ -24,6 +28,7 @@ export function useProjects() {
                 pageSize: recordsPerPage,
                 sortBy: "kycDate",
                 sortOrder: "desc",
+                version: time,
             });
             setProjects(response.records);
             setTotalProjects(response.records.length);

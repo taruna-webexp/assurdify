@@ -6,8 +6,9 @@ import {
     Typography,
     CardActions,
 } from "@mui/material";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProjectCards({ data }) {
     return (
@@ -56,8 +57,8 @@ export default function ProjectCards({ data }) {
                                         <div className="flex gap-2">
                                             <span className="grey-color text-xs block">
                                                 {`${project.lowerCaseTickerName
-                                                    ? project.lowerCaseTickerName.toUpperCase()
-                                                    : ""
+                                                        ? project.lowerCaseTickerName.toUpperCase()
+                                                        : ""
                                                     } `}
                                             </span>
                                             <span className="text-slate-300 text-xs block flex gap-1 font-bold">
@@ -69,8 +70,13 @@ export default function ProjectCards({ data }) {
                                                     ""
                                                 ) : (
                                                     <>
-                                                        <WarningAmberIcon className=" !text-sm text-red-600 font-bold" />
-                                                        <span className="text-red-600 font-bold">No KYC</span>
+                                                        <FontAwesomeIcon
+                                                            className=" !text-sm text-red-600 font-semibold"
+                                                            icon={faTriangleExclamation}
+                                                        />
+                                                        <span className="text-red-600 font-bold">
+                                                            No KYC
+                                                        </span>
                                                     </>
                                                 )}
                                             </span>

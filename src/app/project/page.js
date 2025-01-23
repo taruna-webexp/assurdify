@@ -8,6 +8,7 @@ import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
 import CircularLoader from "@/components/loader/CircularLoader";
 import { useProjects } from "@/hooks/useProjects";
 import FeatureProject from "@/components/projects/FeatureProject";
+import ProjectSkeleton from "@/components/skeleton/ProjectsSkeleton";
 
 export default function Explore() {
     const {
@@ -75,9 +76,7 @@ export default function Explore() {
             </div>
             {/* Loading or Projects */}
             {loading ? (
-                <Grid container justifyContent="center" className="my-5">
-                    <CircularLoader />
-                </Grid>
+                <ProjectSkeleton type="Explore" />
             ) : (
                 <>
                     {/* Default Response if No Projects Found */}

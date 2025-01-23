@@ -12,6 +12,7 @@ import {
     renderSocialLinks,
 } from "@/components/projects/varificationdetail/VerificationDetailData";
 import { useProjects } from "@/hooks/useProjects";
+import DeatailSkeleton from "@/components/skeleton/DeatailSkeleton";
 
 export default function SingleProject({ params }) {
     const { slug } = use(params);
@@ -31,13 +32,6 @@ export default function SingleProject({ params }) {
         fetchDeatailsData();
     }, [slug]);
 
-    if (isSingleProjectLoading) {
-        return (
-            <div className="flex items-center justify-center h-screen">
-                <CircularLoader />
-            </div>
-        );
-    }
     if (singleProjecterror) {
         return (
             <Grid container justifyContent="center" className="my-5">
@@ -65,57 +59,59 @@ export default function SingleProject({ params }) {
                     projects
                 </button>
             </div>
-            <div className="flex items-center justify-center pb-6 pt-1 bg-transparent card-section">
-                <div className="card-container relative m-auto w-full">
-                    <div className="p-5 single-card bg-cover relative theme-border-light z-10">
-                        <div className="space-y-6">
-                            <div className="flex items-center cart-title">
-                                <img
-                                    src={
-                                        project?.images?.[0]?.url ||
-                                        "/assets/no-image-available.png"
-                                    }
-                                    width="10%"
-                                    className="border-4 w-14 h-14 rounded-full"
-                                />
-                                <div className="pl-3">
-                                    <h2 className="font-extrabold text-2xl text-white card-heading">
-                                        {project.projectName}
-                                    </h2>
-                                    <span className="text-lg leading-5 grey-color">
-                                        {project.lowerCaseTickerName?.toUpperCase() || ""}
-                                    </span>
+            {isSingleProjectLoading ? <DeatailSkeleton /> :
+
+                <div className="flex items-center justify-center pb-6 pt-1 bg-transparent card-section">
+                    <div className="card-container relative m-auto w-full">
+                        <div className="p-5 single-card bg-cover relative theme-border-light z-10">
+                            <div className="space-y-6">
+                                <div className="flex items-center cart-title">
+                                    <img
+                                        src={
+                                            project?.images?.[0]?.url ||
+                                            "/assets/no-image-available.png"
+                                        }
+                                        width="10%"
+                                        className="border-4 w-14 h-14 rounded-full"
+                                    />
+                                    <div className="pl-3">
+                                        <h2 className="font-extrabold text-2xl text-white card-heading">
+                                            {project?.projectName}
+                                        </h2>
+                                        <span className="text-lg leading-5 grey-color">
+                                            {project?.lowerCaseTickerName?.toUpperCase() || ""}
+                                        </span>
+                                    </div>
+                                    {project?.kycStatus === "Approved" && (
+                                        <span className="absolute badge top-0 right-6">
+                                            <img
+                                                onClick={handleCertificateModalOpen}
+                                                src="/assets/Profile_badge.png"
+                                                width="10%"
+                                                className="w-24 cursor-pointer"
+                                            />
+                                        </span>
+                                    )}
                                 </div>
-                                {project.kycStatus === "Approved" && (
-                                    <span className="absolute badge top-0 right-6">
-                                        <img
-                                            onClick={handleCertificateModalOpen}
-                                            src="/assets/Profile_badge.png"
-                                            width="10%"
-                                            className="w-24 cursor-pointer"
-                                        />
-                                    </span>
-                                )}
+
+                                <p className="text-sm text-white mt-5 leading-relaxed tracking-normal sub-text font-light">
+                                    {project?.description}
+                                </p>
+
+                                <div className="flex justify-between items-center social-date mt-3">
+                                    <div className="social-icons flex gap-2">
+                                        {renderSocialLinks(project)}
+                                    </div>
+                                    <div className="text-sm text-gray-600 date">
+                                        {renderKYCInfo(project)}
+                                    </div>
+                                </div>
+
+                                <ProjectTab project={project} />
                             </div>
-
-                            <p className="text-sm text-white mt-5 leading-relaxed tracking-normal sub-text font-light">
-                                {project.description}
-                            </p>
-
-                            <div className="flex justify-between items-center social-date mt-3">
-                                <div className="social-icons flex gap-2">
-                                    {renderSocialLinks(project)}
-                                </div>
-                                <div className="text-sm text-gray-600 date">
-                                    {renderKYCInfo(project)}
-                                </div>
-                            </div>
-
-                            <ProjectTab project={project} />
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>}
             {certificateModalOpen && (
                 <CertificateModal
                     img={project.kycCertificate}

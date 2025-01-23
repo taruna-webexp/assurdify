@@ -1,13 +1,14 @@
 import ApiClient from "./apiClient";
 
 const projectService = {
-    getAllProjects: ({ offset, pageSize, sortBy, sortOrder }) => {
+    getAllProjects: ({ offset, pageSize, sortBy, sortOrder, version }) => {
         return ApiClient.get("/projects/list", {
             params: {
                 offset,
                 pageSize,
                 sortBy,
                 sortOrder,
+                version,
             },
         });
     },

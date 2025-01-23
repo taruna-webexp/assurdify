@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import CircularLoader from "../loader/CircularLoader";
 import FeatureProjectCard from "./FeatureProjectCard";
 import { useProjects } from "@/hooks/useProjects";
+import ProjectSkeleton from "@/components/skeleton/FeatureSkeleton";
 
 export default function FeatureProject() {
     const { loading, fetchFeatureData, featureData } = useProjects();
@@ -22,7 +23,7 @@ export default function FeatureProject() {
                     </h2>
                     <p className="text-lg leading-6 font-light mb-8 sub-text">
                         Our network of verified projects boasts some of
-                        <br /> the Web3 industry's top talent with a combined
+                        <br /> the Web3 industry&#39;s top talent with a combined
                         <br /> market cap of $1.6 Billion
                     </p>
                     <Link
@@ -43,8 +44,12 @@ export default function FeatureProject() {
                         className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap featured-row "
                     >
                         {loading ? (
-                            <Grid container justifyContent="center" className="my-5">
-                                <CircularLoader />
+                            <Grid
+                                container
+                                maxWidth="lg"
+                                className="projectForm !p-0 md:px-8 gap-6 !flex-nowrap featured-row "
+                            >
+                                <ProjectSkeleton />
                             </Grid>
                         ) : featureData?.length > 0 ? (
                             featureData?.map((project, index) => (
