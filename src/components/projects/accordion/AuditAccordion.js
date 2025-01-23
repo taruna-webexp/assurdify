@@ -68,7 +68,7 @@ export default function AuditAccordion({ project }) {
                             <div className="grey-border border p-3 rounded-lg mb-2">
                                 <Typography variant="body2" className="flex justify-between items-center">
                                     <strong className="text-sm font-normal">Description:</strong>
-                                    <span className="italic grey-color">
+                                    <span className="italic text-white ">
                                         {report.auditDescription ? report.auditDescription : "-------"}
                                     </span>
                                 </Typography>
