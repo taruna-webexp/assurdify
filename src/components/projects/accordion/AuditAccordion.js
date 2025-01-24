@@ -97,18 +97,17 @@ export default function AuditAccordion({ project }) {
                                         </div>
                                     ))}
                                 {report.finalAuditReport &&
-                                    report.finalAuditReport.map((final, idx) => (
-                                        <div key={final.url}>
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                onClick={() => window.open(final.url, "_blank")}
-                                            >
-                                                <FontAwesomeIcon className="!text-sm" icon={faDownload} />
-                                                Final Report
-                                            </Button>
-                                        </div>
-                                    ))}
+                                    <div>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={() => window.open(report.finalAuditReport[0].url, "_blank")}
+                                        >
+                                            <FontAwesomeIcon className="!text-sm" icon={faDownload} />
+                                            Final Report
+                                        </Button>
+                                    </div>
+                                }
                             </div>
                         </div>
                     );

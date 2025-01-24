@@ -44,6 +44,7 @@ export default function SingleProject({ params }) {
 
     //certificate model open handler
     const handleCertificateModalOpen = () => setCertificateModalOpen(true);
+    console.log("project", project);
 
     return (
         <>
@@ -82,7 +83,7 @@ export default function SingleProject({ params }) {
                                             {project?.lowerCaseTickerName?.toUpperCase() || ""}
                                         </span>
                                     </div>
-                                    {project?.kycStatus === "Approved" && (
+                                    {project?.kycCertificate && (
                                         <span className="absolute badge top-0 right-6">
                                             <img
                                                 onClick={handleCertificateModalOpen}
