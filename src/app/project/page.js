@@ -5,7 +5,6 @@ import ProjectCards from "@/components/projects/ProjectCards";
 import ProjectPagination from "@/components/utility/ProjectPagination";
 import { useForm } from "react-hook-form";
 import ProjectFilterForm from "@/components/projects/form/ProjectFilterForm";
-import CircularLoader from "@/components/loader/CircularLoader";
 import { useProjects } from "@/hooks/useProjects";
 import FeatureProject from "@/components/projects/FeatureProject";
 import ProjectSkeleton from "@/components/skeleton/ProjectsSkeleton";

@@ -4,7 +4,9 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from '@mui/material';
 
-export default function ProjectPagination({ count, page, onChange }) {
+export default function ProjectPagination({ count, page, onChange, currentOffset }) {
+    console.log("currentOffset", currentOffset);
+
     // Function to scroll to the top
     const handleScroll = () => {
         // Get the target element by its ID and scroll to it
