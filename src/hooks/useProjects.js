@@ -15,22 +15,49 @@ export function useProjects() {
     const [project, setSingleProject] = useState(null);
     const [singleProjecterror, setSingleProjectError] = useState(null);
     const [isSingleProjectLoading, setIsSingleProjectLoading] = useState(true);
+    const now = dayjs();
+    const time = now.format('HH:mm:ss');
+    //Fetch all projects
+    const fetchProjects = useCallback(async (offset = "") => {
 
 
-    //Projects data desplay according to filter &Fetch all projects
-    const fetchProjects = useCallback(async (filters, offset = "") => {
-        const time = dayjs().format('HH:mm:ss');
         setLoading(true);
         try {
             const response = await projectService.getAllProjects({
+                offset,
+                pageSize: recordsPerPage,
+                sortBy: "kycDate",
+                sortOrder: "desc",
+                version: time,
+
+            });
+            setProjects(response.records);
+            setTotalProjects(response.records.length);
+            setCurrentOffset(response.offset);
+        } catch (error) {
+            errorMsg(error);
+
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    //Projects data desplay according to filter
+    const fetchFilteredProjects = useCallback(async (filters) => {
+        console.log("filters");
+
+        setLoading(true);
+        try {
+            const response = await projectService.getFilteredProjects({
                 ...filters,
                 pageSize: recordsPerPage,
-                offset,
+                offset: "",
                 sortBy: "kycDate",
                 sortOrder: "desc",
                 version: time,
             });
             setProjects(response.records);
+            setCurrentOffset(response.offset);
             setCurrentOffset(response.offset);
             setTotalProjects(response.records.length);
             setOffsetStack([]); // Reset offset stack on new filters
@@ -85,5 +112,6 @@ export function useProjects() {
         fetchFeatureData,
         setOffsetStack,
         fetchProjects,
+        fetchFilteredProjects,
     };
 }

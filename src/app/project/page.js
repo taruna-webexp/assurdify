@@ -10,6 +10,7 @@ import { useProjects } from "@/hooks/useProjects";
 import FeatureProject from "@/components/projects/FeatureProject";
 import ProjectSkeleton from "@/components/skeleton/ProjectsSkeleton";
 
+
 export default function Explore() {
     const {
         projects,
@@ -19,6 +20,7 @@ export default function Explore() {
         offsetStack,
         setOffsetStack,
         fetchProjects,
+        fetchFilteredProjects,
     } = useProjects();
     const [page, setPage] = useState(1);
     const {
@@ -30,18 +32,17 @@ export default function Explore() {
     // Initial fetch
     useEffect(() => {
         fetchProjects();
-
     }, [fetchProjects]);
 
     // Pagination handler
     const handlePaginationPageChange = (event, value) => {
         if (value > page) {
             setOffsetStack([...offsetStack, currentOffset]);
-            fetchProjects("", currentOffset);
+            fetchProjects(currentOffset);
         } else if (value < page) {
             const prevOffset = offsetStack[offsetStack.length - 2];
             setOffsetStack(offsetStack.slice(0, -1));
-            fetchProjects("", prevOffset);
+            fetchProjects(prevOffset);
         }
         setPage(value);
     };
@@ -57,7 +58,7 @@ export default function Explore() {
             kycStatus:
                 data.projectKeyStatus === "allKYC" ? "" : data.projectKeyStatus,
         };
-        fetchProjects(filters);
+        fetchFilteredProjects(filters);
         setPage(1);
     };
 
@@ -107,6 +108,7 @@ export default function Explore() {
                                 <ProjectPagination
                                     count={totalProjects}
                                     page={page}
+                                    currentOffset={currentOffset}
                                     onChange={handlePaginationPageChange}
                                 />
                             </Grid>
