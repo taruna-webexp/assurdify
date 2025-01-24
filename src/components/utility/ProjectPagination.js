@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from '@mui/material';
@@ -9,7 +8,6 @@ export default function ProjectPagination({ count, page, onChange, currentOffset
 
     // Function to scroll to the top
     const handleScroll = () => {
-        // Get the target element by its ID and scroll to it
         const targetElement = document.getElementById('target-section');
         if (targetElement) {
             targetElement.scrollIntoView({
@@ -29,7 +27,8 @@ export default function ProjectPagination({ count, page, onChange, currentOffset
             }}
             color="primary"
             renderItem={(item) => {
-                console.log("pagination", item);
+                // Conditional rendering based on offset and page
+
 
                 // Render "Previous" button if not on the first page
                 if (item.type === 'previous' && page > 1) {
@@ -49,8 +48,8 @@ export default function ProjectPagination({ count, page, onChange, currentOffset
                     );
                 }
 
-                // Render "Next" button if not on the last page
-                if (item.type === 'next' && page < count) {
+                // Render "Next" button if offset is valid (not empty or null)
+                if (item.type === 'next' && currentOffset) {
                     return (
                         <button
                             onClick={() => {
@@ -65,6 +64,11 @@ export default function ProjectPagination({ count, page, onChange, currentOffset
                             Next <FontAwesomeIcon icon={faChevronRight} />
                         </button>
                     );
+                }
+
+                // If on the last page (offset is empty), hide "Next" button
+                if (item.type === 'next' && !currentOffset) {
+                    return null;
                 }
 
                 // Render null for other pagination types
