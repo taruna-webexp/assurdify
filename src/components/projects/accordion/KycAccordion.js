@@ -32,7 +32,7 @@ export default function KycAccordion({ project }) {
                     className="theme-bg grey-border border !rounded-md !my-2 "
                 >
                     <AccordionSummary
-                        className="grey-border gap-1 !border-b !border-solid !min-h-px accordian-header !p-3"
+                        className="grey-border gap-1  !border-solid !min-h-px accordian-header !p-3"
                         expandIcon={<FontAwesomeIcon icon={faCaretDown} />}
                     >
                         <div
@@ -50,7 +50,7 @@ export default function KycAccordion({ project }) {
                             </div>
 
                             {/* Text Section */}
-                            <div className="flex flex-col gap-1 text-center sm:text-left">
+                            <div className="flex flex-col gap-1 text-left sm:text-left">
                                 <Typography className="theme-color !text-lg !leading-6 flex items-center gap-1">
                                     {verifiy.name || "N/A"}
                                     {project?.kycStatus === "Approved" && (
@@ -67,7 +67,7 @@ export default function KycAccordion({ project }) {
                         </div>
                     </AccordionSummary>
 
-                    <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
+                    <AccordionDetails className="grey-border !border-t !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
                         <Typography className="text-white flex justify-between !text-sm !leading-4 items-center">
                             <span>Control Over:</span>
                             <div className="gap-2 flex control-over-span">

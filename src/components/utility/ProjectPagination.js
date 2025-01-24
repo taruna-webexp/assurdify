@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination } from '@mui/material';
 
 export default function ProjectPagination({ count, page, onChange, currentOffset }) {
-    console.log("currentOffset", currentOffset);
 
     // Function to scroll to the top
     const handleScroll = () => {
@@ -23,13 +22,10 @@ export default function ProjectPagination({ count, page, onChange, currentOffset
             page={page}
             onChange={(event, value) => {
                 onChange(event, value); // Handle page change
-                handleScroll(); // Scroll to the top after page change
+                handleScroll();
             }}
             color="primary"
             renderItem={(item) => {
-                // Conditional rendering based on offset and page
-
-
                 // Render "Previous" button if not on the first page
                 if (item.type === 'previous' && page > 1) {
                     return (

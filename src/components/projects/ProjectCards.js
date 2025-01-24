@@ -9,7 +9,8 @@ import {
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-
+import { BadgeImage } from "./BadgeImage";
+import { AuditStatusBadge } from "@/components/projects/AuditStatusBadge"
 export default function ProjectCards({ data }) {
     return (
         <Grid
@@ -38,20 +39,11 @@ export default function ProjectCards({ data }) {
                     >
                         <Card className="light-yellow-border theme-bg">
                             <div className="flex justify-between p-3">
-                                <div className="flex items-center gap-1.5">
-                                    {project.images ? (
-                                        <img
-                                            src={project.images?.[0]?.url}
-                                            className="w-10 rounded-full h-10 object-cover border-2"
-                                        />
-                                    ) : (
-                                        <img
-                                            src="/assets/no-image-available.png"
-                                            alt="no-image-available"
-                                            className="w-10 rounded-full h-10 object-cover  border-2"
-                                        ></img>
-                                    )}
-
+                                <div className="flex items-center gap-1.5 card-top-title">
+                                    <img
+                                        src={project.images ? project.images?.[0]?.url : "/assets/no-image-available.png"}
+                                        className="w-10 rounded-full h-10 object-cover border-2"
+                                    />
                                     <div>
                                         <h6 className=" projectName text-white font-extrabold  ">
                                             {project.projectName}{" "}
@@ -63,6 +55,7 @@ export default function ProjectCards({ data }) {
                                                     : ""
                                                     } `}
                                             </span>
+                                            {/* kyc Status text */}
                                             <span className="text-slate-300 text-xs block flex gap-1 font-bold">
                                                 {project.kycStatus === "Approved" ? (
                                                     "KYC"
@@ -86,22 +79,11 @@ export default function ProjectCards({ data }) {
                                     </div>
                                 </div>
                                 {/* verified img or rejected */}
-                                <div className="flex items-center justify-end gap-1.5">
-                                    {project.kycStatus === "Approved" ? (
-                                        <img src="/assets/verified-beg.png" alt="Verified Badge" />
-                                    ) : project.auditStatus === "NotDetected" &&
-                                        project.kycStatus === "Rejected" ? (
-                                        <img
-                                            src="/assets/rejected-image.png"
-                                            className="max-w-20"
-                                            alt="Rejected Badge"
-                                        />
-                                    ) : project.auditStatus === "Completed" &&
-                                        project.kycStatus === "Rejected" ? (
-                                        <img src="/assets/verified-beg.png" alt="Verified Badge" />
-                                    ) : (
-                                        ""
-                                    )}
+                                <div className="flex items-center justify-end gap-1.5 card-top-badge relative">
+                                    <BadgeImage
+                                        kycStatus={project?.kycStatus}
+                                        auditStatus={project?.auditStatus}
+                                    />
                                     <span className="font-bold text-white">
                                         {project?.verifiedMembers?.length > 0
                                             ? project?.verifiedMembers?.length
@@ -127,27 +109,11 @@ export default function ProjectCards({ data }) {
                                 <Typography variant="body2" className="text-white">
                                     {project.kycDate}
                                 </Typography>
-                                {project.auditStatus === "Completed" &&
-                                    project.kycStatus === "Rejected" ? (
-                                    ""
-                                ) : project.auditStatus === "Completed" ? (
-                                    <Typography
-                                        className="text-green !font-semibold"
-                                        variant="body2"
-                                    >
-                                        Audited
-                                    </Typography>
-                                ) : project.auditStatus === "NotDetected" &&
-                                    project.kycStatus === "Approved" ? (
-                                    <Typography
-                                        className="text-red !font-semibold"
-                                        variant="body2"
-                                    >
-                                        Not Audited
-                                    </Typography>
-                                ) : (
-                                    ""
-                                )}
+                                {/*  AuditStatus  */}
+                                <AuditStatusBadge
+                                    auditStatus={project.auditStatus}
+                                    kycStatus={project.kycStatus}
+                                />
                             </CardActions>
                         </Card>
                     </Link>

@@ -100,8 +100,8 @@ export default function ProjectTab({ project }) {
                 {project?.auditStatus === "Completed" ? (
                     <AuditAccordion project={project} />
                 ) : (
-                    <div className="text-center min-h-60 pt-16">
-                        <p className="mb-7 text-red text-lg">No Assure Defi Code Audit Detected</p>
+                    <div className="text-center min-h-80 pt-16">
+                        <p className="mb-5 text-red text-lg">No Assure Defi Code Audit Detected</p>
                         <Link href="https://www.assuredefi.com/code-audit" target="_blank" className="theme-yellow-bg text-black  no-audit-button">
                             Get One Here
                         </Link>

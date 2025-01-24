@@ -19,9 +19,10 @@ export default function Explore() {
         offsetStack,
         setOffsetStack,
         fetchProjects,
-        fetchFilteredProjects,
     } = useProjects();
     const [page, setPage] = useState(1);
+    const [filter, setFilter] = useState('');
+
     const {
         control,
         handleSubmit,
@@ -30,18 +31,19 @@ export default function Explore() {
 
     // Initial fetch
     useEffect(() => {
-        fetchProjects();
-    }, [fetchProjects]);
+        fetchProjects(filter);
+    }, [filter, fetchProjects]);
 
     // Pagination handler
     const handlePaginationPageChange = (event, value) => {
         if (value > page) {
             setOffsetStack([...offsetStack, currentOffset]);
-            fetchProjects(currentOffset);
+            fetchProjects(filter, currentOffset);
         } else if (value < page) {
             const prevOffset = offsetStack[offsetStack.length - 2];
             setOffsetStack(offsetStack.slice(0, -1));
-            fetchProjects(prevOffset);
+            fetchProjects(filter, prevOffset);
+
         }
         setPage(value);
     };
@@ -52,12 +54,13 @@ export default function Explore() {
         const filters = {
             ...rest,
             [projectbySearch]: projectSearch,
-            auditStatus:
-                data.projectAditStatus === "allAudit" ? "" : data.projectAditStatus,
-            kycStatus:
-                data.projectKeyStatus === "allKYC" ? "" : data.projectKeyStatus,
+            auditStatus: data.projectAditStatus === "allAudit" ? "" : data.projectAditStatus,
+            kycStatus: data.projectKeyStatus === "allKYC" ? "" : data.projectKeyStatus,
+
         };
-        fetchFilteredProjects(filters);
+        setFilter(filters)
+        fetchProjects(filters);
+        setOffsetStack("");
         setPage(1);
     };
 

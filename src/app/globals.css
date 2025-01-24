@@ -28,6 +28,9 @@ li {
 .gradient-bg {
   background: linear-gradient(to right, #5e5521, #d1b933) !important;
 }
+.gradient-bg:hover {
+  opacity: 0.9;
+}
 .theme-border {
   border: 1px solid #d1b933 !important;
 }
@@ -79,16 +82,13 @@ li {
 }
 .no-audit-button {
   letter-spacing: 3px;
-  padding: 15px 20px;
+  padding: 17px 28px;
   font-weight: 700;
   font-size: 14px;
   border-radius: 20px;
   color: #1f1f3b;
   text-transform: uppercase;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  display: inline-block;
 }
 .grey-border {
   border-color: #2a2a2a !important;
@@ -151,6 +151,9 @@ li {
   width: 214.58px;
   margin-top: 0 !important;
 }
+.main-navigation .kyc-button:hover{
+  opacity: 0.9;
+}
 .dropdown-buttton svg {
   width: 13px;
   margin: 0 6px 0 2px;
@@ -162,7 +165,7 @@ li {
 }
 .project-search-form input,
 .project-search-form .MuiSelect-select {
-  border: 1px solid #3b3b3b;
+  border: 1px solid #3b3b3b !important;
   padding: 12px 10px 8px;
   border-radius: 4px;
   color: #fff;
@@ -239,6 +242,11 @@ li {
     rgba(10, 9, 35, 1) 0%,
     rgb(76 71 164 / 67%) 100%
   );
+  color: #fff !important;
+}
+.card-tabs button:hover {
+  /* border: 1px solid #2a2857; */
+  background: linear-gradient(45deg, #0a0923 0%, #4c47a4ab 100%);
   color: #fff !important;
 }
 .card-tabs .MuiTabs-flexContainer {
@@ -448,22 +456,22 @@ li {
   content: "";
   background: #d4c440;
   position: absolute;
-  top: 260px;
+  top: 180px;
   width: 737px;
-  height: 517px;
+  height: 390px;
   opacity: 0.4;
-  filter: blur(150px);
+  filter: blur(120px);
   left: -730px;
 }
 .verified-project-section:after {
   content: "";
   background: #d4c440;
   position: absolute;
-  top: 260px;
+  top: 180px;
   width: 737px;
-  height: 517px;
+  height: 390px;
   opacity: 0.4;
-  filter: blur(150px);
+  filter: blur(120px);
   right: -730px;
 }
 
@@ -491,6 +499,7 @@ li {
   max-height: 72px;
 }
 .verified-project-section {
+  position: relative;
   overflow: hidden;
 }
 .project-search-form {
@@ -525,6 +534,8 @@ li {
 .card-section {
   padding-left: 15px;
   padding-right: 15px;
+  overflow: hidden;
+  position: relative;
 }
 .accordian-header span.MuiTypography-root svg {
   margin-left: 2px;
@@ -554,6 +565,39 @@ li {
 .contry-tier-modal .MuiModal-backdrop {
   display: none;
 }
+.card-top-title {
+  width: calc(100% - 70px);
+}
+.card-top-title h6 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.single-card-title {
+  width: calc(100% - 105px);
+  align-items: center;
+}
+.single-card-title .card-heading {
+  word-break: break-all;
+}
+.card-top-badge .rejected-img {
+  position: absolute;
+  top: -6px;
+  right: 0;
+}
+
+.control-over-span span {
+  letter-spacing: 0;
+}
+.accordian-list span, .accordian-list p {
+    letter-spacing: 0;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
 
 @media (max-width: 1250px) {
   .main-navigation button {
@@ -799,7 +843,7 @@ li {
     gap: 3px;
   }
   .accordian-list {
-    padding-left: 10px !important;
+    padding-left: 8px !important;
   }
   .accordian-header {
     padding: 8px 8px 8px 10px !important;
@@ -847,4 +891,7 @@ li {
   .footer {
     padding: 20px 30px 0;
   }
+  .single-card-title {
+    width: calc(100% - 75px);
+}
 }

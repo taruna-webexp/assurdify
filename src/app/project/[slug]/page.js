@@ -3,10 +3,8 @@
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Grid, Typography } from "@mui/material";
-import CircularLoader from "@/components/loader/CircularLoader";
 import ProjectTab from "@/components/projects/tabs/ProjectTab";
 import CertificateModal from "@/components/projects/modal/CertificateModal";
-import projectService from "@/services/projectService";
 import {
     renderKYCInfo,
     renderSocialLinks,
@@ -44,7 +42,6 @@ export default function SingleProject({ params }) {
 
     //certificate model open handler
     const handleCertificateModalOpen = () => setCertificateModalOpen(true);
-    console.log("project", project);
 
     return (
         <>
@@ -67,21 +64,23 @@ export default function SingleProject({ params }) {
                         <div className="p-5 single-card bg-cover relative theme-border-light z-10">
                             <div className="space-y-6">
                                 <div className="flex items-center cart-title">
-                                    <img
-                                        src={
-                                            project?.images?.[0]?.url ||
-                                            "/assets/no-image-available.png"
-                                        }
-                                        width="10%"
-                                        className="border-4 w-14 h-14 rounded-full"
-                                    />
-                                    <div className="pl-3">
-                                        <h2 className="font-extrabold text-2xl text-white card-heading">
-                                            {project?.projectName}
-                                        </h2>
-                                        <span className="text-lg leading-5 grey-color">
-                                            {project?.lowerCaseTickerName?.toUpperCase() || ""}
-                                        </span>
+                                    <div className="flex single-card-title">
+                                        <img
+                                            src={
+                                                project?.images?.[0]?.url ||
+                                                "/assets/no-image-available.png"
+                                            }
+                                            width="10%"
+                                            className="border-4 w-14 h-14 min-w-14 rounded-full"
+                                        />
+                                        <div className="pl-3">
+                                            <h2 className="font-extrabold text-2xl text-white card-heading">
+                                                {project?.projectName}
+                                            </h2>
+                                            <span className="text-lg leading-5 grey-color">
+                                                {project?.lowerCaseTickerName?.toUpperCase() || ""}
+                                            </span>
+                                        </div>
                                     </div>
                                     {project?.kycCertificate && (
                                         <span className="absolute badge top-0 right-6">
