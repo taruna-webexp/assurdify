@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import React from "react";
 
 export default function ContractAdress({ project, index }) {
-  console.log("dataaaaaaaaaaaaaaaaa", project);
   const [copiedIndex, setCopiedIndex] = React.useState(null);
 
   //COPY CONTRACT ADDRESS HANDLER
