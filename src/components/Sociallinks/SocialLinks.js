@@ -12,13 +12,11 @@ const SocialLinks = ({ verifiy }) => {
 
   // Telegram
   if (verifiy?.telegram?.trim() && verifiy?.telegramHandle?.trim() !== "N/A") {
-    let telegramLink = verifiy?.telegram?.startsWith("https://")
+    // Handle Telegram link generation dynamically
+    let telegramLink = verifiy.telegram.startsWith("https://")
       ? verifiy.telegram
       : `https://${verifiy.telegram}`;
-    if (telegramLink?.includes("t.me/") && !telegramLink.includes("@")) {
-      const parts = telegramLink.split("t.me/");
-      telegramLink = `${parts[0]}t.me/@${parts[1]}`;
-    }
+
     socials.push(
       <Link
         href={telegramLink}
@@ -26,6 +24,7 @@ const SocialLinks = ({ verifiy }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="theme-color"
+        aria-label="Telegram"
       >
         <FontAwesomeIcon className="!text-xl" icon={faTelegram} />
       </Link>
@@ -41,6 +40,7 @@ const SocialLinks = ({ verifiy }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="theme-color"
+        aria-label="Discord"
       >
         <FontAwesomeIcon className="text-xl" icon={faDiscord} />
       </Link>
@@ -56,6 +56,7 @@ const SocialLinks = ({ verifiy }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="theme-color"
+        aria-label="Twitter"
       >
         <FontAwesomeIcon className="text-xl" icon={faXTwitter} />
       </Link>
