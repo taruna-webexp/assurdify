@@ -151,7 +151,7 @@ li {
   width: 214.58px;
   margin-top: 0 !important;
 }
-.main-navigation .kyc-button:hover{
+.main-navigation .kyc-button:hover {
   opacity: 0.9;
 }
 .dropdown-buttton svg {
@@ -255,6 +255,7 @@ li {
 }
 .card-tabs button {
   flex: auto;
+  opacity: 1;
 }
 .verified-text span {
   font-size: 14px;
@@ -592,12 +593,15 @@ li {
 .control-over-span span {
   letter-spacing: 0;
 }
-.accordian-list span, .accordian-list p {
-    letter-spacing: 0;
-    white-space: nowrap;
-    font-size: 14px;
+.accordian-list span,
+.accordian-list p {
+  letter-spacing: 0;
+  white-space: nowrap;
+  font-size: 14px;
 }
-
+.card-top-badge img {
+  top: -6px;
+}
 
 @media (max-width: 1250px) {
   .main-navigation button {
@@ -893,5 +897,5 @@ li {
   }
   .single-card-title {
     width: calc(100% - 75px);
-}
+  }
 }
