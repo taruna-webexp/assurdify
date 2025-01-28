@@ -10,6 +10,7 @@ import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import KycAccordion from "../accordion/KycAccordion";
 import AuditAccordion from "../accordion/AuditAccordion";
 import CertificateModal from "../modal/CertificateModal";
+import ContractAdress from "../varificationdetail/ContractAdress";
 
 // Custom tab panel component for  tab content
 function CustomTabPanel({ children, value, index, ...other }) {
@@ -49,7 +50,7 @@ export default function ProjectTab({ project }) {
 
   //  KYC tab label  based on project KYC status
   const kycTabName = project?.kycStatus !== "Approved" && (
-    <div className="text-red flex items-center gap-2">
+    <div className="text-red flex items-center gap-2 font-normal">
       <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
     </div>
   );
@@ -57,9 +58,11 @@ export default function ProjectTab({ project }) {
   //  Audit tab label  based on project audit status
   const auditedTabName =
     project?.auditStatus === "Completed" ? (
-      <div className="flex text-white items-center gap-2">Audit</div>
+      <div className="flex text-white items-center gap-2 font-normal">
+        Audit
+      </div>
     ) : (
-      <div className="text-red flex items-center gap-2">
+      <div className="text-red flex items-center gap-2 font-normal">
         <FontAwesomeIcon icon={faTriangleExclamation} /> Not Audited
       </div>
     );
@@ -82,7 +85,7 @@ export default function ProjectTab({ project }) {
             <Tab
               label="Team KYC"
               {...a11yProps(0)}
-              className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white"
+              className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white !font-normal"
             />
           ) : (
             <Link
@@ -105,7 +108,7 @@ export default function ProjectTab({ project }) {
         </Tabs>
       </Box>
 
-      {/* KYC Tab Panel */}
+      {/* KYC Tab  */}
       <CustomTabPanel
         className="border card-verified-member mt-0 mb-3 rounded-md grey-border dark-purple-bg"
         value={value}
@@ -115,9 +118,11 @@ export default function ProjectTab({ project }) {
       </CustomTabPanel>
 
       {/* Buttons under KYC tab */}
-      <div className="flex justify-between items-center card-buttons gap-3 x">
-        {value === 0 && (
-          <>
+      {value === 0 && (
+        <>
+          {/* contract  Address  under KYC tab*/}
+          <ContractAdress project={project} index={0} />
+          <div className="flex justify-between items-center card-buttons gap-3 x">
             {/* Certificate Button */}
             {project?.kycCertificate && (
               <Button
@@ -135,9 +140,10 @@ export default function ProjectTab({ project }) {
                 </Button>
               </Link>
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
+
       {/* Audit Tab Panel */}
       <CustomTabPanel value={value} index={1} className="card-audit-tab">
         {project?.auditStatus === "Completed" ? (
