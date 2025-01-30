@@ -41,7 +41,6 @@ export default function SingleProject({ params }) {
 
   //certificate model open handler
   const handleCertificateModalOpen = () => setCertificateModalOpen(true);
-  console.log("data1111111", project);
 
   return (
     <>

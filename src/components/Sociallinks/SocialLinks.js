@@ -62,8 +62,7 @@ const SocialLinks = ({ verifiy }) => {
       </Link>
     );
   }
-
-  // Render Component
+  //reender component
   return (
     <div>
       {socials.length > 0 ? (
