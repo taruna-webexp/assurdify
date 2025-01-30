@@ -29,10 +29,7 @@ export default function AuditAccordion({ project }) {
               {/* contract  Address*/}
               <ContractAdress project={project} index={index} />
               <div className="grey-border border p-3 rounded-md mb-2">
-                <Typography
-                  variant="body2"
-                  className="flex justify-between items-center"
-                >
+                <div className="flex justify-between items-center">
                   <strong className="text-sm font-normal">Ecosystem:</strong>
                   {project?.blockchain?.length > 0 &&
                     BlockChainImages[project.blockchain[0]] && (
@@ -46,7 +43,7 @@ export default function AuditAccordion({ project }) {
                           project.blockchain[0]}
                       </div>
                     )}
-                </Typography>
+                </div>
               </div>
               <div className="grey-border border p-3 rounded-lg mb-2">
                 <Typography

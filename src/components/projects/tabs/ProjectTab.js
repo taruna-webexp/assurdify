@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -11,6 +12,7 @@ import KycAccordion from "../accordion/KycAccordion";
 import AuditAccordion from "../accordion/AuditAccordion";
 import CertificateModal from "../modal/CertificateModal";
 import ContractAdress from "../varificationdetail/ContractAdress";
+import { useRouter } from "next/navigation";
 
 // Custom tab panel component for  tab content
 function CustomTabPanel({ children, value, index, ...other }) {
@@ -50,7 +52,7 @@ export default function ProjectTab({ project }) {
 
   //  KYC tab label  based on project KYC status
   const kycTabName = project?.kycStatus !== "Approved" && (
-    <div className="text-red flex items-center gap-2 font-normal">
+    <div className="text-red flex items-center gap-1 font-normal">
       <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
     </div>
   );
@@ -62,7 +64,7 @@ export default function ProjectTab({ project }) {
         Audit
       </div>
     ) : (
-      <div className="text-red flex items-center gap-2 font-normal">
+      <div className="text-red flex items-center gap-1 font-normal">
         <FontAwesomeIcon icon={faTriangleExclamation} /> Not Audited
       </div>
     );
@@ -73,6 +75,8 @@ export default function ProjectTab({ project }) {
   return (
     <Box sx={{ width: "100%" }} className="!mt-3">
       {/* Tabs header */}
+
+      {/* Tabs header */}
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -81,24 +85,26 @@ export default function ProjectTab({ project }) {
           className="dark-purple-bg card-tabs p-2 mb-3 !border grey-border border-solid rounded-md"
         >
           {/* KYC Tab */}
-          {project?.kycStatus === "Approved" ? (
-            <Tab
-              label="Team KYC"
-              {...a11yProps(0)}
-              className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white !font-normal"
-            />
-          ) : (
-            <Link
-              className="w-1/2 items-center flex gap-2"
-              href="https://www.assuredefi.com/#get-kyc"
-            >
-              <Tab
-                label={kycTabName}
-                {...a11yProps(0)}
-                className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white"
-              />
-            </Link>
-          )}
+          <Tab
+            label={
+              project?.kycStatus !== "Approved" ? (
+                <span className="text-red flex items-center gap-1 font-normal">
+                  <FontAwesomeIcon icon={faTriangleExclamation} /> No KYC
+                </span>
+              ) : (
+                "Team KYC"
+              )
+            }
+            component="a"
+            href={
+              project?.kycStatus !== "Approved"
+                ? "https://www.assuredefi.com/#get-kyc"
+                : undefined
+            }
+            {...a11yProps(0)}
+            className="!py-1.5 !px-10 !min-h-8 !rounded-md !normal-case !text-white w-1/2"
+          />
+
           {/* Audit Tab */}
           <Tab
             label={auditedTabName}

@@ -249,6 +249,11 @@ li {
   background: linear-gradient(45deg, #0a0923 0%, #4c47a4ab 100%);
   color: #fff !important;
 }
+.card-tabs a:hover {
+  /* border: 1px solid #2a2857; */
+  background: linear-gradient(45deg, #0a0923 0%, #4c47a4ab 100%);
+  color: #fff !important;
+}
 .card-tabs .MuiTabs-flexContainer {
   gap: 10px;
   justify-content: space-between;
