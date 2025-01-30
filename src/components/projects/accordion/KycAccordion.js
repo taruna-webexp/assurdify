@@ -22,9 +22,7 @@ export default function KycAccordion({ project }) {
 
   return (
     <>
-      <Grid item xs={12} className="verified-text">
-        {renderVerifiedText(project)}
-      </Grid>
+      <Grid className="verified-text">{renderVerifiedText(project)}</Grid>
       {project?.verifiyMembersList?.map((verifiy, index) => (
         <Accordion
           key={index}
@@ -37,7 +35,6 @@ export default function KycAccordion({ project }) {
             expandIcon={<FontAwesomeIcon icon={faCaretDown} />}
           >
             <div
-              container
               spacing={2}
               className="!gap-2 items-center  kyc-accordin-data "
             >
@@ -69,16 +66,16 @@ export default function KycAccordion({ project }) {
           </AccordionSummary>
 
           <AccordionDetails className="grey-border !border-t !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
-            <Typography className="text-white flex justify-between !text-sm !leading-4 items-center">
+            <div className="text-white flex justify-between !text-sm !leading-4 items-center">
               <span>Control Over:</span>
               <div className="gap-2 flex control-over-span">
                 {renderControlOver(verifiy.controlOver)}
               </div>
-            </Typography>
+            </div>
           </AccordionDetails>
 
           <AccordionDetails className="grey-border !border-b !border-solid !pl-3 !py-2 !pr-2 accordian-list">
-            <Typography className="text-white flex justify-between !text-sm !leading-4">
+            <div className="text-white flex justify-between !text-sm !leading-4">
               <div className="flex items-center gap-1 country-tier">
                 <span>Country Tier:</span>
                 <CountryTier />
@@ -91,14 +88,14 @@ export default function KycAccordion({ project }) {
                 />
                 {verifiy.countryTier || ""}
               </div>
-            </Typography>
+            </div>
           </AccordionDetails>
 
           <AccordionDetails className="!pl-3 !py-2 !pr-2 accordian-list">
-            <Typography className="text-white flex justify-between items-center">
+            <div className="text-white flex justify-between items-center">
               Socials:
               <SocialLinks verifiy={verifiy} />
-            </Typography>
+            </div>
           </AccordionDetails>
         </Accordion>
       ))}

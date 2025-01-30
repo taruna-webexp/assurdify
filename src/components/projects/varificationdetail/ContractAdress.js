@@ -14,7 +14,7 @@ export default function ContractAdress({ project, index }) {
   return (
     <>
       <div className="grey-border border p-3 rounded-md mb-2 dark-purple-bg">
-        <Typography variant="body2">
+        <div>
           <strong className="text-sm font-normal">
             Contract Address:
             <div className="light-purple p-3 flex justify-between items-center copy-icon rounded-md mt-2 theme-color text-sm overflow-hidden">
@@ -38,7 +38,7 @@ export default function ContractAdress({ project, index }) {
               )}
             </div>
           </strong>
-        </Typography>
+        </div>
       </div>
     </>
   );

@@ -594,7 +594,7 @@ li {
   letter-spacing: 0;
 }
 .accordian-list span,
-.accordian-list p {
+.accordian-list div {
   letter-spacing: 0;
   white-space: nowrap;
   font-size: 14px;
