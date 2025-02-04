@@ -31,6 +31,17 @@ export default function RootLayout({ children }) {
           type="font/woff2"
           crossorigin="anonymous"
         />
+
+        {/* Preload Critical CSS (jo zaroori CSS hai, wo jaldi load ho jaye) */}
+        <link rel="preload" href="/_next/static/css/critical.css" as="style" />
+
+        {/* Asynchronously load non-critical CSS */}
+        <link
+          rel="stylesheet"
+          href="/_next/static/css/non-critical.css"
+          media="print"
+          onload="this.media='all'"
+        />
       </Head>
       <body className={inter.className}>
         <ToastContainer position="bottom-right" />
