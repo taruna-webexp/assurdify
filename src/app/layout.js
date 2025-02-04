@@ -4,6 +4,7 @@ import Footer from "@/components/common/Footer";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -15,8 +16,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          rel="preload"
+          href="/_next/static/media/55c55f0601d81cf3-s.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/_next/static/media/26a46d62cd723877-s.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"
+        />
+      </Head>
       <body className={inter.className}>
-        <ToastContainer />
+        <ToastContainer position="bottom-right" />
         <Header />
         {children}
         <Footer />
