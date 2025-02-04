@@ -44,7 +44,14 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <body className={inter.className}>
-        <ToastContainer position="bottom-right" />
+        <ToastContainer
+          position="bottom-right"
+          style={{
+            position: "fixed",
+
+            maxWidth: "300px",
+          }}
+        />
         <Header />
         {children}
         <Footer />
