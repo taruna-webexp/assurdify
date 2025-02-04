@@ -446,7 +446,7 @@ li {
   height: 770px;
   width: calc(100% + 400px);
   position: absolute;
-  background-image: url(/assets/dots-bg.png);
+  background-image: url(/assets/dots-bg.webp);
   background-size: cover;
   background-position: center center !important;
   left: -200px;
