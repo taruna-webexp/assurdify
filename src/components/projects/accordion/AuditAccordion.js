@@ -7,6 +7,7 @@ import { BlockChainImages, blockchainNames } from "../BlockChainImages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faDownload } from "@fortawesome/free-solid-svg-icons";
 import ContractAdress from "../varificationdetail/ContractAdress";
+import Image from "next/image";
 
 export default function AuditAccordion({ project }) {
   return (
@@ -34,7 +35,9 @@ export default function AuditAccordion({ project }) {
                   {project?.blockchain?.length > 0 &&
                     BlockChainImages[project.blockchain[0]] && (
                       <div className="flex items-center justify-end gap-2">
-                        <img
+                        <Image
+                          width={25}
+                          height={100}
                           src={BlockChainImages[project.blockchain[0]]}
                           alt={project.blockchain[0]}
                           className="w-5"

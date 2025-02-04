@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: [
+      "v5.airtableusercontent.com",
+      "raw.githubusercontent.com",
+      "ipfs.io",
+    ],
+  },
+};
 
 export default nextConfig;

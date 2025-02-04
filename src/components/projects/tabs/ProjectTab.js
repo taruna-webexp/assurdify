@@ -12,7 +12,6 @@ import KycAccordion from "../accordion/KycAccordion";
 import AuditAccordion from "../accordion/AuditAccordion";
 import CertificateModal from "../modal/CertificateModal";
 import ContractAdress from "../varificationdetail/ContractAdress";
-import { useRouter } from "next/navigation";
 
 // Custom tab panel component for  tab content
 function CustomTabPanel({ children, value, index, ...other }) {

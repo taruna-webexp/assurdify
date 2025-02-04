@@ -12,6 +12,7 @@ import {
   renderControlOver,
   renderVerifiedText,
 } from "../varificationdetail/KycDetailData";
+import Image from "next/image";
 export default function KycAccordion({ project }) {
   const [expanded, setExpanded] = useState(0);
 
@@ -81,10 +82,12 @@ export default function KycAccordion({ project }) {
                 <CountryTier />
               </div>
               <div className="font-bold flex items-center">
-                <img
+                <Image
+                  width={24}
+                  height={24}
                   src="/assets/Country_tier_icon.png"
                   alt="country tier"
-                  width="24px"
+                  // width="24px"
                 />
                 {verifiy.countryTier || ""}
               </div>

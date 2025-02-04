@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const BadgeImage = ({ kycStatus, auditStatus }) => {
   const getImageSource = () => {
     if (kycStatus === "Approved") {
@@ -16,10 +18,12 @@ export const BadgeImage = ({ kycStatus, auditStatus }) => {
   if (!imgSrc) return null; // No image to render
 
   return (
-    <img
+    <Image
+      height={25}
+      width={imgSrc.includes("rejected") ? 100 : 25}
       src={imgSrc}
       onError={(e) => (e.target.src = "/assets/no-image-available.png")}
-      className={imgSrc.includes("rejected") ? "max-w-16 absolute" : ""}
+      className={imgSrc.includes("rejected") ? "!max-w-16 absolute" : ""}
       alt={imgSrc.includes("verified") ? "Verified Badge" : "Rejected Badge"}
     />
   );

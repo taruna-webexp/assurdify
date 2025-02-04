@@ -607,7 +607,10 @@ li {
 .card-top-badge img {
   top: -6px;
 }
-
+/* nft */
+.nft-left-section {
+  height: 880px;
+}
 @media (max-width: 1250px) {
   .main-navigation button {
     margin: 8px 0 0 24px !important;

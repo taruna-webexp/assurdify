@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 export default function ContractAdress({ project, index }) {
@@ -25,7 +26,9 @@ export default function ContractAdress({ project, index }) {
               {copiedIndex === index ? (
                 <span className="text-white">Copied!</span>
               ) : (
-                <img
+                <Image
+                  width={18}
+                  height={18}
                   src="/assets/solar_copy-bold.png"
                   alt="copy-bold.png"
                   className="cursor-pointer"

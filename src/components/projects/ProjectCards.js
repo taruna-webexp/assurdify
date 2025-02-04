@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { BadgeImage } from "./BadgeImage";
 import { AuditStatusBadge } from "@/components/projects/AuditStatusBadge";
+import Image from "next/image";
 export default function ProjectCards({ data }) {
   return (
     <Grid
@@ -39,7 +40,10 @@ export default function ProjectCards({ data }) {
             <Card className="light-yellow-border theme-bg">
               <div className="flex justify-between p-3">
                 <div className="flex items-center gap-1.5 card-top-title">
-                  <img
+                  <Image
+                    width={25}
+                    height={25}
+                    alt="project images"
                     src={
                       project.images
                         ? project.images?.[0]?.url

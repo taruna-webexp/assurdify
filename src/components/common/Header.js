@@ -15,6 +15,7 @@ import Link from "next/link";
 import { menus } from "@/components/common/HeaderMenus";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -52,7 +53,13 @@ function Header() {
         <Container className="container-fluid header-container">
           <Toolbar disableGutters>
             <Link href="https://www.assuredefi.com/">
-              <img src="/assets/logo-a.webp" className="header-logo" />
+              <Image
+                width={500}
+                height={100}
+                alt="logo"
+                src="/assets/logo-a.webp"
+                className="header-logo"
+              />
             </Link>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -83,9 +90,9 @@ function Header() {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: "block", md: "none" } }}
               >
-                {menus.map((page) => (
+                {menus?.map((page) => (
                   <div key={page.Title}>
-                    {page.children ? (
+                    {page?.children ? (
                       <div>
                         <li>
                           <Button
@@ -106,7 +113,7 @@ function Header() {
                           open={Boolean(anchorElServices)}
                           onClose={handleCloseServicesMenu}
                         >
-                          {page.children.map((subpage) => (
+                          {page?.children?.map((subpage) => (
                             <MenuItem
                               key={subpage.Title}
                               onClick={handleCloseServicesMenu}
