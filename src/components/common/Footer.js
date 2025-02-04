@@ -40,7 +40,13 @@ const Footer = () => {
             </div>
           </Grid>
           {/* First Grid Section */}
-          <Grid item xs={12} md={4} className="space-y-2 !p-0 contact-detail">
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            className="space-y-2 !p-0 contact-detail"
+          >
             <Typography variant="h6" className="font-bold text-[#e2d243]">
               <Link href="https://www.assuredefi.com/">
                 <Image
@@ -83,7 +89,13 @@ const Footer = () => {
           </Grid>
 
           {/* Second Grid Section */}
-          <Grid item xs={12} md={4} className="space-y-2 !p-0 site-links">
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            className="space-y-2 !p-0 site-links"
+          >
             <Typography
               variant="h6"
               className="font-bold text-[#e2d243] !text-2xl uppercase !font-normal !mb-3"
@@ -144,7 +156,13 @@ const Footer = () => {
           </Grid>
 
           {/* Third Grid Section */}
-          <Grid item xs={12} md={4} className="space-y-2 !p-0 disclaimer">
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            className="space-y-2 !p-0 disclaimer"
+          >
             <Typography
               variant="h6"
               className="font-bold text-[#e2d243] !text-2xl uppercase !font-normal !mb-3"

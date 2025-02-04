@@ -637,6 +637,7 @@ li {
   }
   .explore-project-container {
     padding: 0 20px;
+    min-height: 600px; /* Minimum height to prevent layout shift */
   }
   .projects-list-cont {
     padding: 0 20px !important;

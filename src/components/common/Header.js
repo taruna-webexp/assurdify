@@ -54,11 +54,11 @@ function Header() {
           <Toolbar disableGutters>
             <Link href="https://www.assuredefi.com/">
               <Image
-                width={500}
-                height={100}
-                alt="logo"
                 src="/assets/logo-a.webp"
-                className="header-logo"
+                alt="Assure Defi Logo"
+                width={165}
+                height={60}
+                priority
               />
             </Link>
 
