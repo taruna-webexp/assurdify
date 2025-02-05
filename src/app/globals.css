@@ -14,9 +14,6 @@ body {
   font-family: "Inter", serif;
   overflow-x: hidden;
 }
-.header-placeholder {
-  min-height: 80px; /* Jitna header height ho */
-}
 
 .footer-placeholder {
   min-height: 50px; /* Jitna footer height ho */
