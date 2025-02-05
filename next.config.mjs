@@ -7,6 +7,9 @@ const nextConfig = {
       "ipfs.io",
     ],
   },
+  experimental: {
+    optimizeCss: true, // Critical CSS ko Automatically Optimize karega
+  },
 };
 
 export default nextConfig;

@@ -87,7 +87,7 @@ export default function KycAccordion({ project }) {
                   height={24}
                   src="/assets/Country_tier_icon.png"
                   alt="country tier"
-                  // width="24px"
+                  priority
                 />
                 {verifiy.countryTier || ""}
               </div>

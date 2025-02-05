@@ -611,6 +611,9 @@ li {
 .nft-left-section {
   height: 880px;
 }
+.explore-project-container {
+  min-height: 200px; /* Adjust based on content */
+}
 @media (max-width: 1250px) {
   .main-navigation button {
     margin: 8px 0 0 24px !important;
@@ -637,7 +640,6 @@ li {
   }
   .explore-project-container {
     padding: 0 20px;
-    min-height: 600px; /* Minimum height to prevent layout shift */
   }
   .projects-list-cont {
     padding: 0 20px !important;

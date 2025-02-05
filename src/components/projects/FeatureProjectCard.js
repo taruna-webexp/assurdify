@@ -36,7 +36,6 @@ const FeatureProjectCard = ({ project }) => {
                 width={100}
                 height={100}
                 src={images?.[0]?.url}
-                loading="lazy"
                 priority
                 className="w-10 rounded-full  border-2"
               />
@@ -55,7 +54,6 @@ const FeatureProjectCard = ({ project }) => {
                   width={25}
                   height={25}
                   src="/assets/verified-beg.png"
-                  loading="lazy"
                   alt="Verified Badge"
                   priority
                 />

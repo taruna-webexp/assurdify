@@ -78,7 +78,9 @@ export default function Explore() {
       </div>
       {/* Loading or Projects */}
       {loading ? (
-        <ProjectSkeleton type="Explore" />
+        <div style={{ minHeight: "400px" }}>
+          <ProjectSkeleton type="Explore" />
+        </div>
       ) : (
         <>
           {/* Default Response if No Projects Found */}
@@ -100,6 +102,7 @@ export default function Explore() {
                 spacing={3}
                 justifyContent="center"
                 className="!m-0 !w-full"
+                style={{ minHeight: "400px" }}
               >
                 <ProjectCards data={projects} />
               </Grid>

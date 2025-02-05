@@ -33,6 +33,7 @@ const Footer = () => {
                 alt="small-logo"
                 src="/assets/Assure-brand-mark-gold.webp"
                 className="m-auto"
+                priority
               />
             </div>
             <div className="w-full hr-line">
@@ -54,6 +55,7 @@ const Footer = () => {
                   height={300}
                   alt="Logo"
                   src="/assets/logo-a.webp"
+                  priority
                 />
               </Link>
             </Typography>
