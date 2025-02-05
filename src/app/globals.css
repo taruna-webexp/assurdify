@@ -7,11 +7,14 @@
   --foreground: #ffffff;
 }
 body {
+  font-family: var(--font-inter);
+
   color: var(--foreground);
   background: #0a0923;
   font-family: "Inter", serif;
   overflow-x: hidden;
 }
+
 button,
 a,
 p,

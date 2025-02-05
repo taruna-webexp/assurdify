@@ -64,7 +64,7 @@ export default function Explore() {
   };
 
   return (
-    <div>
+    <div style={{ minHeight: "100px" }}>
       {/* Feature Project Section */}
       <FeatureProject />
       <div id="target-section" className="explore-project-container ">
