@@ -47,12 +47,12 @@ export default function ProjectCards({ data }) {
                     alt="project images"
                     src={
                       project.images
-                        ? project.images?.[0]?.url
+                        ? project.images?.[0]?.thumbnails?.small?.url
                         : "/assets/no-image-available.png"
                     }
-                    unoptimized
                     className="w-10 rounded-full h-10 object-cover border-2"
                   />
+
                   <div>
                     <h6 className=" projectName text-white font-extrabold  ">
                       {project.projectName}{" "}
