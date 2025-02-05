@@ -41,8 +41,8 @@ export default function ProjectCards({ data }) {
               <div className="flex justify-between p-3">
                 <div className="flex items-center gap-1.5 card-top-title">
                   <Image
-                    width={25}
-                    height={25}
+                    width={50}
+                    height={50}
                     priority
                     alt="project images"
                     src={
@@ -50,6 +50,7 @@ export default function ProjectCards({ data }) {
                         ? project.images?.[0]?.url
                         : "/assets/no-image-available.png"
                     }
+                    unoptimized
                     className="w-10 rounded-full h-10 object-cover border-2"
                   />
                   <div>
