@@ -38,7 +38,15 @@ export default function RootLayout({ children }) {
         </div>
 
         <Header />
-        <main>{children}</main>
+        <main
+          style={{
+            minHeight: "80vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
