@@ -33,9 +33,8 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
         {/* ✅ Reserve space for ToastContainer to prevent layout shifts */}
-        <div style={{ minHeight: "100px" }}>
-          <ToastContainer position="bottom-right" />
-        </div>
+
+        <ToastContainer position="bottom-right" />
 
         <div className="header-placeholder">
           <Header />
