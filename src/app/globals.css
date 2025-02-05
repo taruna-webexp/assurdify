@@ -621,7 +621,7 @@ li {
   height: 880px;
 }
 .explore-project-container {
-  min-height: 200px; /* Adjust based on content */
+  min-height: 140px; /* Adjust based on content */
 }
 @media (max-width: 1250px) {
   .main-navigation button {

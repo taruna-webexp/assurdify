@@ -24,7 +24,6 @@ export default function NftDetail() {
   }, []);
 
   if (!nftData) return <div>Loading...</div>;
-  console.log("nftimage", nftData.image);
 
   return (
     <div className="container mx-auto p-6">
