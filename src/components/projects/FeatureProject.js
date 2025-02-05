@@ -13,7 +13,7 @@ export default function FeatureProject() {
   }, []);
   return (
     <div className="verified-project-section">
-      <div className="container max-w-screen-lg mx-auto verified-project-container relative">
+      <div className="container max-w-screen-lg min-w-screen-sm mx-auto verified-project-container relative">
         <div className="text-center pt-14 mb-16 relative upper-section">
           <h2 className="text-5xl leading-tight text-gradient mb-5 heading">
             Assure DeFi
@@ -31,6 +31,7 @@ export default function FeatureProject() {
             GET YOUR PROJECT LISTED
           </Link>
         </div>
+
         <div className="theme-border-light rounded-xl featured-project px-6 pb-6 pt-4 mb-6 relative">
           <h3 className="text-center text-gradient text-32 leading-10 mb-5">
             Featured Projects
