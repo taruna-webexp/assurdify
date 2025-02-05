@@ -13,9 +13,6 @@ import { BadgeImage } from "./BadgeImage";
 import { AuditStatusBadge } from "@/components/projects/AuditStatusBadge";
 import Image from "next/image";
 export default function ProjectCards({ data }) {
-  const imageLoader = ({ src }) => {
-    return `${src}?format=webp`; // Modify this if using a CDN that supports format change
-  };
   return (
     <Grid
       container
@@ -44,19 +41,18 @@ export default function ProjectCards({ data }) {
               <div className="flex justify-between p-3">
                 <div className="flex items-center gap-1.5 card-top-title">
                   <Image
-                    loader={imageLoader}
-                    width={50}
-                    height={50}
+                    width={45}
+                    height={45}
                     priority
                     alt="project images"
                     src={
-                      project.images && project.images.length > 0
-                        ? project.images[0].url
+                      project.images
+                        ? project.images?.[0]?.url
                         : "/assets/no-image-available.png"
                     }
+                    unoptimized
                     className="w-10 rounded-full h-10 object-cover border-2"
                   />
-
                   <div>
                     <h6 className=" projectName text-white font-extrabold  ">
                       {project.projectName}{" "}
