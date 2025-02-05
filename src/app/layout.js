@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
           <ToastContainer position="bottom-right" />
         </div>
 
-        <Header />
+        {/* <Header /> */}
         <main
           style={{
             minHeight: "80vh",
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
         >
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

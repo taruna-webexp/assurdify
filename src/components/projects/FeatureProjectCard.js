@@ -35,6 +35,8 @@ const FeatureProjectCard = ({ project }) => {
                 alt="project image"
                 width={100}
                 height={100}
+                fill
+                objectFit="cover"
                 src={images?.[0]?.url}
                 priority
                 className="w-10 rounded-full  border-2"

@@ -44,6 +44,8 @@ export default function ProjectCards({ data }) {
                     width={25}
                     height={25}
                     priority
+                    fill
+                    objectFit="cover"
                     alt="project images"
                     src={
                       project.images
