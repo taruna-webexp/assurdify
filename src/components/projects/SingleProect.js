@@ -58,6 +58,7 @@ export default function SingleProject({ slug }) {
             height={100}
             src="/assets/typcn_arrow-back.png"
             alt="arrow-back"
+            priority
           />{" "}
           Back to projects
         </button>
@@ -79,6 +80,7 @@ export default function SingleProject({ slug }) {
                         project?.images?.[0]?.url ||
                         "/assets/no-image-available.png"
                       }
+                      priority
                       className="border-4 w-14 h-14 min-w-14 rounded-full"
                     />
                     <div className="pl-3">
@@ -99,6 +101,7 @@ export default function SingleProject({ slug }) {
                         onClick={handleCertificateModalOpen}
                         src="/assets/Profile_badge.png"
                         className="w-24 cursor-pointer"
+                        priority
                       />
                     </span>
                   )}

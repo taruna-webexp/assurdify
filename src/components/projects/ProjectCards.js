@@ -43,6 +43,7 @@ export default function ProjectCards({ data }) {
                   <Image
                     width={25}
                     height={25}
+                    priority
                     alt="project images"
                     src={
                       project.images

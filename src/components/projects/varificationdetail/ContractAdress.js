@@ -37,6 +37,7 @@ export default function ContractAdress({ project, index }) {
                       project.contractAddress || report.contractAddress,
                     ])
                   }
+                  priority
                 />
               )}
             </div>

@@ -62,6 +62,7 @@ export default function CertificateModal({ img, open, setOpen }) {
             src={kycUrl}
             style={{ width: "100%", height: "100%" }}
             alt="KYC Certificate"
+            priority
           />
         </DialogContent>
       </BootstrapDialog>

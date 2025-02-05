@@ -41,6 +41,7 @@ export default function AuditAccordion({ project }) {
                           src={BlockChainImages[project.blockchain[0]]}
                           alt={project.blockchain[0]}
                           className="w-5"
+                          priority
                         />
                         {blockchainNames[project.blockchain[0]] ||
                           project.blockchain[0]}

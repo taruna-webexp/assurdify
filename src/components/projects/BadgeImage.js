@@ -25,6 +25,7 @@ export const BadgeImage = ({ kycStatus, auditStatus }) => {
       onError={(e) => (e.target.src = "/assets/no-image-available.png")}
       className={imgSrc.includes("rejected") ? "!max-w-16 absolute" : ""}
       alt={imgSrc.includes("verified") ? "Verified Badge" : "Rejected Badge"}
+      priority
     />
   );
 };

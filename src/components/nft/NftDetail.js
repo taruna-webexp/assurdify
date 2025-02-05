@@ -96,6 +96,7 @@ export default function NftDetail() {
               alt="nft-image"
               src={`https://ipfs.io/ipfs/${nftData.image.split("ipfs://")[1]}`}
               className="w-full h-full object-cover rounded-xl nft-image"
+              priority
             />
           </Box>
         </Grid>

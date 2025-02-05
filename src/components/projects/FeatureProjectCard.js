@@ -37,6 +37,7 @@ const FeatureProjectCard = ({ project }) => {
                 height={100}
                 src={images?.[0]?.url}
                 loading="lazy"
+                priority
                 className="w-10 rounded-full  border-2"
               />
               <div>
@@ -56,6 +57,7 @@ const FeatureProjectCard = ({ project }) => {
                   src="/assets/verified-beg.png"
                   loading="lazy"
                   alt="Verified Badge"
+                  priority
                 />
               ) : auditStatus === "NotDetected" && kycStatus === "Rejected" ? (
                 <Image
@@ -63,6 +65,7 @@ const FeatureProjectCard = ({ project }) => {
                   height={100}
                   src="/assets/rejected-image.png"
                   alt="Rejected Badge"
+                  priority
                 />
               ) : null}
               <span className="font-bold text-white">
