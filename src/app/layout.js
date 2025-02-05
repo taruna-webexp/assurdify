@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* ✅ Reserve space for ToastContainer to prevent layout shifts */}
 
-        <ToastContainer position="bottom-right" />
+        {/* <ToastContainer position="bottom-right" /> */}
 
         <div className="header-placeholder">
           <Header />
