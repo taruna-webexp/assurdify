@@ -77,8 +77,11 @@ export default function SingleProject({ slug }) {
                       height={100}
                       alt="project images"
                       src={
-                        project?.images?.[0]?.url ||
-                        "/assets/no-image-available.png"
+                        project.images
+                          ? project.images[0].thumbnails
+                            ? project.images[0].thumbnails.small.url
+                            : project.images[0].url
+                          : "/assets/no-image-available.png"
                       }
                       priority
                       className="border-4 w-14 h-14 min-w-14 rounded-full"
@@ -107,7 +110,7 @@ export default function SingleProject({ slug }) {
                   )}
                 </div>
 
-                <p className="text-sm text-white mt-5 leading-relaxed tracking-normal sub-text font-light">
+                <p className="text-sm text-white mt-5 leading-relaxed tracking-normal sub-text font-light break-all">
                   {project?.description}
                 </p>
 
